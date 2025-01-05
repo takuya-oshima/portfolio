@@ -1,0 +1,126 @@
+import Image from "next/image";
+import PageTitleSide from "@/components/PageTitleSide";
+import PageTitleHead from "@/components/PageTitleHead";
+import PageLead from "@/components/PageLead";
+import BlockTitle from '@/components/BlockTitle';
+import TextBase from "@/components/TextBase";
+import TextLarge from "@/components/TextLarge";
+
+
+export default function Page() {
+  return (
+    <section className="ml-left-custom-sm md:ml-24 lg:ml-0">
+      <PageTitleSide pageTitleSide="PROFILE" />
+      <div className="relative">
+        <div className="mb-42 text-center">
+          <PageTitleHead pageTitleHead="Takuya Oshima" />
+          <PageLead>Web Designer / Frontend Engineer</PageLead>
+        </div>
+        <div className="-ml-left-custom-sm md:-ml-24 lg:ml-0 mb-10">
+          <figure className="w-screen mx-[calc((100vw-100%)/-2)]">
+            <Image className="md:w-[45rem] mx-auto" src="/images/img_mv_sample.png" width={1920} height={1000} alt="メインビジュアル" priority />
+          </figure>
+        </div>
+        <div className="md:w-[45rem] mx-auto mb-34 md:mb-[12.5rem]">
+          <TextBase>
+            Web designer, front-end engineer, web director.<br/>
+            <br/>
+            Born in 1989.<br/>
+            <br/>
+            As a web designer at a Tokyo-based web production and development company, he has experience in design and front-end implementation for numerous website productions.<br/>
+            <br/>
+            He often works alone on design, design, front-end implementation, and direction, and has a wide range of responsibilities.
+          </TextBase>
+        </div>
+        <div className="lg:w-10/12 2xl:w-full xl:grid xl:grid-cols-2 mx-auto mb-34 md:mb-[12.5rem]">
+          <BlockTitle blockTitle="SERVICE" />
+          <div className="xl:-ml-32 2xl:-ml-24">
+            <TextBase>
+              Web Planning<br/>
+              Web Direction<br/>
+              Web Design<br/>
+              Frontend Development<br/>
+              SEO<br/>
+              Web Marketing
+            </TextBase>
+          </div>
+        </div>
+        <div className="lg:w-10/12 2xl:w-full xl:grid xl:grid-cols-2 mx-auto mb-34 md:mb-[12.5rem]">
+          <BlockTitle blockTitle="SKILL" />
+          <div className="md:flex justify-start items-start gap-x-32 xl:gap-x-40 2xl:gap-x-48 xl:-ml-32 2xl:-ml-24">
+            <dl className="mb-8">
+              <dt>
+                <TextLarge>Development</TextLarge>
+              </dt>
+              <dd>
+                <TextBase>
+                  HTML<br/>
+                  CSS<br/>
+                  JavaScript<br/>
+                  TypeScript<br/>
+                  Next.js<br/>
+                  jQuery<br/>
+                  WordPress<br/>
+                  Micro CMS<br/>
+                  Bootstrap<br/>
+                  TailWindCSS<br/>
+                  Git/github<br/>
+                  Webpack<br/>
+                  gulp<br/>
+                  vite
+                </TextBase>
+              </dd>
+            </dl>
+            <dl className="mb-8">
+              <dt>
+                <TextLarge>Desing</TextLarge>
+              </dt>
+              <dd>
+                <TextBase>
+                  Illustrator<br/>
+                  Photoshop<br/>
+                  Lightroom<br/>
+                  Adobe XD<br/>
+                  Figma
+                </TextBase>
+              </dd>
+            </dl>
+            <dl className="mb-8">
+              <dt>
+                <TextLarge>Other</TextLarge>
+              </dt>
+              <dd>
+                <TextBase>
+                  SEO<br/>
+                  Web Marketing<br/>
+                  Direction
+                </TextBase>
+              </dd>
+            </dl>
+          </div>
+        </div>
+        <div className="-ml-left-custom-sm md:-ml-24 lg:ml-0 mb-34 md:mb-[12.5rem]">
+          <div className="w-screen mx-[calc((100vw-100%)/-2)] bg-black text-white py-20 2xl:py-32 px-custom">
+            <h2 className="mb-8 md:mb-14 2xl:mb-[4.5rem] text-center text-[2.5rem] md:text-5xl 2xl:text-7xl leading-relaxed tracking-wide">CONTACT</h2>
+            <div className="text-center">
+              <p className="mb-10 text-base md:text-xl leading-loose">Please contact us at this e-mail address to<br className="lg:hidden" />discuss your site creation needs.</p>
+              <div className="mb-10 text-3xl md:text-6xl 2xl:text-8xl leading-loose"><a href="mailto:o.takuya.zero@gmail.com">o.takuya.zero@gmail.com</a></div>
+              <div className="mb-[4.5rem] text-3xl leading-loose">Get in touch</div>
+              <ul className="flex justify-center items-center gap-x-4 md:gap-x-6">
+                <li>
+                  <a href="https://www.instagram.com/takuya_oshima/" target="_blank" rel="noreferrer noopener"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd"><path d="M5.85826 0.0700597C4.79426 0.12026 4.06766 0.29006 3.43246 0.53966C2.77506 0.79586 2.21786 1.13966 1.66346 1.69606C1.10906 2.25246 0.767664 2.81006 0.513264 3.46846C0.267064 4.10506 0.100264 4.83226 0.0532636 5.89686C0.00626363 6.96146 -0.00413637 7.30366 0.00106363 10.0193C0.00626363 12.7349 0.0182636 13.0753 0.0698636 14.1421C0.120664 15.2059 0.289864 15.9323 0.539464 16.5677C0.796064 17.2251 1.13946 17.7821 1.69606 18.3367C2.25266 18.8913 2.80986 19.2319 3.46986 19.4867C4.10586 19.7325 4.83326 19.9001 5.89766 19.9467C6.96206 19.9933 7.30466 20.0041 10.0195 19.9989C12.7343 19.9937 13.0761 19.9817 14.1427 19.9311C15.2093 19.8805 15.9319 19.7101 16.5675 19.4617C17.2249 19.2045 17.7823 18.8617 18.3365 18.3049C18.8907 17.7481 19.2319 17.1901 19.4861 16.5313C19.7325 15.8953 19.8999 15.1679 19.9461 14.1043C19.9927 13.0369 20.0037 12.6961 19.9985 9.98086C19.9933 7.26566 19.9811 6.92526 19.9305 5.85886C19.8799 4.79246 19.7105 4.06826 19.4611 3.43246C19.2041 2.77506 18.8611 2.21846 18.3047 1.66346C17.7483 1.10846 17.1899 0.76746 16.5313 0.51386C15.8949 0.26766 15.1679 0.0998597 14.1035 0.0538597C13.0391 0.00785968 12.6965 -0.00394032 9.98066 0.00125968C7.26486 0.00645968 6.92486 0.0180597 5.85826 0.0700597ZM5.97506 18.1477C5.00006 18.1053 4.47066 17.9433 4.11786 17.8077C3.65066 17.6277 3.31786 17.4101 2.96626 17.0619C2.61466 16.7137 2.39866 16.3797 2.21626 15.9135C2.07926 15.5607 1.91426 15.0319 1.86866 14.0569C1.81906 13.0031 1.80866 12.6867 1.80286 10.0169C1.79706 7.34706 1.80726 7.03106 1.85346 5.97686C1.89506 5.00266 2.05806 4.47266 2.19346 4.12006C2.37346 3.65226 2.59026 3.32006 2.93926 2.96866C3.28826 2.61726 3.62126 2.40086 4.08786 2.21846C4.44026 2.08086 4.96906 1.91726 5.94366 1.87086C6.99826 1.82086 7.31426 1.81086 9.98366 1.80506C12.6531 1.79926 12.9699 1.80926 14.0249 1.85566C14.9991 1.89806 15.5293 2.05946 15.8815 2.19566C16.3489 2.37566 16.6815 2.59186 17.0329 2.94146C17.3843 3.29106 17.6009 3.62286 17.7833 4.09046C17.9211 4.44186 18.0847 4.97046 18.1307 5.94566C18.1809 7.00026 18.1923 7.31646 18.1971 9.98566C18.2019 12.6549 18.1925 12.9719 18.1463 14.0257C18.1037 15.0007 17.9421 15.5303 17.8063 15.8835C17.6263 16.3505 17.4093 16.6835 17.0601 17.0347C16.7109 17.3859 16.3783 17.6023 15.9115 17.7847C15.5595 17.9221 15.0301 18.0861 14.0563 18.1325C13.0017 18.1821 12.6857 18.1925 10.0153 18.1983C7.34486 18.2041 7.02986 18.1933 5.97526 18.1477M14.1273 4.65546C14.1277 4.89281 14.1984 5.12472 14.3306 5.32185C14.4628 5.51897 14.6505 5.67247 14.87 5.76292C15.0894 5.85336 15.3308 5.8767 15.5635 5.82998C15.7962 5.78326 16.0098 5.66857 16.1773 5.50043C16.3449 5.33229 16.4588 5.11824 16.5046 4.88536C16.5505 4.65248 16.5263 4.41123 16.435 4.19211C16.3438 3.973 16.1896 3.78587 15.992 3.65439C15.7944 3.52291 15.5622 3.45299 15.3249 3.45346C15.0067 3.4541 14.7018 3.58108 14.4772 3.80649C14.2526 4.03189 14.1267 4.33727 14.1273 4.65546ZM4.86526 10.0101C4.87086 12.8461 7.17406 15.1399 10.0095 15.1345C12.8449 15.1291 15.1403 12.8261 15.1349 9.99006C15.1295 7.15406 12.8257 4.85966 9.98986 4.86526C7.15406 4.87086 4.85986 7.17446 4.86526 10.0101ZM6.66646 10.0065C6.66516 9.34718 6.85939 8.70231 7.22458 8.15342C7.58977 7.60452 8.10953 7.17624 8.71813 6.92274C9.32673 6.66923 9.99683 6.6019 10.6437 6.72924C11.2906 6.85658 11.8851 7.17287 12.3523 7.63813C12.8194 8.10339 13.138 8.69672 13.2679 9.34308C13.3978 9.98944 13.3331 10.6598 13.082 11.2694C12.8309 11.879 12.4047 12.4004 11.8573 12.7678C11.3098 13.1352 10.6657 13.332 10.0065 13.3333C9.5687 13.3342 9.13504 13.2489 8.73026 13.0822C8.32548 12.9155 7.9575 12.6706 7.64734 12.3617C7.33718 12.0528 7.09092 11.6858 6.92262 11.2817C6.75432 10.8775 6.66728 10.4442 6.66646 10.0065Z" fill="#fff"/></svg></a>
+                </li>
+                <li>
+                  <a href="https://www.facebook.com/takuya.oshima.52/" target="_blank" rel="noreferrer noopener"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd"><path d="M20 10C20 4.4772 15.5228 0 10 0C4.4772 0 0 4.4772 0 10C0 14.6896 3.2288 18.6248 7.5844 19.7056V13.056H5.5224V10H7.5844V8.6832C7.5844 5.2796 9.1248 3.702 12.4664 3.702C13.1 3.702 14.1932 3.8264 14.6404 3.9504V6.7204C14.4044 6.6956 13.9944 6.6832 13.4852 6.6832C11.8456 6.6832 11.212 7.3044 11.212 8.9192V10H14.4784L13.9172 13.056H11.212V19.9268C16.1636 19.3288 20.0004 15.1128 20.0004 10H20Z" fill="#fff"/></svg></a>
+                </li>
+                <li>
+                  <a href="https://github.com/takuya-oshima" target="_blank" rel="noreferrer noopener"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd"><path fillRule="evenodd" clipRule="evenodd" d="M9.9702 0C4.45694 0 0 4.58333 0 10.2535C0 14.786 2.85571 18.6227 6.81735 19.9806C7.31265 20.0827 7.49408 19.76 7.49408 19.4885C7.49408 19.2508 7.47776 18.436 7.47776 17.5871C4.70429 18.1983 4.12674 16.3648 4.12674 16.3648C3.68102 15.1765 3.02061 14.871 3.02061 14.871C2.11286 14.2429 3.08673 14.2429 3.08673 14.2429C4.09367 14.3108 4.62204 15.2954 4.62204 15.2954C5.51327 16.8571 6.94939 16.4158 7.52714 16.1442C7.60959 15.4821 7.87388 15.0237 8.15449 14.7692C5.94245 14.5315 3.6151 13.6488 3.6151 9.71021C3.6151 8.58979 4.01102 7.67312 4.63837 6.96021C4.53939 6.70563 4.19265 5.65292 4.73755 4.24396C4.73755 4.24396 5.57939 3.97229 7.47755 5.29646C8.29022 5.07201 9.12832 4.95784 9.9702 4.95687C10.812 4.95687 11.6702 5.07583 12.4627 5.29646C14.361 3.97229 15.2029 4.24396 15.2029 4.24396C15.7478 5.65292 15.4008 6.70563 15.3018 6.96021C15.9457 7.67312 16.3253 8.58979 16.3253 9.71021C16.3253 13.6488 13.998 14.5144 11.7694 14.7692C12.1327 15.0917 12.4461 15.7027 12.4461 16.6704C12.4461 18.0454 12.4298 19.149 12.4298 19.4883C12.4298 19.76 12.6114 20.0827 13.1065 19.9808C17.0682 18.6225 19.9239 14.786 19.9239 10.2535C19.9402 4.58333 15.4669 0 9.9702 0Z" fill="#fff"/></svg></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
