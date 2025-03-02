@@ -1,0 +1,15 @@
+{
+  "HomePage": {
+    "title": "英語",
+    "about": "Go to the about page"
+  },
+  "ProfilePage": {
+    "name": "",
+     "profileText":"Web Designer, Front-end Engineer, Web Director.\nBorn in 1989.\nWorked as a web designer at a web production and development company in Tokyo, Japan, handling design and front-end implementation for numerous website projects.\nOften responsible for planning, design creation, front-end implementation, and direction alone, with a strong ability to cover a wide range of tasks.",
+     "serviceText": "Web Planning\nWeb Direction\nWeb Design\nFrontend Development\nSEO\nWeb Marketing",
+     "contactText": "Please contact us at this e-mail address to discuss your site creation needs."
+  },
+  "ContactPage": {
+    "contactText": "Please contact us at this e-mail address to discuss your site creation needs."
+  }
+}

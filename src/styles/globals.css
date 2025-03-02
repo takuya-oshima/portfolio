@@ -6,7 +6,8 @@
   --primary-text-color: #000;
   --background-color: #D9D9D9;
   --font-family-didot: linotype-didot, serif;
-  --font-family-noto-jp: "Noto Sans JP", sans-serif;
+  --font-family-roboto: "roboto", serif;
+  --font-family-noto-jp: "Noto Sans JP", serif;
 }
 .dark-mode {
   --primary-text-color: #fff;
@@ -25,10 +26,11 @@ body {
   overflow-x: hidden;
 }
 body {
-  font-family: var(--font-family-didot);
+  font-family: linotype-didot, roboto, "Noto Sans JP", serif;
   color: var(--primary-text-color);
   background-color: var(--background-color);
   line-height: 1;
+  font-optical-sizing: auto;
   text-rendering: optimizeLegibility;
   font-feature-settings: "palt";
   -webkit-font-smoothing: antialiased;
@@ -36,6 +38,13 @@ body {
   -moz-text-size-adjust: 100%;
   text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+}
+html[lang="ja"] .locale {
+  font-family: 'Roboto', 'Noto Sans JP', 'sans-serif';
+  font-size: 1rem;
+}
+html[lang="en"] .locale {
+  font-family: linotype-didot, serif;
 }
 @layer utilities {
   .counter-reset {

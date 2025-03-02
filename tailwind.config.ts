@@ -8,6 +8,12 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        didot:  "var(--font-family-didot)",
+        notoJP: "var(--font-family-noto-jp)",
+        roboto: "var(--font-family-roboto)",
+        ja: ["Roboto", "Noto Sans JP", "sans-serif"]
+      },
       colors: {
         primaryBgColor: "var(--background-color)",
       },
@@ -47,15 +53,15 @@ const config: Config = {
         ".writing-mode-vertical-rl": {
           "writing-mode": "vertical-rl",
         },
-        '.counter-reset-list': {
-          'counter-reset': 'list-counter',
+        ".counter-reset-list": {
+          "counter-reset": "list-counter",
         },
-        '.counter-increment-item::before': {
-          'content': '"0"counter(list-counter) ":"',
-          'counter-increment': 'list-counter',
+        ".counter-increment-item::before": {
+          "content": "'0'counter(list-counter) ':'",
+          "counter-increment": "list-counter",
         },
       },{
-        variants: ['before'], // 必要なら疑似要素用にvariantsを指定
+        variants: ["before"], // 必要なら疑似要素用にvariantsを指定
       });
     },
   ],

@@ -1,18 +1,20 @@
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import PageTitleSide from "@/components/PageTitleSide";
 import PageTitleHead from "@/components/PageTitleHead";
 import PageLead from "@/components/PageLead";
-import BlockTitle from '@/components/BlockTitle';
+import BlockTitle from "@/components/BlockTitle";
 import TextBase from "@/components/TextBase";
 import TextLarge from "@/components/TextLarge";
 
-
-export default function Page() {
+export default function ProfilePage() {
+  const t = useTranslations("ProfilePage");
   return (
     <section className="ml-left-custom-sm md:ml-24 lg:ml-0">
       <PageTitleSide pageTitleSide="PROFILE" />
       <div className="relative">
-        <div className="mb-42 text-center">
+        <div className="-ml-left-custom-sm md:-ml-24 mb-42 text-center">
+          <div className="mb-4">{t("name")}</div>
           <PageTitleHead pageTitleHead="Takuya Oshima" />
           <PageLead>Web Designer / Frontend Engineer</PageLead>
         </div>
@@ -21,27 +23,26 @@ export default function Page() {
             <Image className="md:w-[45rem] mx-auto" src="/images/img_mv_sample.png" width={1920} height={1000} alt="メインビジュアル" priority />
           </figure>
         </div>
-        <div className="md:w-[45rem] mx-auto mb-34 md:mb-[12.5rem]">
+        <div className="md:w-[45rem] mx-auto mb-34 md:mb-[12.5rem] locale">
           <TextBase>
-            Web designer, front-end engineer, web director.<br/>
-            <br/>
-            Born in 1989.<br/>
-            <br/>
-            As a web designer at a Tokyo-based web production and development company, he has experience in design and front-end implementation for numerous website productions.<br/>
-            <br/>
-            He often works alone on design, design, front-end implementation, and direction, and has a wide range of responsibilities.
+            {t("profileText").split("\n").map((line, index) => (
+              <span key={index}>
+                {line}
+                <br />
+              </span>
+            ))}
           </TextBase>
         </div>
         <div className="lg:w-10/12 2xl:w-full xl:grid xl:grid-cols-2 mx-auto mb-34 md:mb-[12.5rem]">
-          <BlockTitle blockTitle="SERVICE" />
-          <div className="xl:-ml-32 2xl:-ml-24">
+          <BlockTitle blockTitle="FIELD" />
+          <div className="xl:-ml-32 2xl:-ml-24 locale">
             <TextBase>
-              Web Planning<br/>
-              Web Direction<br/>
-              Web Design<br/>
-              Frontend Development<br/>
-              SEO<br/>
-              Web Marketing
+            {t("serviceText").split("\n").map((line, index) => (
+              <span key={index}>
+                {line}
+                <br />
+              </span>
+            ))}
             </TextBase>
           </div>
         </div>
@@ -53,36 +54,37 @@ export default function Page() {
                 <TextLarge>Development</TextLarge>
               </dt>
               <dd>
-                <TextBase>
+                <p className="text-base leading-loose mb-8 md:mb-14 ml-1 locale">
                   HTML<br/>
                   CSS<br/>
-                  JavaScript<br/>
+                  SCSS<br/>
+                  javaScript<br/>
                   TypeScript<br/>
                   Next.js<br/>
                   jQuery<br/>
                   WordPress<br/>
-                  Micro CMS<br/>
+                  MicroCMS<br/>
                   Bootstrap<br/>
-                  TailWindCSS<br/>
-                  Git/github<br/>
-                  Webpack<br/>
+                  TailWind CSS<br/>
+                  Git/GitHub<br/>
+                  webpack<br/>
                   gulp<br/>
-                  vite
-                </TextBase>
+                  Vite
+                </p>
               </dd>
             </dl>
             <dl className="mb-8">
               <dt>
-                <TextLarge>Desing</TextLarge>
+                <TextLarge>Design</TextLarge>
               </dt>
               <dd>
-                <TextBase>
+                <p className="text-base leading-loose mb-8 md:mb-14 ml-1 locale">
                   Illustrator<br/>
                   Photoshop<br/>
                   Lightroom<br/>
                   Adobe XD<br/>
                   Figma
-                </TextBase>
+                </p>
               </dd>
             </dl>
             <dl className="mb-8">
@@ -90,11 +92,11 @@ export default function Page() {
                 <TextLarge>Other</TextLarge>
               </dt>
               <dd>
-                <TextBase>
+                <p className="text-base leading-loose mb-8 md:mb-14 ml-1 locale">
                   SEO<br/>
                   Web Marketing<br/>
                   Direction
-                </TextBase>
+                </p>
               </dd>
             </dl>
           </div>
@@ -103,7 +105,13 @@ export default function Page() {
           <div className="w-screen mx-[calc((100vw-100%)/-2)] bg-black text-white py-20 2xl:py-32 px-custom">
             <h2 className="mb-8 md:mb-14 2xl:mb-[4.5rem] text-center text-[2.5rem] md:text-5xl 2xl:text-7xl leading-relaxed tracking-wide">CONTACT</h2>
             <div className="text-center">
-              <p className="mb-10 text-base md:text-xl leading-loose">Please contact us at this e-mail address to<br className="lg:hidden" />discuss your site creation needs.</p>
+              <p className="mb-10 text-base md:text-xl leading-loose locale">
+                {t("contactText").split("\n").map((line, index) => (
+                  <span key={index}>
+                    {line}
+                  </span>
+                ))}
+              </p>
               <div className="mb-10 text-3xl md:text-6xl 2xl:text-8xl leading-loose"><a href="mailto:o.takuya.zero@gmail.com">o.takuya.zero@gmail.com</a></div>
               <div className="mb-[4.5rem] text-3xl leading-loose">Get in touch</div>
               <ul className="flex justify-center items-center gap-x-4 md:gap-x-6">

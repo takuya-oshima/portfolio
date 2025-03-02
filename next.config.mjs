@@ -1,5 +1,12 @@
+import createNextIntlPlugin from 'next-intl/plugin';
+const withNextIntl = createNextIntlPlugin();
+
 /** @type {import('next').NextConfig} */
+
 const nextConfig = {
+  reactStrictMode: true, // Reactの厳密モードを有効化
+  swcMinify: true,       // SWCによるコードの最適化を有効化
+  //MicroCMSの画像の制限設定
   images: {
     remotePatterns: [
       {
@@ -9,5 +16,5 @@ const nextConfig = {
     ],
   },
 };
-
-export default nextConfig
+export default withNextIntl(nextConfig);
+//export default nextConfig;
