@@ -1,5 +1,5 @@
 type Props = {
-  children: React.ReactDOM.Node;
+  children: React.ReactNode;
 };
 
 export default function TextBase({ children }: Props){

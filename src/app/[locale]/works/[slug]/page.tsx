@@ -1,10 +1,12 @@
 import { Link } from "@/i18n/routing";
+import React from "react";
 import Image from "next/image";
 import PageTitleSide from "@/components/PageTitleSide";
 import PageTitleHead from "@/components/PageTitleHead";
 import PageLead from "@/components/PageLead";
 import BlockTitle from "@/components/BlockTitle";
 import LinkButton from "@/components/LinkButton";
+import CreditItem from "@/components/CreditItem";
 import { getWorksDetail } from "@/libs/microcms";
 import { formatDate } from "@/libs/utils";
 
@@ -23,12 +25,12 @@ export default async function WorksDetailPage({ params }: Props) {
     <section className="relative ml-left-custom-sm md:ml-24 lg:ml-0">
       <PageTitleSide pageTitleSide={data.titleAbbreviation} />
       <div className="relative">
-        <div className="-ml-left-custom-sm md:-ml-24 mb-42 text-center">
+        <div className="-ml-left-custom-sm md:-ml-24 lg:ml-0 mb-42 text-center">
           {locale === "ja" && (
             <div className="mb-2 md:mb-4 lg:mb-8 font-ja text-base lg:text-lg">{data.title_ja}</div>
           )}
           <PageTitleHead pageTitleHead={data.title_en} />
-          <PageLead>URL： <a href={data.url} target="_blank">{data.url}</a></PageLead>
+          <PageLead>URL： <a href={data.url} target="_blank" rel="noopener">{data.url}</a></PageLead>
           <PageLead>Type： {data.category.name}</PageLead>
         </div>
         <div className="-ml-left-custom-sm md:-ml-24 lg:ml-0 mb-34 md:mb-[12.5rem]">
@@ -63,30 +65,15 @@ export default async function WorksDetailPage({ params }: Props) {
             <h2 className="mb-8 md:mb-14 2xl:mb-[4.5rem] text-center text-[2.5rem] md:text-5xl 2xl:text-7xl leading-relaxed tracking-wide">DETAILS</h2>
             <div className="grid gap-y-4 md:gap-y-6 mb-[5.5rem]">
               <h3 className="text-2xl md:text-3.5xl text-center">INFO</h3>
-              <dl className="grid grid-cols-2 font-roboto text-base md:text-lg leading-relaxed">
-                <dt className="pr-6 md:pr-10 text-[#999999] text-right">URL</dt>
-                <dd><a href={data.url} target="_blank">{data.url}</a></dd>
-              </dl>
-              <dl className="grid grid-cols-2 font-roboto text-base md:text-lg leading-relaxed">
-                <dt className="pr-6 md:pr-10 text-[#999999] text-right">Release Date</dt>
-                <dd>{formatDate(data.releaseDate)}</dd>
-              </dl>
-              <dl className="grid grid-cols-2 font-roboto text-base md:text-lg leading-relaxed">
-                <dt className="pr-6 md:pr-10 text-[#999999] text-right">Type</dt>
-                <dd>{data.category.name}</dd>
-              </dl>
-              <dl className="grid grid-cols-2 font-roboto text-base md:text-lg leading-relaxed">
-                <dt className="pr-6 md:pr-10 text-[#999999] text-right">Technologies & Tools</dt>
-                <dd>{data.technologiesTools}</dd>
-              </dl>
+              <CreditItem creditTitle="URL" creditData={<a href={data.url} target="_blank" rel="noopener">{data.url}</a>} />
+              <CreditItem creditTitle="Release Date" creditData={formatDate(data.releaseDate)} />
+              <CreditItem creditTitle="Type" creditData={data.category.name} />
+              <CreditItem creditTitle="Technologies & Tools" creditData={data.technologiesTools} />
             </div>
             <div className="grid gap-y-4 md:gap-y-6">
               <h3 className="text-2xl md:text-3.5xl text-center">ROLE</h3>
               {data.role.map((item, index)=> (
-                <dl key={index} className="grid grid-cols-2 font-roboto text-base md:text-lg leading-relaxed">
-                  <dt className="pr-6 md:pr-10 text-[#999999] text-right">{item.fieldId}</dt>
-                  <dd>{item[item.fieldId]}</dd>
-                </dl>
+                <CreditItem key={index} creditTitle={item.fieldId} creditData={item[item.fieldId]} />
               ))}
             </div>
           </div>

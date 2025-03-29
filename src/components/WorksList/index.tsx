@@ -14,7 +14,7 @@ export default function WorksList({works, locale}: Props) {
   return (
     <ul className="lg:w-10/12 2xl:w-full mx-auto mb-34 md:mb-[12.5rem] counter-reset-list">
       {works.map((works) => (
-        <li key={works.id} className="first:border-t border-b border-black">
+        <li key={works.id} className="first:border-t border-b border-[#aaa] dark:border-[#444]">
           <Link href={`/works/${works.id}`} className="flex justify-start items-center py-4 px-2 counter-increment-item text-base md:text-lg">
             {locale === "ja" ? (
               <h2 className="ml-2 md:ml-8 py-4 font-ja text-base md:text-2xl leading-normal">

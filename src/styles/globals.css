@@ -3,15 +3,19 @@
 @tailwind utilities;
 
 :root {
-  --primary-text-color: #000;
-  --background-color: #D9D9D9;
+  --text-color: #fff;
+  --background-color: #111;
   --font-family-didot: linotype-didot, serif;
   --font-family-roboto: "roboto", serif;
   --font-family-noto-jp: "Noto Sans JP", serif;
 }
-.dark-mode {
-  --primary-text-color: #fff;
-  --background-color: #000;
+.light {
+  --text-color: #111;
+  --background-color: #D9D9D9;
+}
+.dark {
+  --text-color: #fff;
+  --background-color: #222;
 }
 *,
 *::before,
@@ -27,7 +31,7 @@ body {
 }
 body {
   font-family: linotype-didot, roboto, "Noto Sans JP", serif;
-  color: var(--primary-text-color);
+  color: var(--text-color);
   background-color: var(--background-color);
   line-height: 1;
   font-optical-sizing: auto;

@@ -1,6 +1,8 @@
+import plugin from "tailwindcss/plugin";
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  darkMode: "class", // クラスベースのダークモード
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -15,7 +17,18 @@ const config: Config = {
         ja: ["Roboto", "Noto Sans JP", "sans-serif"]
       },
       colors: {
-        primaryBgColor: "var(--background-color)",
+        primary: {
+          light: "#111",
+          dark: "#fff",
+        },
+        background: {
+          light: '#D9D9D9',
+          dark: '#111',
+        },
+        text: {
+          light: '#111',
+          dark: '#fff',
+        },
       },
       fontSize: {
         "3.5xl": ["2rem", { lineHeight: "2" }],
@@ -48,7 +61,7 @@ const config: Config = {
     },
   },
   plugins: [
-    function({ addUtilities }) {
+    plugin(function ({ addUtilities }) {
       addUtilities({
         ".writing-mode-vertical-rl": {
           "writing-mode": "vertical-rl",
@@ -60,10 +73,8 @@ const config: Config = {
           "content": "'0'counter(list-counter) ':'",
           "counter-increment": "list-counter",
         },
-      },{
-        variants: ["before"], // 必要なら疑似要素用にvariantsを指定
       });
-    },
+    }),
   ],
 };
 export default config;
