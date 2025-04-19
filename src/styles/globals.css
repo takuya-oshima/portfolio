@@ -55,3 +55,22 @@ html[lang="en"] .locale {
     counter-reset: custom-counter;
   }
 }
+
+#bg {
+  opacity: .1;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  transition: all 0.2s ease-in-out;
+  z-index: -1;
+}
+.active img {
+  position: fixed;
+  visibility: visible;
+  opacity: 1;
+  transition: opacity .2s;
+}
+.inactive {
+  transition: opacity .2s;
+  opacity: .4;
+}
