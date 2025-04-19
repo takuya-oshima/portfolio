@@ -30,7 +30,7 @@ export default async function WorksDetailPage({ params }: Props) {
             <div className="mb-2 md:mb-4 lg:mb-8 font-ja text-base lg:text-lg">{data.title_ja}</div>
           )}
           <PageTitleHead pageTitleHead={data.title_en} />
-          <PageLead>URL： <a href={data.url} target="_blank" rel="noopener">{data.url}</a></PageLead>
+          <PageLead>URL： <a href={data.url} target="_blank" rel="noopener" className="text-link">{data.url}</a></PageLead>
           <PageLead>Type： {data.category.name}</PageLead>
         </div>
         <div className="-ml-left-custom-sm md:-ml-24 lg:ml-0 mb-34 md:mb-[12.5rem]">
@@ -60,12 +60,12 @@ export default async function WorksDetailPage({ params }: Props) {
             </figure>
           ))}
         </div>
-        <div className="-ml-left-custom-sm md:-ml-24 lg:ml-0 mb-34 md:mb-[12.5rem]">
+        <div className="-ml-left-custom-sm md:-ml-24 lg:ml-0 mb-34 md:mb-[12.5rem] black">
           <div className="w-screen mx-[calc((100vw-100%)/-2)] bg-black text-white py-20 2xl:py-32 px-custom">
             <h2 className="mb-8 md:mb-14 2xl:mb-[4.5rem] text-center text-[2.5rem] md:text-5xl 2xl:text-7xl leading-relaxed tracking-wide">DETAILS</h2>
             <div className="grid gap-y-4 md:gap-y-6 mb-[5.5rem]">
               <h3 className="text-2xl md:text-3.5xl text-center">INFO</h3>
-              <CreditItem creditTitle="URL" creditData={<a href={data.url} target="_blank" rel="noopener">{data.url}</a>} />
+              <CreditItem creditTitle="URL" creditData={<a href={data.url} target="_blank" rel="noopener" className="text-link">{data.url}</a>} />
               <CreditItem creditTitle="Release Date" creditData={formatDate(data.releaseDate)} />
               <CreditItem creditTitle="Type" creditData={data.category.name} />
               <CreditItem creditTitle="Technologies & Tools" creditData={data.technologiesTools} />

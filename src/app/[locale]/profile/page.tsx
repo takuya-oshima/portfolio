@@ -107,7 +107,7 @@ export default function ProfilePage() {
             </dl>
           </div>
         </div>
-        <div className="-ml-left-custom-sm md:-ml-24 lg:ml-0 mb-34 md:mb-[12.5rem]">
+        <div className="-ml-left-custom-sm md:-ml-24 lg:ml-0 mb-34 md:mb-[12.5rem] black">
           <div className="w-screen mx-[calc((100vw-100%)/-2)] bg-black text-white py-20 2xl:py-32 px-custom">
             <h2 className="mb-8 md:mb-14 2xl:mb-[4.5rem] text-center text-[2.5rem] md:text-5xl 2xl:text-7xl leading-relaxed tracking-wide">CONTACT</h2>
             <div className="text-center">
@@ -124,7 +124,7 @@ export default function ProfilePage() {
               <div className="mb-[4.5rem] text-3xl leading-loose">Get in touch</div>
               <ul className="flex justify-center items-center gap-x-4 md:gap-x-6">
                 <li className="fill-white">
-                  <IconFacebook className="fill-white" />
+                  <IconFacebook className="fill-white " />
                 </li>
                 <li>
                   <IconInstagram className="fill-white" />

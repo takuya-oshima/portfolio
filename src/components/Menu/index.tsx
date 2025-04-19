@@ -24,7 +24,7 @@ export default function Menu(){
 
   return (
     <nav>
-      <div onClick={menuFunction} className="w-12 h-12 border border-solid border-black dark:border-white rounded-full flex justify-center items-center gap-x-2 cursor-pointer">
+      <div onClick={menuFunction} className="relative w-12 h-12 flex justify-center items-center gap-x-2 cursor-pointer before:absolute before:top-0 before:right-0 before:w-full before:h-full before:rounded-full before:border before:border-white">
         <span className={`${ openMenu ? "hidden" : "inline-block"} inline-block w-1 h-1 rounded-full bg-black dark:bg-white`}></span>
         <span className="inline-block w-1 h-1 rounded-full bg-black dark:bg-white"></span>
         <span className={`${ openMenu ? "hidden" : "inline-block"} inline-block w-1 h-1 rounded-full bg-black dark:bg-white`}></span>

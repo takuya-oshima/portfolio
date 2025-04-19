@@ -44,7 +44,7 @@ export default async function LocaleLayout({
   const messages = await getMessages({ locale });
 
   return (
-    <html lang={locale} className={`${roboto.variable} ${notoSansJP.variable} dark`}>
+    <html lang={locale} className={`${roboto.variable} ${notoSansJP.variable} dark custom-cursor`}>
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/vus0aaz.css"></link>
       </head>
