@@ -80,7 +80,7 @@ export default async function WorksDetailPage({ params }: Props) {
         </div>
         <div className="-ml-left-custom-sm md:-ml-24 lg:ml-0 mb-34 md:mb-[12.5rem]">
           <ul className="flex justify-center items-center gap-x-8 md:gap-x-16 lg:gap-x-32 text-base md:text-xl">
-            <li><Link href="/works/" className="text-[2.5rem] md:text-5xl 2xl:text-7xl">Works list</Link></li>
+            <li><Link href="/works/" className="text-[2.5rem] md:text-5xl 2xl:text-7xl text-link">Works list</Link></li>
           </ul>
         </div>
       </div>

@@ -9,8 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
     "classnames": "^2.5.1",
     "dayjs": "^1.11.13",
+    "gsap": "^3.12.7",
     "microcms-js-sdk": "^3.1.2",
     "next": "14.2.14",
     "next-intl": "^3.26.3",

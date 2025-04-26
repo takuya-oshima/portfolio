@@ -15,7 +15,7 @@
 }
 .dark {
   --text-color: #fff;
-  --background-color: #222;
+  --background-color: #111;
 }
 *,
 *::before,
@@ -111,7 +111,28 @@ html[lang="en"] .locale {
     opacity: .6;
   }
 }
-
-.custom-cursor {
-  cursor: url('/images/ico_mouse_cursor.svg') 16 16, auto;
+.menubtn {
+  transition: border-color .5s cubic-bezier(0.23, 1, 0.32, 1);
+  span {
+    transition: background-color .5s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  &:hover {
+    span {
+      background-color: #999;
+    }
+  }
 }
+.dark {
+  .menubtn {
+    &:hover {
+      span {
+        background-color: #999;
+      }
+    }
+  }
+}
+
+
+/* .custom-cursor {
+  cursor: url('/images/ico_mouse_cursor.svg') 16 16, auto;
+} */

@@ -1,9 +1,17 @@
+"use client";
+
+import { useState } from 'react';
+import MenuButton from "../MenuButton";
 import Menu from "../Menu";
 
+
 export default function Header(){
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <header className="fixed z-50 w-full py-4 px-custom md:px-4 lg:px-10 flex justify-end">
-      <Menu />
+      <MenuButton isOpen={isOpen} setIsOpen={setIsOpen} />
+      <Menu isOpen={isOpen} setIsOpen={setIsOpen} />
     </header>
   )
 };
