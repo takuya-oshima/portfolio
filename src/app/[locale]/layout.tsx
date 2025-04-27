@@ -37,14 +37,18 @@ export default async function LocaleLayout({
   children: React.ReactNode;
   params: {locale: string};
 }) {
+
   if (!(routing.locales as readonly string[]).includes(locale)) {
     notFound();
   }
 
   const messages = await getMessages({ locale });
 
+  //クラス名を定義
+  const layoutClassNames = `${roboto.variable} ${notoSansJP.variable}`;
+
   return (
-    <html lang={locale} className={`${roboto.variable} ${notoSansJP.variable} dark custom-cursor`}>
+    <html lang={locale} className={layoutClassNames}>
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/vus0aaz.css"></link>
       </head>
@@ -62,3 +66,4 @@ export default async function LocaleLayout({
     </html>
   );
 }
+
