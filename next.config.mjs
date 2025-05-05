@@ -5,7 +5,6 @@ const withNextIntl = createNextIntlPlugin();
 
 const nextConfig = {
   reactStrictMode: true, // Reactの厳密モードを有効化
-  swcMinify: true,       // SWCによるコードの最適化を有効化
   //MicroCMSの画像の制限設定
   images: {
     remotePatterns: [

@@ -1,10 +1,57 @@
+import { getMessages } from "next-intl/server";
 import PageTitleSide from "@/components/PageTitleSide";
 import WorksList from "@/components/WorksList";
 import { getWorksList } from "@/libs/microcms";
 //import { WORKSLIST_LIMIT } from "@/constants"
 
-export default async function WorksListPage({ params }: { params: { locale: string } }) {
+//meta情報の設定
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
 
+  const messages = (await getMessages()) as {
+    WorksPage: {
+      title: string;
+      description: string;
+    }
+  }
+  const title = messages.WorksPage.title;
+  const description = messages.WorksPage.description;
+
+  return {
+    metadataBase: new URL("https://takuya-oshima.com/"),
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: "website",
+      siteName: title,
+      locale,
+      url: `https://takuya-oshima.com/${locale}/works`,
+      images: [
+        {
+          url: "/images/ogp-default.jpg",
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
+    },
+    alternates: {
+      canonical: `https://takuya-oshima.com/${locale}/works`,
+    },
+    twitter: {
+      title,
+      description,
+      card: "summary_large_image",
+      images: "/images/ogp-default.jpg",
+    },
+  };
+};
+
+export default async function WorksListPage(props: { params: { locale: string } }) {
+
+  const { locale } = await Promise.resolve(props.params); // ★ awaitを追加
   const { contents: works } = await getWorksList();
 
   return (
@@ -13,10 +60,8 @@ export default async function WorksListPage({ params }: { params: { locale: stri
       <div className="background" id="bg"></div>
       <PageTitleSide pageTitleSide="WORKS" />
       <div className="relative">
-        <WorksList works={works} locale={params.locale} />
+        <WorksList works={works} locale={locale} />
       </div>
     </section>
   );
 }
-
-

@@ -1,11 +1,11 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+//import { useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
 import { useState } from "react";
 
 export default function LanguageSwitcher() {
-  const router = useRouter();
+  //const router = useRouter();
   const currentLocale = useLocale(); // 現在のロケールを取得
   const defaultLocale = "ja"; // デフォルトロケール
   //const newLocale = currentLocale === "ja" ? "en" : "ja"; // 切り替え先の言語
@@ -23,7 +23,8 @@ export default function LanguageSwitcher() {
       newPath = `/en${path}`;
     }
 
-    router.push(newPath);
+    window.location.href = newPath; //リロードさせてサーバーサイドリクエストにする
+    //router.push(newPath);
   };
 
   //言語アイコンをクリックした時の挙動

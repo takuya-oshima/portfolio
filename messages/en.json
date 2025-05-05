@@ -1,11 +1,23 @@
 {
+  "Meta": {
+    "title": "Takuya Oshima",
+    "description": "Web Designer, Front-end Engineer, Web Director.Worked as a web designer at a web production and development company in Tokyo, Japan, handling design and front-end implementation for numerous website projects.Often responsible for planning, design creation, front-end implementation, and direction alone, with a strong ability to cover a wide range of tasks."
+  },
+  "WorksPage": {
+    "title": "Works｜Takuya Oshima",
+    "description": "Here is a list of our past achievements.クリックして適用します."
+  },
   "ProfilePage": {
+    "title": "Profile｜Takuya Oshima",
+    "description": "Here is my profile.",
     "name": "",
      "profileText":"Web Designer, Front-end Engineer, Web Director.\nBorn in 1989.\nWorked as a web designer at a web production and development company in Tokyo, Japan, handling design and front-end implementation for numerous website projects.\nOften responsible for planning, design creation, front-end implementation, and direction alone, with a strong ability to cover a wide range of tasks.",
      "serviceText": "Web Planning\nWeb Direction\nWeb Design\nFrontend Development\nSEO\nWeb Marketing",
      "contactText": "Please contact us at this e-mail address to discuss your site creation needs."
   },
   "ContactPage": {
+    "title": "Contact｜Takuya Oshima",
+    "description": "This is the inquiry page. Please use this page to contact us for consultation and quotation regarding website production.",
     "contactText": "Please contact us at this e-mail address to discuss your site creation needs."
   }
 }

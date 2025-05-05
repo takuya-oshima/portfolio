@@ -1,4 +1,5 @@
 import { useTranslations } from "next-intl";
+import { getMessages } from "next-intl/server";
 import Image from "next/image";
 import PageTitleSide from "@/components/PageTitleSide";
 import PageTitleHead from "@/components/PageTitleHead";
@@ -10,6 +11,52 @@ import MailAddress from "@/components/MailAddress";
 import IconFacebook from "@/components/IconFacebook";
 import IconInstagram from "@/components/IconInstagram";
 import IconGithub from "@/components/IconGithub";
+
+//meta情報の設定
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+
+  const messages = (await getMessages()) as {
+    ProfilePage: {
+      title: string;
+      description: string;
+    }
+  }
+  const title = messages.ProfilePage.title;
+  const description = messages.ProfilePage.description;
+
+  return {
+    metadataBase: new URL("https://takuya-oshima.com/"),
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: "website",
+      siteName: title,
+      locale,
+      url: `https://takuya-oshima.com/${locale}/profile`,
+      images: [
+        {
+          url: "/images/ogp-default.jpg",
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
+    },
+    alternates: {
+      canonical: `https://takuya-oshima.com/${locale}/profile`,
+    },
+    twitter: {
+      title,
+      description,
+      card: "summary_large_image",
+      images: "/images/ogp-default.jpg",
+    },
+  };
+};
+
 
 export default function ProfilePage() {
   const t = useTranslations("ProfilePage");
@@ -83,6 +130,8 @@ export default function ProfilePage() {
               </dt>
               <dd>
                 <p className="text-base leading-loose mb-8 md:mb-14 ml-1 locale">
+                  Web Design<br/>
+                  UI Design<br/>
                   Illustrator<br/>
                   Photoshop<br/>
                   Lightroom<br/>
@@ -99,6 +148,7 @@ export default function ProfilePage() {
                 <p className="text-base leading-loose mb-8 md:mb-14 ml-1 locale">
                   Planning<br/>
                   Direction<br/>
+                  Sales<br/>
                   Web Marketing<br/>
                   SEO<br/>
                   Search Ads

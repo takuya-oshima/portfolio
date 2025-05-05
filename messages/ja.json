@@ -1,11 +1,23 @@
 {
+  "Meta": {
+    "title": "Takuya Oshima",
+    "description": "Webデザイナー、フロントエンドエンジニア、Webディレクター。東京のWeb制作・開発会社でWebデザイナーとして勤務し、数多くのWebサイト制作においてデザインやフロントエンド実装を担当。設計、デザイン制作、フロントエンド実装、ディレクションを一人で担当することが多く、幅広い領域をこなせるのが特徴。"
+  },
+  "WorksPage": {
+    "title": "Works｜Takuya Oshima",
+    "description": "これまでの実績一覧を紹介します。"
+  },
   "ProfilePage": {
+    "title": "Profile｜Takuya Oshima",
+    "description": "私のプロフィールを紹介します。",
     "name": "オオシマ タクヤ",
     "profileText":"Webデザイナー、フロントエンドエンジニア、Webディレクター。\n1989年生まれ。\n東京のWeb制作・開発会社でWebデザイナーとして勤務し、数多くのWebサイト制作においてデザインやフロントエンド実装を担当。\n設計、デザイン制作、フロントエンド実装、ディレクションを一人で担当することが多く、幅広い領域をこなせるのが特徴。",
     "serviceText": "サイト設計\nディレクション\nデザイン制作\nコーディング\nSEO\nWebマーケティング",
     "contactText": "サイト制作に関するご相談は、こちらのEメールアドレスまでご連絡ください。"
   },
   "ContactPage": {
+    "title": "Contact｜Takuya Oshima",
+    "description": "お問い合わせページです。サイト制作に関するご相談やお見積りはこちらのページからお願いします。",
      "contactText": "サイト制作に関するご相談は、\nこちらのEメールアドレスまでご連絡ください。"
   }
 
