@@ -19,7 +19,7 @@ type Props = {
 };
 
 //meta情報の設定
-export async function generateMetadata({ params }: { params: { locale: string; slug: string } }) {
+export async function generateMetadata({ params }: Props ) {
   const { locale, slug } = await Promise.resolve(params);
   const data = await getWorksDetail(slug);
 

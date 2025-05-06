@@ -18,7 +18,7 @@ export default function MenuButton({ isOpen, setIsOpen }: Props){
         <span className="inline-block shrink-0 w-1 h-1 rounded-full bg-black dark:bg-white"></span>
         <span className="inline-block w-1 h-1 rounded-full bg-black dark:bg-white"></span>
         <span className="inline-block shrink-0 w-1 h-1 rounded-full bg-black dark:bg-white"></span>
-        </button>
+      </button>
     </div>
   )
 };

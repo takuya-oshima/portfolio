@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
 import { useEffect } from "react";
 import { Link } from "@/i18n/routing";
-import { Works } from "@/libs/microcms";
+import type { Works } from "@/libs/microcms";
 
 type Props = {
   works: Works[];
@@ -51,6 +51,7 @@ export default function WorksList({works, locale}: Props) {
 
     };
 
+    //マウスホバーでclassの切り替え処理
     items.forEach((item) => {
       item.addEventListener("mouseenter", handleEnter);
       item.addEventListener("mouseleave", handleLeave);
@@ -59,8 +60,8 @@ export default function WorksList({works, locale}: Props) {
     //クリーンアップ
     return () => {
       items.forEach((item) => {
-        item.addEventListener("mouseenter", handleEnter);
-        item.addEventListener("mouseleave", handleLeave);
+        item.removeEventListener("mouseenter", handleEnter);
+        item.removeEventListener("mouseleave", handleLeave);
       });
     };
   }, []);

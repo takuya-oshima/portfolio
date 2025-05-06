@@ -60,18 +60,18 @@ html[lang="en"] .locale {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  transition: all 0.2s ease-in-out;
+  transition: all .2s ease-in-out;
   z-index: -1;
 }
 .active img {
   position: fixed;
   visibility: visible;
   opacity: 1;
-  transition: opacity .2s;
+  transition: opacity .2s ease-in-out;
 }
 .inactive {
-  transition: opacity .2s;
-  opacity: .4;
+  transition: opacity .2s ease-in-out;
+  opacity: .4 !important;
 }
 
 /* ホバー：テキストリンク */
@@ -111,6 +111,8 @@ html[lang="en"] .locale {
     opacity: .6;
   }
 }
+
+/* ホバー：メニューボタン */
 .menubtn {
   transition: .5s cubic-bezier(0.23, 1, 0.32, 1);
   span {
@@ -176,6 +178,27 @@ html[lang="en"] .locale {
   }
 }
 
+.menu-item {
+  position: relative;
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 1.5px;
+    height: 100%;
+    background-color: var(--text-color);
+    transform: scaleY(0);
+    transition: transform .3s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  &:hover {
+    &::after {
+      transform: scaleY(1);
+    }
+  }
+}
 
 /* .custom-cursor {
   cursor: url('/images/ico_mouse_cursor.svg') 16 16, auto;

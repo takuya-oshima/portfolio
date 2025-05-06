@@ -12,8 +12,12 @@ import IconFacebook from "@/components/IconFacebook";
 import IconInstagram from "@/components/IconInstagram";
 import IconGithub from "@/components/IconGithub";
 
+type Props = {
+  params: Promise<{ locale: string }>;
+};
+
 //meta情報の設定
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+export async function generateMetadata({ params }: Props ) {
   const { locale } = await params;
 
   const messages = (await getMessages()) as {

@@ -1,11 +1,14 @@
 import { getMessages } from "next-intl/server";
-import PageTitleSide from "@/components/PageTitleSide";
-import WorksList from "@/components/WorksList";
 import { getWorksList } from "@/libs/microcms";
+import WorksListContent from "@/components/WorksListContent";
 //import { WORKSLIST_LIMIT } from "@/constants"
 
+type Props = {
+  params: Promise<{ locale: string }>;
+};
+
 //meta情報の設定
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+export async function generateMetadata({ params }: Props ) {
   const { locale } = await params;
 
   const messages = (await getMessages()) as {
@@ -49,19 +52,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 };
 
-export default async function WorksListPage(props: { params: { locale: string } }) {
-
-  const { locale } = await Promise.resolve(props.params); // ★ awaitを追加
+export default async function WorksListPage({ params }: Props) {
+  const { locale } = await params;
   const { contents: works } = await getWorksList();
 
   return (
-    <section className="ml-left-custom-sm md:ml-24 lg:ml-0">
-      <div id="bg" className="fixed top-0 left-0 w-full h-full bg-opacity-60 bg-center bg-cover transition-all duration-500 -z-10" />
-      <div className="background" id="bg"></div>
-      <PageTitleSide pageTitleSide="WORKS" />
-      <div className="relative">
-        <WorksList works={works} locale={locale} />
-      </div>
-    </section>
+    <WorksListContent works={works} locale={locale} />
   );
 }
