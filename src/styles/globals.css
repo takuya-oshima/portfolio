@@ -200,6 +200,10 @@ html[lang="en"] .locale {
   }
 }
 
+.animation-initial-hidden {
+  opacity: 0;
+}
+
 /* .custom-cursor {
   cursor: url('/images/ico_mouse_cursor.svg') 16 16, auto;
 } */

@@ -1,6 +1,6 @@
-import { getMessages } from "next-intl/server";
-import { getWorksList } from "@/libs/microcms";
 import WorksListContent from "@/components/WorksListContent";
+import { getWorksList } from "@/libs/microcms";
+import { getMessages } from "next-intl/server";
 //import { WORKSLIST_LIMIT } from "@/constants"
 
 type Props = {
