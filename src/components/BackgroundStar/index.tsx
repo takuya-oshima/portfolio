@@ -12,7 +12,7 @@ export default function BackgroundStar() {
       const starEl = document.createElement("span");
       starEl.className = "star";
       const minSize = 1;
-      const maxSize = 2;
+      const maxSize = 3;
       const size = Math.random() * (maxSize - minSize) + minSize;
       starEl.style.width = `${size}px`;
       starEl.style.height = `${size}px`;
@@ -25,12 +25,12 @@ export default function BackgroundStar() {
       starEl.style.animationDelay = `${Math.random() * 10}s`;
       stars.appendChild(starEl);
     };
-    for (let i = 0; i <= 50; i++) {
+    for (let i = 0; i <= 100; i++) {
       createStar();
     }
   }, []);
 
   return(
-    <div className="stars"></div>
+    <div id="stars" className="stars"></div>
   );
 };

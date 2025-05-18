@@ -226,10 +226,19 @@ html[lang="en"] .locale {
   position: absolute;
   display: block;
   background-color: #fff; /* 星の色 */
-  border-radius: 50%;
-  box-shadow: 0 0 4px 2px rgba(255, 255, 255, 0.2); /* 星の影 */
+  border-radius: 100%;
+  box-shadow: 0 0 10px 4px rgba(255, 255, 255, 0.2); /* 星の影 */
   opacity: 1;
   animation: twinkle 8s infinite;
+}
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%; /* 星空の横幅 */
+  height: 100vh; /* 星空の縦幅 */
+  overflow: hidden; /* 星が枠外にはみ出すのを防ぐ */
 }
 
 /* 星がキラキラ光るアニメーション */

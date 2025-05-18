@@ -1,11 +1,12 @@
-"use client";
 import {Link} from "@/i18n/routing";
 import BackgroundStar from "@/components/BackgroundStar";
+import BackgroundParticle from "@/components/BackgroundParticle";
 
 export default function HomePage() {
   return (
     <div className="h-fit">
       <BackgroundStar />
+      <BackgroundParticle />
       <div className="mt-[18vh] md:mt-24 lg:mt-8 mb-[15vh] lg:mb-32 text-center tracking-wide">
         <h1 className="mb-8 md:mb-14 text-5xl md:text-8xl lg:text-index-title font-normal whitespace-nowrap">Takuya Oshima</h1>
         <h2 className="text-lg md:text-xl lg:text-3.5xl font-normal">Web Designer / Frontend Developer</h2>

@@ -12,6 +12,7 @@
     "@gsap/react": "^2.1.2",
     "@tsparticles/engine": "^3.8.1",
     "@tsparticles/react": "^3.0.0",
+    "@tsparticles/slim": "^3.8.1",
     "classnames": "^2.5.1",
     "dayjs": "^1.11.13",
     "gsap": "^3.12.7",
