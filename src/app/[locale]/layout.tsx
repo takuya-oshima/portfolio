@@ -12,9 +12,9 @@ import "@/styles/globals.css";
 
 //componentのimport
 import ThemeWrapper from "@/components/ThemeWrapper";
+import LenisWrapper from '@/components/LenisWrapper'
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-
 
 //font family noto sans JPの設定
 const notoSansJP = Noto_Sans_JP({
@@ -107,13 +107,15 @@ export default async function LocaleLayout({
       </head>
       <body>
         <ThemeWrapper> {/* クライアントコンポーネントでラップ */}
-          <NextIntlClientProvider messages={messages}>
-            <div className="flex flex-col min-h-screen relative break-words">
-              <Header />
-              <div className="relative container mx-auto mt-34 md:mt-42 px-custom md:px-4 lg:px-0">{children}</div>
-              <Footer />
-            </div>
-          </NextIntlClientProvider>
+          <LenisWrapper>
+            <NextIntlClientProvider messages={messages}>
+              <div className="flex flex-col min-h-screen relative break-words">
+                <Header />
+                <div className="relative container mx-auto mt-34 md:mt-42 px-custom md:px-4 lg:px-0">{children}</div>
+                <Footer />
+              </div>
+            </NextIntlClientProvider>
+          </LenisWrapper>
         </ThemeWrapper>
       </body>
     </html>
