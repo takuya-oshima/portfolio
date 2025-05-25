@@ -8,6 +8,7 @@
   --font-family-didot: linotype-didot, serif;
   --font-family-roboto: "roboto", serif;
   --font-family-noto-jp: "Noto Sans JP", serif;
+  --custom-text-shadow: 1px 1px 1px rgb(0,0,0,0.15);
 }
 .light {
   --text-color: #111;
@@ -42,6 +43,9 @@ body {
   -moz-text-size-adjust: 100%;
   text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+}
+img {
+  image-rendering: -webkit-optimize-contrast;
 }
 html[lang="ja"] .locale {
   font-family: 'Roboto', 'Noto Sans JP', 'sans-serif';
@@ -220,7 +224,6 @@ html[lang="en"] .locale {
   height: 100vh; /* 星空の縦幅 */
   overflow: hidden; /* 星が枠外にはみ出すのを防ぐ */
 }
-
 /* 星のスタイル */
 .star {
   position: absolute;
@@ -231,16 +234,6 @@ html[lang="en"] .locale {
   opacity: 1;
   animation: twinkle 8s infinite;
 }
-.particles {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  width: 100%; /* 星空の横幅 */
-  height: 100vh; /* 星空の縦幅 */
-  overflow: hidden; /* 星が枠外にはみ出すのを防ぐ */
-}
-
 /* 星がキラキラ光るアニメーション */
 @keyframes twinkle {
   0% {
@@ -255,5 +248,40 @@ html[lang="en"] .locale {
   100% {
     opacity: 0;
     transform: scale(1);
+  }
+}
+/* Particle */
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%; /* 星空の横幅 */
+  height: 100vh; /* 星空の縦幅 */
+  overflow: hidden; /* 星が枠外にはみ出すのを防ぐ */
+}
+.text-shadow {
+  text-shadow: 1px 1px 10px rgba(0,0,0,0.15);
+}
+.top-visual {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100vh;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  &:before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+     background: linear-gradient(to bottom,rgba(0,0,0,.5) 30%,rgba(255,255,255,.0));
   }
 }
