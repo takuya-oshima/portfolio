@@ -11,6 +11,7 @@ import { Noto_Sans_JP, Roboto } from "next/font/google";
 import "@/styles/globals.css";
 
 //componentのimport
+import Mouse from "@/components/MouseType";
 import ThemeWrapper from "@/components/ThemeWrapper";
 import LenisWrapper from '@/components/LenisWrapper'
 import Header from "@/components/Header";
@@ -106,6 +107,7 @@ export default async function LocaleLayout({
         <link rel="stylesheet" href="https://use.typekit.net/vus0aaz.css" />
       </head>
       <body>
+        <Mouse />
         <ThemeWrapper> {/* クライアントコンポーネントでラップ */}
           <LenisWrapper>
             <NextIntlClientProvider messages={messages}>

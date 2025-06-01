@@ -134,7 +134,7 @@ export default function Menu({ isOpen, setIsOpen }: Props ){
   }, []);
 
   return (
-    <div ref={menuRef} className="hidden  opacity-0 w-screen fixed -z-10 inset-0 bg-background-light dark:bg-background-dark">
+    <div ref={menuRef} className="global-navi hidden first-letter:opacity-0 w-screen fixed -z-10 inset-0 bg-background-light dark:bg-background-dark">
       <div className="fixed z-40 inset-y-0 -left-2.5 md:-left-5 writing-mode-vertical-rl text-6xl md:text-title text-center tracking-wide">
         <div className="inline-block overflow-hidden"><div ref={titleRef}>MENU</div></div>
       </div>

@@ -43,7 +43,9 @@ body {
   -moz-text-size-adjust: 100%;
   text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+  cursor: none;
 }
+
 img {
   image-rendering: -webkit-optimize-contrast;
 }
@@ -59,6 +61,33 @@ html[lang="en"] .locale {
     counter-reset: custom-counter;
   }
 }
+/* マウスストーカー */
+#mouse-cursor,
+#mouse-stalker {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+  z-index: 9999;
+}
+#mouse-cursor {
+  width: 8px;
+  height: 8px;
+  background-color: #fff;
+}
+#mouse-stalker {
+  top: -24px;
+  left: -24px;
+  width: 56px;
+  height: 56px;
+  border: 1px solid #fff;
+  transition: transform 0.1s;
+  transition-timing-function: ease-out;
+}
+
 #bg {
   opacity: .1;
   background-repeat: no-repeat;
@@ -116,12 +145,12 @@ html[lang="en"] .locale {
   }
 }
 
-/* ホバー：メニューボタン */
+/* メニューボタン */
 .menubtn {
   transition: .5s cubic-bezier(0.23, 1, 0.32, 1);
   span {
     transition: inherit;
-    transform-origin: center;
+    transform-origin: center ;
   }
   &:hover {
     width: 42px;
@@ -181,25 +210,27 @@ html[lang="en"] .locale {
     }
   }
 }
-
-.menu-item {
-  position: relative;
-  &::after {
-    content: "";
-    display: block;
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    width: 1.5px;
-    height: 100%;
-    background-color: var(--text-color);
-    transform: scaleY(0);
-    transition: transform .3s cubic-bezier(0.23, 1, 0.32, 1);
-  }
-  &:hover {
+/* グローバルメニュー */
+.global-navi {
+  .menu-item {
+    position: relative;
     &::after {
-      transform: scaleY(1);
+      content: "";
+      display: block;
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 1.5px;
+      height: 100%;
+      background-color: var(--text-color);
+      transform: scaleY(0);
+      transition: transform .3s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    &:hover {
+      &::after {
+        transform: scaleY(1);
+      }
     }
   }
 }
@@ -260,7 +291,8 @@ html[lang="en"] .locale {
   height: 100vh; /* 星空の縦幅 */
   overflow: hidden; /* 星が枠外にはみ出すのを防ぐ */
 }
-.text-shadow {
+/* トップページ */
+.top-text-shadow {
   text-shadow: 1px 1px 10px rgba(0,0,0,0.15);
 }
 .top-visual {
@@ -282,6 +314,14 @@ html[lang="en"] .locale {
     left: 0;
     width: 100%;
     height: 100%;
-     background: linear-gradient(to bottom,rgba(0,0,0,.5) 30%,rgba(255,255,255,.0));
+    background: linear-gradient(to bottom,rgba(0,0,0,.6) 30%,rgba(255,255,255,.1));
+  }
+}
+.light {
+  .top-visual {
+    display: none;
+  }
+  .top-text-shadow {
+    text-shadow: none;
   }
 }

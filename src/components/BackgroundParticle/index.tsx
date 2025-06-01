@@ -359,14 +359,14 @@ export default function BackgroundParticle() {
           },
           "reduceDuplicates": false,
           "shadow": {
-            "blur": 20,
+            "blur": 10,
             "color": {
               "value": "rgba(255,255,255,0.2)"
             },
             "enable": true,
             "offset": {
-              "x": 0,
-              "y": 0
+              "x": 0.5,
+              "y": 0.5
             }
           },
           "shape": {
