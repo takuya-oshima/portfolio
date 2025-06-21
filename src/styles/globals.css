@@ -347,12 +347,9 @@ html[lang="en"] .locale {
     text-shadow: none;
   }
 }
-.parallax-container {
-  overflow: hidden;
-  position: relative;
-}
 
 
+/* Works詳細テキストアニメーション */
 .animation-marquee-left {
   animation: marquee-left 20s linear infinite;
 }

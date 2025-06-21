@@ -19,7 +19,6 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
 gsap.registerPlugin(ScrollTrigger);
 
 type Props = {
@@ -27,11 +26,12 @@ type Props = {
   data: Awaited<ReturnType<typeof getWorksDetail>>;
 };
 
-
 export default function WorksDetailContent( { locale, data }: Props) {
 
   const titleRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const overviewRef = useRef<HTMLDivElement>(null);
+  const imagesRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
     const title = titleRef.current?.children;
@@ -62,12 +62,49 @@ export default function WorksDetailContent( { locale, data }: Props) {
       });
     };
 
-  });
+    const overview = overviewRef.current;
+    const imeges = imagesRef.current?.querySelectorAll("img") || [];
+
+    gsap.fromTo(overview, {
+      opacity: 0,
+      y: 50,
+    },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: overview,
+        start: "top 80%",
+        end: "bottom bottom",
+      },
+    });
+
+    imeges.forEach((img) => {
+      gsap.fromTo(img, {
+        opacity: 0,
+        y: 50
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: img,
+          start: "top 80%",
+          end: "bottom bottom",
+          markers: true,
+        },
+      });
+    });
+  }, []);
 
 
   return (
     <section className="relative ml-left-custom-sm md:ml-24 lg:ml-0">
-      <div ref={titleRef}>
+      <div ref={titleRef} id="page-title">
         <PageTitleSide pageTitleSide={data.titleAbbreviation} />
       </div>
       <div ref={contentRef} className="animation-initial-hidden relative">
@@ -80,11 +117,11 @@ export default function WorksDetailContent( { locale, data }: Props) {
           <PageLead>Type： {data.category.name}</PageLead>
         </div>
         <div className="-ml-left-custom-sm md:-ml-24 lg:ml-0 mb-34 md:mb-[12.5rem]">
-          <figure className="parallax-container js-trigger w-screen mx-[calc((100vw-100%)/-2)]">
+          <figure className="w-screen mx-[calc((100vw-100%)/-2)]">
             <Image className="w-full" src={data.mainImage.url} width={data.mainImage.width} height={data.mainImage.height} alt={locale === "ja" ? data.title_ja : data.title_en + "TopImage"} priority/>
           </figure>
         </div>
-        <div className="lg:w-10/12 2xl:w-full xl:grid xl:grid-cols-2 mx-auto mb-34 md:mb-[12.5rem]">
+        <div ref={overviewRef} className="lg:w-10/12 2xl:w-full xl:grid xl:grid-cols-2 mx-auto mb-34 md:mb-[12.5rem]">
           <BlockTitle blockTitle="OVERVIEW" />
           <div className="xl:-ml-32 2xl:-ml-24">
             {locale === "ja" ? (
@@ -99,28 +136,27 @@ export default function WorksDetailContent( { locale, data }: Props) {
             <LinkButton href={data.url}>View Site</LinkButton>
           </div>
         </div>
-
-        <div className="-ml-left-custom-sm md:-ml-24 lg:ml-0 mb-34 md:mb-[12.5rem]">
+        <div ref={imagesRef} className="images">
+          <div className="-ml-left-custom-sm md:-ml-24 lg:ml-0 mb-34 md:mb-[12.5rem]">
           {data.pageImagesPC?.map((pageImagePC, index) => (
             <figure key={index} className="w-screen mx-[calc((100vw-100%)/-2)] mb-34 md:mb-42">
               <Image className="xl:w-[1120px] mx-auto" src={pageImagePC.url} width={pageImagePC.width} height={pageImagePC.height} alt={locale === "ja" ? data.title_ja : data.title_en + `UnderImage ${index + 1}`} loading="lazy"/>
             </figure>
           ))}
-        </div>
-        <div className="-ml-left-custom-sm md:-ml-24 lg:ml-0 mb-34 md:mb-[12.5rem]">
-          <div className="xl:w-[1120px] mx-auto grid gap-6 md:gap-10 lg:gap-16 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {data.pageImagesSP?.map((pageImageSP, index) => (
-              <figure key={index} className="flex justify-center">
-                <Image className="w-full h-fit drop-shadow-[1px_1px_15px_rgba(0,0,0,0.15)]" src={pageImageSP.url} width={pageImageSP.width} height={pageImageSP.height} alt={locale === "ja" ? data.title_ja : data.title_en + `UnderImage ${index + 1}`} loading="lazy"/>
-              </figure>
-            ))}
+          </div>
+          <div className="-ml-left-custom-sm md:-ml-24 lg:ml-0 mb-34 md:mb-[12.5rem]">
+            <div className="xl:w-[1120px] mx-auto grid gap-6 md:gap-10 lg:gap-16 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+              {data.pageImagesSP?.map((pageImageSP, index) => (
+                <figure key={index} className="flex justify-center">
+                  <Image className="w-full h-fit drop-shadow-[1px_1px_15px_rgba(0,0,0,0.15)]" src={pageImageSP.url} width={pageImageSP.width} height={pageImageSP.height} alt={locale === "ja" ? data.title_ja : data.title_en + `UnderImage ${index + 1}`} loading="lazy"/>
+                </figure>
+              ))}
+            </div>
           </div>
         </div>
-
-       <MarqueeText text={data.titleAbbreviation} className="text-4xl md:text-6xl"/>
-       <MarqueeText text={data.titleAbbreviation} className="text-4xl md:text-6xl" direction="right" fontClassName="font-angel" />
-       <MarqueeText text={data.titleKana} className="text-[2rem] md:text-[3.25rem]" />
-
+        <MarqueeText text={data.titleAbbreviation} className="text-4xl md:text-6xl"/>
+        <MarqueeText text={data.titleAbbreviation} className="text-4xl md:text-6xl" direction="right" fontClassName="font-angel" />
+        <MarqueeText text={data.titleKana} className="text-[2rem] md:text-[3.25rem]" />
         <div id="details" className="-ml-left-custom-sm md:-ml-24 lg:ml-0 mb-34 md:mb-[12.5rem] black">
           <div className="w-screen mx-[calc((100vw-100%)/-2)] bg-black text-white py-20 2xl:py-32 px-custom">
             <h2 className="mb-8 md:mb-14 2xl:mb-[4.5rem] text-center text-[2.5rem] md:text-5xl 2xl:text-7xl leading-relaxed tracking-wide">DETAILS</h2>
