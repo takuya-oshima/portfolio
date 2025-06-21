@@ -9,13 +9,18 @@ import PageTitleHead from "@/components/PageTitleHead";
 import PageLead from "@/components/PageLead";
 import BlockTitle from "@/components/BlockTitle";
 import LinkButton from "@/components/LinkButton";
+import MarqueeText from "@/components/MarqueeText";
 import CreditItem from "@/components/CreditItem";
+import DetailCircle from "@/components/DetailCircle";
 import { getWorksDetail } from "@/libs/microcms";
 import { formatDate } from "@/libs/utils";
 
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 type Props = {
   locale: string;
@@ -56,7 +61,9 @@ export default function WorksDetailContent( { locale, data }: Props) {
         ease: "power3.out",
       });
     };
+
   });
+
 
   return (
     <section className="relative ml-left-custom-sm md:ml-24 lg:ml-0">
@@ -73,7 +80,7 @@ export default function WorksDetailContent( { locale, data }: Props) {
           <PageLead>Type： {data.category.name}</PageLead>
         </div>
         <div className="-ml-left-custom-sm md:-ml-24 lg:ml-0 mb-34 md:mb-[12.5rem]">
-          <figure className="w-screen mx-[calc((100vw-100%)/-2)]">
+          <figure className="parallax-container js-trigger w-screen mx-[calc((100vw-100%)/-2)]">
             <Image className="w-full" src={data.mainImage.url} width={data.mainImage.width} height={data.mainImage.height} alt={locale === "ja" ? data.title_ja : data.title_en + "TopImage"} priority/>
           </figure>
         </div>
@@ -92,14 +99,29 @@ export default function WorksDetailContent( { locale, data }: Props) {
             <LinkButton href={data.url}>View Site</LinkButton>
           </div>
         </div>
+
         <div className="-ml-left-custom-sm md:-ml-24 lg:ml-0 mb-34 md:mb-[12.5rem]">
-          {data.pageImages?.map((pageImage, index) => (
+          {data.pageImagesPC?.map((pageImagePC, index) => (
             <figure key={index} className="w-screen mx-[calc((100vw-100%)/-2)] mb-34 md:mb-42">
-              <Image className="xl:w-[1280px] mx-auto" src={pageImage.url} width={pageImage.width} height={pageImage.height} alt={locale === "ja" ? data.title_ja : data.title_en + `UnderImage ${index + 1}`} loading="lazy"/>
+              <Image className="xl:w-[1120px] mx-auto" src={pageImagePC.url} width={pageImagePC.width} height={pageImagePC.height} alt={locale === "ja" ? data.title_ja : data.title_en + `UnderImage ${index + 1}`} loading="lazy"/>
             </figure>
           ))}
         </div>
-        <div className="-ml-left-custom-sm md:-ml-24 lg:ml-0 mb-34 md:mb-[12.5rem] black">
+        <div className="-ml-left-custom-sm md:-ml-24 lg:ml-0 mb-34 md:mb-[12.5rem]">
+          <div className="xl:w-[1120px] mx-auto grid gap-6 md:gap-10 lg:gap-16 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            {data.pageImagesSP?.map((pageImageSP, index) => (
+              <figure key={index} className="flex justify-center">
+                <Image className="w-full h-fit drop-shadow-[1px_1px_15px_rgba(0,0,0,0.15)]" src={pageImageSP.url} width={pageImageSP.width} height={pageImageSP.height} alt={locale === "ja" ? data.title_ja : data.title_en + `UnderImage ${index + 1}`} loading="lazy"/>
+              </figure>
+            ))}
+          </div>
+        </div>
+
+       <MarqueeText text={data.titleAbbreviation} className="text-4xl md:text-6xl"/>
+       <MarqueeText text={data.titleAbbreviation} className="text-4xl md:text-6xl" direction="right" fontClassName="font-angel" />
+       <MarqueeText text={data.titleKana} className="text-[2rem] md:text-[3.25rem]" />
+
+        <div id="details" className="-ml-left-custom-sm md:-ml-24 lg:ml-0 mb-34 md:mb-[12.5rem] black">
           <div className="w-screen mx-[calc((100vw-100%)/-2)] bg-black text-white py-20 2xl:py-32 px-custom">
             <h2 className="mb-8 md:mb-14 2xl:mb-[4.5rem] text-center text-[2.5rem] md:text-5xl 2xl:text-7xl leading-relaxed tracking-wide">DETAILS</h2>
             <div className="grid gap-y-4 md:gap-y-6 mb-[5.5rem]">
@@ -123,6 +145,7 @@ export default function WorksDetailContent( { locale, data }: Props) {
           </ul>
         </div>
       </div>
+      <DetailCircle/>
     </section>
   );
 }

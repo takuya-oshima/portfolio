@@ -50,7 +50,7 @@ export default function WorksListContent({ works, locale }: Props) {
 
   return (
     <section className="ml-left-custom-sm md:ml-24 lg:ml-0">
-      <div id="bg" className="fixed top-0 left-0 w-full h-full bg-opacity-60 bg-center bg-cover transition-all duration-500 -z-10" />
+      <div id="bg" className="fixed top-0 left-0 w-full h-full bg-center bg-cover transition-all duration-500 -z-10" />
       <div ref={titleRef}>
         <PageTitleSide pageTitleSide="WORKS" />
       </div>

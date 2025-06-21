@@ -9,36 +9,62 @@ export default function MouseType() {
     const mouseCursor = mouseCursorRef.current;
     const mouseStalker = mouseStalkerRef.current;
 
-    if (!mouseCursor || !mouseStalker) return;
+    const timeoutId = setTimeout(() => {
 
-    let mouseX = 0, mouseY = 0;
-    let stalkerX = 0, stalkerY = 0;
+      if (!mouseCursor || !mouseStalker) return;
 
-    const onMouseMove = (e: MouseEvent) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      mouseCursor.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
-    };
+      let mouseX = 0, mouseY = 0;
+      let stalkerX = 0, stalkerY = 0;
 
-    const animate = () => {
-      stalkerX += (mouseX - stalkerX) * 0.1;
-      stalkerY += (mouseY - stalkerY) * 0.1;
-      mouseStalker.style.transform = `translate(${stalkerX}px, ${stalkerY}px)`;
-      requestAnimationFrame(animate);
-    };
+      const onMouseMove = (e: MouseEvent) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        mouseCursor.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+      };
 
-    window.addEventListener('mousemove', onMouseMove);
-    animate();
+      const animate = () => {
+        stalkerX += (mouseX - stalkerX) * 0.1;
+        stalkerY += (mouseY - stalkerY) * 0.1;
+        mouseStalker.style.transform = `translate(${stalkerX}px, ${stalkerY}px)`;
+        requestAnimationFrame(animate);
+      };
 
-    return () => {
-      window.removeEventListener('mousemove', onMouseMove);
-    };
-  },[]);
+      const handleMouseEnter = () => {
+        mouseCursor.classList.add('cursor--active');
+        mouseStalker.classList.add('stalker--active');
+      };
+
+      const handleMouseLeave = () => {
+        mouseCursor.classList.remove('cursor--active');
+        mouseStalker.classList.remove('stalker--active');
+      };
+
+      const links = document.querySelectorAll("a");
+      links.forEach(link => {
+        link.addEventListener("mouseenter", handleMouseEnter);
+        link.addEventListener("mouseleave", handleMouseLeave);
+      });
+
+      window.addEventListener("mousemove", onMouseMove);
+      animate();
+
+      return () => {
+        links.forEach(link => {
+          link.removeEventListener("mouseenter", handleMouseEnter);
+          link.removeEventListener("mouseleave", handleMouseLeave);
+        });
+        window.removeEventListener("mousemove", onMouseMove);
+      };
+    }, 0);
+
+    return () => clearTimeout(timeoutId);
+
+  }, []);
 
   return (
     <>
-      <div ref={mouseCursorRef} id="mouse-cursor"></div>
-      <div ref={mouseStalkerRef} id="mouse-stalker"></div>
+      <div ref={mouseCursorRef} className="mouse-cursor"></div>
+      <div ref={mouseStalkerRef} className="mouse-stalker"></div>
     </>
   );
 };

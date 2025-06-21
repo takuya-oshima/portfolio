@@ -14,7 +14,8 @@ const config: Config = {
         didot:  "var(--font-family-didot)",
         notoJP: "var(--font-family-noto-jp)",
         roboto: "var(--font-family-roboto)",
-        ja: ["Roboto", "Noto Sans JP", "sans-serif"]
+        ja: ["Roboto", "Noto Sans JP", "sans-serif"],
+        angel: ["angel", "sans-serif"]
       },
       colors: {
         primary: {

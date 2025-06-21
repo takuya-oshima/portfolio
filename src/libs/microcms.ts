@@ -22,6 +22,7 @@ export type RoleItem = {
 export type Works = {
   title_ja: string;
   title_en: string;
+  titleKana: string;
   titleAbbreviation: string;
   category:{
     name: string;
@@ -32,7 +33,8 @@ export type Works = {
   overview_en: string;
   thumbnail: MicroCMSImage;
   mainImage: MicroCMSImage;
-  pageImages?: MicroCMSImage[]; //※複数画像の場合は[]配列であることを定義する
+  pageImagesPC?: MicroCMSImage[]; //※複数画像の場合は[]配列であることを定義する
+  pageImagesSP?: MicroCMSImage[]; //※複数画像の場合は[]配列であることを定義する
   technologiesTools: string;
   role: RoleItem[];
 } & MicroCMSListContent;
