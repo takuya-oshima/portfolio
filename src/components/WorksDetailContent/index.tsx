@@ -3,7 +3,6 @@
 import { Link } from "@/i18n/routing";
 import React from "react";
 import Image from "next/image";
-
 import PageTitleSide from "@/components/PageTitleSide";
 import PageTitleHead from "@/components/PageTitleHead";
 import PageLead from "@/components/PageLead";
@@ -14,7 +13,6 @@ import CreditItem from "@/components/CreditItem";
 import DetailCircle from "@/components/DetailCircle";
 import { getWorksDetail } from "@/libs/microcms";
 import { formatDate } from "@/libs/utils";
-
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
