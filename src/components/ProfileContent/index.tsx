@@ -15,7 +15,8 @@ import IconGithub from "@/components/IconGithub";
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 
 export default function ProfileContent() {
@@ -23,6 +24,8 @@ export default function ProfileContent() {
 
   const titleRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const fieldRef = useRef<HTMLDivElement>(null);
+  const skillRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
     const title = titleRef.current?.children;
@@ -52,7 +55,43 @@ export default function ProfileContent() {
         ease: "power3.out",
       });
     };
-  });
+
+    const field = fieldRef.current;
+    const skill = skillRef.current;
+
+    gsap.fromTo(field, {
+      opacity: 0,
+      y: 50
+    },
+    {
+      opacity: 1,
+      x: 0,
+      duration: 0.8,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: field,
+        start: "top 80%",
+        end: "bottom bottom",
+        markers: true,
+      },
+    });
+    gsap.fromTo(skill, {
+      opacity: 0,
+      y: 50
+    },
+    {
+      opacity: 1,
+      x: 0,
+      duration: 0.8,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: skill,
+        start: "top 80%",
+        end: "bottom bottom",
+        markers: true,
+      },
+    });
+  }, []);
 
   return (
     <section className="ml-left-custom-sm md:ml-24 lg:ml-0">
@@ -80,7 +119,7 @@ export default function ProfileContent() {
             ))}
           </TextBase>
         </div>
-        <div className="lg:w-10/12 2xl:w-full xl:grid xl:grid-cols-2 mx-auto mb-34 md:mb-[12.5rem]">
+        <div ref={fieldRef} className="lg:w-10/12 2xl:w-full xl:grid xl:grid-cols-2 mx-auto mb-34 md:mb-[12.5rem]">
           <BlockTitle blockTitle="FIELD" />
           <div className="xl:-ml-32 2xl:-ml-24 locale">
             <TextBase>
@@ -93,7 +132,7 @@ export default function ProfileContent() {
             </TextBase>
           </div>
         </div>
-        <div className="lg:w-10/12 2xl:w-full xl:grid xl:grid-cols-2 mx-auto mb-34 md:mb-[12.5rem]">
+        <div ref={skillRef} className="lg:w-10/12 2xl:w-full xl:grid xl:grid-cols-2 mx-auto mb-34 md:mb-[12.5rem]">
           <BlockTitle blockTitle="SKILL" />
           <div className="md:flex justify-start items-start gap-x-32 xl:gap-x-40 2xl:gap-x-48 xl:-ml-32 2xl:-ml-24">
             <dl className="mb-8">
