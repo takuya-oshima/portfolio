@@ -16,6 +16,9 @@ import LenisWrapper from '@/components/LenisWrapper'
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
+//VercelのPage Speed Insights
+import { SpeedInsights } from "@vercel/speed-insights/next"
+
 //font family noto sans JPの設定
 const notoSansJP = Noto_Sans_JP({
   weight: ["400", "700"],
@@ -117,6 +120,7 @@ export default async function LocaleLayout({
             </NextIntlClientProvider>
           </LenisWrapper>
         </ThemeWrapper>
+        <SpeedInsights/>
       </body>
     </html>
   );
