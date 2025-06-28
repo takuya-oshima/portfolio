@@ -93,7 +93,6 @@ export default function WorksDetailContent( { locale, data }: Props) {
           trigger: img,
           start: "top 80%",
           end: "bottom bottom",
-          markers: true,
         },
       });
     });

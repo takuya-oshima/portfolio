@@ -72,7 +72,6 @@ export default function ProfileContent() {
         trigger: field,
         start: "top 80%",
         end: "bottom bottom",
-        markers: true,
       },
     });
     gsap.fromTo(skill, {
@@ -88,7 +87,6 @@ export default function ProfileContent() {
         trigger: skill,
         start: "top 80%",
         end: "bottom bottom",
-        markers: true,
       },
     });
   }, []);
@@ -104,11 +102,13 @@ export default function ProfileContent() {
           <PageTitleHead pageTitleHead="Takuya Oshima" />
           <PageLead>Web Designer / Frontend Engineer</PageLead>
         </div>
+        {/*
         <div className="-ml-left-custom-sm md:-ml-24 lg:ml-0 mb-10">
           <figure className="w-screen mx-[calc((100vw-100%)/-2)]">
             <Image className="md:w-[45rem] mx-auto" src="/images/img_mv_sample.png" width={1920} height={1000} alt="メインビジュアル" priority />
           </figure>
         </div>
+        */}
         <div className="md:w-[45rem] mx-auto mb-34 md:mb-[12.5rem] locale">
           <TextBase>
             {t("profileText").split("\n").map((line, index) => (

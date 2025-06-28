@@ -71,7 +71,7 @@ export default function Menu({ isOpen, setIsOpen }: Props ){
       } else {
         gsap.to(menu, {
           opacity: 0,
-          duration: 0.85,
+          duration: 1,
           ease: "power3.inOut",
           onComplete: () => {
             if (menu) menu.style.display = 'none';
@@ -145,9 +145,9 @@ export default function Menu({ isOpen, setIsOpen }: Props ){
       <div className="fixed z-40 top-0 right-0 bottom-0 grid place-content-center">
         <ul ref={menuItemsRef} className="grid tracking-wide">
           <li className="inline-block overflow-hidden text-3.5xl leading-none text-right" onClick={() => setIsOpen(false)}><div><Link className="menu-item block py-5 pr-[.9375rem] md:pr-10" href="/">Home</Link></div></li>
-          <li className="inline-block overflow-hidden text-3.5xl leading-none text-right" onClick={() => setIsOpen(false)}><div><Link className="menu-item block py-5 pr-[.9375rem] md:pr-10" href="/works">Works</Link></div></li>
-          <li className="inline-block overflow-hidden text-3.5xl leading-none text-right" onClick={() => setIsOpen(false)}><div><Link className="menu-item block py-5 pr-[.9375rem] md:pr-10" href="/profile">Profile</Link></div></li>
-          <li className="inline-block overflow-hidden text-3.5xl leading-none text-right" onClick={() => setIsOpen(false)}><div><Link className="menu-item block py-5 pr-[.9375rem] md:pr-10" href="/contact">Contact</Link></div></li>
+          <li className="inline-block overflow-hidden text-3.5xl leading-none text-right" onClick={() => setIsOpen(false)}><div><Link className="menu-item block py-5 pr-[.9375rem] md:pr-10" href="/works/">Works</Link></div></li>
+          <li className="inline-block overflow-hidden text-3.5xl leading-none text-right" onClick={() => setIsOpen(false)}><div><Link className="menu-item block py-5 pr-[.9375rem] md:pr-10" href="/profile/">Profile</Link></div></li>
+          <li className="inline-block overflow-hidden text-3.5xl leading-none text-right" onClick={() => setIsOpen(false)}><div><Link className="menu-item block py-5 pr-[.9375rem] md:pr-10" href="/contact/">Contact</Link></div></li>
         </ul>
       </div>
       <div className="fixed inset-x-0 bottom-16 md:top-0 md:bottom-0 pr-custom pl-custom grid place-content-center text-base lg:text-2xl leading-loose lg:leading-loose text-center">
