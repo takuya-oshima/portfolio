@@ -120,7 +120,7 @@ export default async function LocaleLayout({
             </NextIntlClientProvider>
           </LenisWrapper>
         </ThemeWrapper>
-        <SpeedInsights/>
+        <SpeedInsights />
       </body>
     </html>
   );
