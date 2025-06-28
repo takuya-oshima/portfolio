@@ -5,8 +5,6 @@ import Particles, { initParticlesEngine } from "@tsparticles/react";
 import {
   type Container,
   type ISourceOptions,
-  MoveDirection,
-  OutMode,
 } from "@tsparticles/engine";
 import { loadSlim } from "@tsparticles/slim";
 
@@ -76,9 +74,7 @@ export default function BackgroundParticle() {
               "mode": "repulse"
             },
             "onDiv": {
-              "selectors": {},
               "enable": false,
-              "mode": {},
               "type": "circle"
             },
             "onHover": {
@@ -260,8 +256,7 @@ export default function BackgroundParticle() {
           "effect": {
             "close": true,
             "fill": true,
-            "options": {},
-            "type": {}
+            "options": {}
           },
           "groups": {},
           "move": {
@@ -558,8 +553,7 @@ export default function BackgroundParticle() {
   if (init) {
     return (
       <Particles
-        id="particles"
-        className="particles"
+        id="tsparticles"
         particlesLoaded={particlesLoaded}
         options={options}
       />

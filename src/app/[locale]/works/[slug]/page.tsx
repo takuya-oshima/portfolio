@@ -1,16 +1,10 @@
 import { getWorksDetail } from "@/libs/microcms";
 import WorksDetailContent from "@/components/WorksDetailContent";
 
-type Props = {
-  params : {
-    locale: string;
-    slug: string;
-  };
-};
 
 //meta情報の設定
-export async function generateMetadata({ params }: Props) {
-  const { locale, slug } = await Promise.resolve(params);
+export async function generateMetadata({ params }: { params: Promise<{ locale: string, slug: string }> }) {
+  const { locale, slug } = await params;
   const data = await getWorksDetail(slug);
 
   const title = locale === "ja" ? data.title_ja : data.title_en;
@@ -42,11 +36,9 @@ export async function generateMetadata({ params }: Props) {
   };
 }
 
-export default async function WorksDetailPage( props: Props) {
-  const { locale, slug } = await Promise.resolve(props.params);
+export default async function WorksDetailPage({ params }: { params: Promise<{ locale: string, slug: string }> }) {
+  const { locale, slug } = await params;
   const data = await getWorksDetail(slug);
 
-  return (
-    <WorksDetailContent locale={locale} data={data} />
-  );
+  return <WorksDetailContent locale={locale} data={data} />;
 }
