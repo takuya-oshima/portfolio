@@ -28,14 +28,16 @@ export default function WorksDetailContent( { locale, data }: Props) {
 
   const titleRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const detailCircleRef = useRef<HTMLDivElement>(null);
   const overviewRef = useRef<HTMLDivElement>(null);
   const imagesRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
     const title = titleRef.current?.children;
     const content = contentRef.current;
+    const detailCircle = detailCircleRef.current?.children;
 
-    if (title && content) {
+    if (title && content && detailCircle) {
       gsap.fromTo(title, {
         opacity: 0,
         x: -80,
@@ -44,7 +46,7 @@ export default function WorksDetailContent( { locale, data }: Props) {
         opacity: 1,
         x: 0,
         duration: 0.8,
-        delay: 0.5,
+        delay: 0.6,
         ease: "power3.out",
       });
       gsap.fromTo(content, {
@@ -55,7 +57,18 @@ export default function WorksDetailContent( { locale, data }: Props) {
         opacity: 1,
         y: 0,
         duration: 0.8,
-        delay: 0.5,
+        delay: 0.6,
+        ease: "power3.out",
+      });
+      gsap.fromTo(detailCircle, {
+        opacity: 0,
+        y: 80,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        delay: 0.6,
         ease: "power3.out",
       });
     };
@@ -101,7 +114,7 @@ export default function WorksDetailContent( { locale, data }: Props) {
 
   return (
     <section className="relative ml-left-custom-sm md:ml-24 lg:ml-0">
-      <div ref={titleRef} id="page-title">
+      <div ref={titleRef} className="page-title">
         <PageTitleSide pageTitleSide={data.titleAbbreviation} />
       </div>
       <div ref={contentRef} className="animation-initial-hidden relative">
@@ -178,7 +191,9 @@ export default function WorksDetailContent( { locale, data }: Props) {
           </ul>
         </div>
       </div>
-      <DetailCircle/>
+      <div ref={detailCircleRef} className="detail-circle">
+        <DetailCircle/>
+      </div>
     </section>
   );
 }

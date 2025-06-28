@@ -30,7 +30,7 @@ export default function WorksListContent({ works, locale }: Props) {
         opacity: 1,
         x: 0,
         duration: 0.8,
-        delay: 0.5,
+        delay: 0.6,
         ease: "power3.out",
       });
       gsap.fromTo(content, {
@@ -41,7 +41,7 @@ export default function WorksListContent({ works, locale }: Props) {
         opacity: 1,
         y: 0,
         duration: 0.8,
-        delay: 0.5,
+        delay: 0.6,
         ease: "power3.out",
       });
     };

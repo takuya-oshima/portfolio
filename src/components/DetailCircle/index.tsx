@@ -48,7 +48,7 @@ export default function DetailCircle() {
   },[]);
 
   return (
-    <div className="fixed bottom-10 right-custom md:right-4 lg:right-10 z-40 w-min h-min cursor-pointer mix-blend-difference invert dark:invert-0">
+    <div className="animation-initial-hidden fixed bottom-10 right-custom md:right-4 lg:right-10 z-40 w-min h-min cursor-pointer mix-blend-difference invert dark:invert-0">
       <div onClick={scrollToTarget}>
         <div ref={outsideCircleRef} className="w-[120px] md:w-[180px] m-auto">
           <svg className="fill-primary-light dark:fill-primary-dark" viewBox="0 0 132.49 133.04" id="outside-circle" data-name="outside-circle" xmlns="http://www.w3.org/2000/svg"><defs></defs><g><g>
