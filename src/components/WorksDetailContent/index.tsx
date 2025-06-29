@@ -74,7 +74,7 @@ export default function WorksDetailContent( { locale, data }: Props) {
     };
 
     const overview = overviewRef.current;
-    const imeges = imagesRef.current?.querySelectorAll("img") || [];
+    const imgContainers = imagesRef.current?.querySelectorAll("figure") || [];
 
     gsap.fromTo(overview, {
       opacity: 0,
@@ -92,8 +92,8 @@ export default function WorksDetailContent( { locale, data }: Props) {
       },
     });
 
-    imeges.forEach((img) => {
-      gsap.fromTo(img, {
+    imgContainers.forEach((figure) => {
+      gsap.fromTo(figure, {
         opacity: 0,
         y: 50
       },
@@ -103,7 +103,7 @@ export default function WorksDetailContent( { locale, data }: Props) {
         duration: 0.8,
         ease: "power3.out",
         scrollTrigger: {
-          trigger: img,
+          trigger: figure,
           start: "top 80%",
           end: "bottom bottom",
         },
@@ -128,7 +128,7 @@ export default function WorksDetailContent( { locale, data }: Props) {
         </div>
         <div className="-ml-left-custom-sm md:-ml-24 lg:ml-0 mb-34 md:mb-[12.5rem]">
           <figure className="w-screen mx-[calc((100vw-100%)/-2)]">
-            <Image className="w-full" src={data.mainImage.url} width={data.mainImage.width} height={data.mainImage.height} alt={locale === "ja" ? data.title_ja : data.title_en + "TopImage"} priority/>
+            <Image className="w-full" src={data.mainImage.url} width={data.mainImage.width} height={data.mainImage.height} alt={locale === "ja" ? data.title_ja : data.title_en + "TopImage"} priority sizes="(max-width: 768px) 100vw" />
           </figure>
         </div>
         <div ref={overviewRef} className="lg:w-10/12 2xl:w-full xl:grid xl:grid-cols-2 mx-auto mb-34 md:mb-[12.5rem]">
@@ -150,7 +150,7 @@ export default function WorksDetailContent( { locale, data }: Props) {
           <div className="-ml-left-custom-sm md:-ml-24 lg:ml-0 mb-34 md:mb-[12.5rem]">
           {data.pageImagesPC?.map((pageImagePC, index) => (
             <figure key={index} className="w-screen mx-[calc((100vw-100%)/-2)] mb-34 md:mb-42">
-              <Image className="xl:w-[1120px] mx-auto" src={pageImagePC.url} width={pageImagePC.width} height={pageImagePC.height} alt={locale === "ja" ? data.title_ja : data.title_en + `UnderImage ${index + 1}`} loading="lazy"/>
+              <Image className="xl:w-[1120px] mx-auto" src={pageImagePC.url} width={pageImagePC.width} height={pageImagePC.height} alt={locale === "ja" ? data.title_ja : data.title_en + `UnderImage ${index + 1}`} loading="lazy" sizes="(max-width: 768px) 100vw, 1120px" />
             </figure>
           ))}
           </div>
@@ -158,7 +158,7 @@ export default function WorksDetailContent( { locale, data }: Props) {
             <div className="xl:w-[1120px] mx-auto grid gap-6 md:gap-10 lg:gap-16 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
               {data.pageImagesSP?.map((pageImageSP, index) => (
                 <figure key={index} className="flex justify-center">
-                  <Image className="w-full h-fit drop-shadow-[1px_1px_15px_rgba(0,0,0,0.15)]" src={pageImageSP.url} width={pageImageSP.width} height={pageImageSP.height} alt={locale === "ja" ? data.title_ja : data.title_en + `UnderImage ${index + 1}`} loading="lazy"/>
+                  <Image className="w-full h-fit drop-shadow-[1px_1px_15px_rgba(0,0,0,0.15)]" src={pageImageSP.url} width={pageImageSP.width} height={pageImageSP.height} alt={locale === "ja" ? data.title_ja : data.title_en + `UnderImage ${index + 1}`} loading="lazy" sizes="(max-width: 768px) 100vw" />
                 </figure>
               ))}
             </div>

@@ -3,8 +3,7 @@
 import PageTitleSide from "@/components/PageTitleSide";
 import WorksList from "@/components/WorksList";
 import type { Works } from "@/libs/microcms";
-
-import { useRef } from "react";
+import { useState, useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
@@ -16,6 +15,8 @@ type Props = {
 export default function WorksListContent({ works, locale }: Props) {
   const titleRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+
+  const [bgImage, setBgImage] = useState<string>("/images/img_bg_default_thumbnail.png");
 
   useGSAP(() => {
     const title = titleRef.current?.children;
@@ -50,12 +51,12 @@ export default function WorksListContent({ works, locale }: Props) {
 
   return (
     <section className="ml-left-custom-sm md:ml-24 lg:ml-0">
-      <div id="bg" className="fixed top-0 left-0 w-full h-full bg-center bg-cover transition-all duration-500 -z-10" />
+      <div id="bg" className="fixed top-0 left-0 w-full h-full bg-center bg-cover transition-all duration-500 -z-10" style={{ backgroundImage: `url(${bgImage})` }} />
       <div ref={titleRef}>
         <PageTitleSide pageTitleSide="WORKS" />
       </div>
       <div ref={contentRef} className="animation-initial-hidden relative">
-        <WorksList works={works} locale={locale} />
+        <WorksList works={works} locale={locale} setBgImage={setBgImage} />
       </div>
     </section>
   );

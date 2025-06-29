@@ -1,16 +1,26 @@
 import { getRequestConfig } from "next-intl/server";
-import { routing } from "./routing";
+import { routing, locales } from "./routing";
+
+// 各ロケールメッセージを静的import
+import ja from "../../messages/ja.json";
+import en from "../../messages/en.json";
+
+const messagesMap = {
+  ja,
+  en,
+} as const;
 
 export default getRequestConfig(async ({ requestLocale }) => {
-  let locale = await requestLocale;
+  const localeResult = await requestLocale;
 
-  if (!locale || !routing.locales.includes(locale as "en" | "ja")) {
-    locale = routing.defaultLocale;
-  }
+  // 型アサーションなしで安全に絞り込む
+  const locale: keyof typeof messagesMap =
+    localeResult && locales.includes(localeResult as (typeof locales)[number])
+      ? (localeResult as keyof typeof messagesMap)
+      : routing.defaultLocale;
 
   return {
     locale,
-    messages: (await import(`../../messages/${locale}.json`)).default,
+    messages: messagesMap[locale],
   };
 });
-

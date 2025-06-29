@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Prefetcher from "@/components/Prefetcher";
 import { Link } from "@/i18n/routing";
 import BackgroundStar from "@/components/BackgroundStar";
 import BackgroundParticle from "@/components/BackgroundParticle";
@@ -17,9 +18,9 @@ export default function HomePage() {
         <h2 className="text-lg md:text-xl lg:text-3.5xl font-normal">Web Designer / Frontend Developer</h2>
       </div>
       <ul className="mb-24 text-center tracking-wide top-text-shadow">
-        <li className="mb-10 text-xl md:text-2xl"><Link className="text-link" href="/works">Works</Link></li>
-        <li className="mb-10 text-xl md:text-2xl"><Link className="text-link" href="/profile">Profile</Link></li>
-        <li className="text-xl md:text-2xl"><Link className="text-link" href="/contact">Contact</Link></li>
+        <li className="mb-10 text-xl md:text-2xl"><Prefetcher href="/works/" /><Link className="text-link" href="/works">Works</Link></li>
+        <li className="mb-10 text-xl md:text-2xl"><Prefetcher href="/profile/" /><Link className="text-link" href="/profile">Profile</Link></li>
+        <li className="text-xl md:text-2xl"><Prefetcher href="/contact/" /><Link className="text-link" href="/contact">Contact</Link></li>
       </ul>
     </div>
   );

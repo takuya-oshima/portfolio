@@ -43,7 +43,9 @@ export type Works = {
 export const getWorksList = async (queries?: MicroCMSQueries) => {
   const listData = await client.getList<Works>({
     endpoint: "works",
-    queries,
+    queries: {
+      fields: ["id", "title_ja", "title_en", "category", "thumbnail"],
+    },
   });
   return listData;
 };
