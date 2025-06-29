@@ -33,6 +33,7 @@ body {
 }
 body {
   font-family: linotype-didot, roboto, "Noto Sans JP", serif;
+  font-display: swap;
   color: var(--text-color);
   background-color: var(--background-color);
   line-height: 1;
