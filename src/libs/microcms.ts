@@ -40,7 +40,7 @@ export type Works = {
 } & MicroCMSListContent;
 
 //Works一覧を取得
-export const getWorksList = async (queries?: MicroCMSQueries) => {
+export const getWorksList = async () => {
   const listData = await client.getList<Works>({
     endpoint: "works",
     queries: {
