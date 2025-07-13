@@ -553,7 +553,8 @@ export default function BackgroundParticle() {
   if (init) {
     return (
       <Particles
-        id="tsparticles"
+        id="background-tsparticles"
+        className="background-tsparticles"
         particlesLoaded={particlesLoaded}
         options={options}
       />

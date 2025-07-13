@@ -4,7 +4,7 @@ import { useEffect } from "react";
 export default function BackgroundStar() {
   useEffect(() => {
     //背景に星屑のobjectを生成
-    const stars = document.querySelector(".stars");
+    const stars = document.querySelector(".background-stars");
 
     if (!stars) return;
 
@@ -31,6 +31,6 @@ export default function BackgroundStar() {
   }, []);
 
   return(
-    <div id="stars" className="stars"></div>
+    <div id="background-stars" className="background-stars"></div>
   );
 };

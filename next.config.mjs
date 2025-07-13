@@ -4,6 +4,7 @@ const withNextIntl = createNextIntlPlugin();
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
+
   reactStrictMode: true, // Reactの厳密モードを有効化
   //MicroCMSの画像の制限設定
   images: {

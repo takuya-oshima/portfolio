@@ -68,70 +68,18 @@ html[lang="en"] .locale {
   font-style: normal;
   font-display: swap;
 }
+
+/*********** 共通 ***********/
+/* 親要素無視の画面いっぱい */
 .full-width {
   width: 100vw;
   margin-right: calc(50% - 50vw);
   margin-left: calc(50% - 50vw);
 }
-/* マウスストーカー */
-.mouse-cursor,
-.mouse-stalker {
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  mix-blend-mode: difference;
-  z-index: 9999;
-  transition: .3s cubic-bezier(0.23, 1, 0.32, 1);
+/* フェードインアニメーション初期状態 */
+.animation-initial-hidden {
+  opacity: 0;
 }
-.mouse-cursor {
-  width: 8px;
-  height: 8px;
-  background-color: #fff;
-}
-.mouse-stalker {
-  top: -24px;
-  left: -24px;
-  width: 56px;
-  height: 56px;
-  border: 1px solid #fff;
-  transition-timing-function: ease-out;
-}
-
-/* リンクホバー時：カーソル拡大、ストーカー縮小 */
-.cursor--active {
-  width: 10px;
-  height: 10px;
-}
-.stalker--active {
-  top: -11px;
-  left: -11px;
-  width: 32px;
-  height: 32px;
-}
-
-
-#bg {
-  opacity: .3;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  transition: all .2s ease-in-out;
-  z-index: -1;
-}
-.active img {
-  position: fixed;
-  visibility: visible;
-  opacity: 1;
-  transition: opacity .2s ease-in-out;
-}
-.inactive {
-  transition: opacity .2s ease-in-out;
-  opacity: .4 !important;
-}
-
 /* ホバー：テキストリンク */
 .text-link {
   position: relative;
@@ -170,7 +118,47 @@ html[lang="en"] .locale {
   }
 }
 
-/* メニューボタン */
+
+/*********** マウスストーカー ***********/
+.mouse-cursor,
+.mouse-stalker {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+  z-index: 9999;
+  transition: .3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.mouse-cursor {
+  width: 8px;
+  height: 8px;
+  background-color: #fff;
+}
+.mouse-stalker {
+  top: -24px;
+  left: -24px;
+  width: 56px;
+  height: 56px;
+  border: 1px solid #fff;
+  transition-timing-function: ease-out;
+}
+/* リンクホバー時：カーソル拡大、ストーカー縮小 */
+.cursor--active {
+  width: 10px;
+  height: 10px;
+}
+.stalker--active {
+  top: -11px;
+  left: -11px;
+  width: 32px;
+  height: 32px;
+}
+
+
+/*********** グローバルメニュー開閉ボタン ***********/
 .menubtn {
   transition: .5s cubic-bezier(0.23, 1, 0.32, 1);
   span {
@@ -235,7 +223,9 @@ html[lang="en"] .locale {
     }
   }
 }
-/* グローバルメニュー */
+
+
+/*********** グローバルメニュー ***********/
 .global-navi {
   .menu-item {
     position: relative;
@@ -260,18 +250,13 @@ html[lang="en"] .locale {
   }
 }
 
-.animation-initial-hidden {
-  opacity: 0;
+
+/*********** トップページ ***********/
+.top-text-shadow {
+  text-shadow: 1px 1px 10px rgba(0,0,0,0.15);
 }
-
-/* .custom-cursor {
-  cursor: url('/images/ico_mouse_cursor.svg') 16 16, auto;
-} */
-
-
-
-/* 星空の背景のスタイル */
-.stars {
+/* 背景星空 */
+.background-stars {
   position: fixed;
   top: 0;
   left: 0;
@@ -279,16 +264,16 @@ html[lang="en"] .locale {
   width: 100%; /* 星空の横幅 */
   height: 100vh; /* 星空の縦幅 */
   overflow: hidden; /* 星が枠外にはみ出すのを防ぐ */
-}
-/* 星のスタイル */
-.star {
-  position: absolute;
-  display: block;
-  background-color: #fff; /* 星の色 */
-  border-radius: 100%;
-  box-shadow: 0 0 10px 4px rgba(255, 255, 255, 0.2); /* 星の影 */
-  opacity: 1;
-  animation: twinkle 8s infinite;
+  /* 星のスタイル */
+  .star {
+    position: absolute;
+    display: block;
+    background-color: #fff; /* 星の色 */
+    border-radius: 100%;
+    box-shadow: 0 0 10px 4px rgba(255, 255, 255, 0.2); /* 星の影 */
+    opacity: 1;
+    animation: twinkle 8s infinite;
+  }
 }
 /* 星がキラキラ光るアニメーション */
 @keyframes twinkle {
@@ -304,8 +289,8 @@ html[lang="en"] .locale {
     transform: scale(1);
   }
 }
-/* Particle */
-.particles {
+/* 背景Particle */
+.background-tsparticles {
   position: fixed;
   top: 0;
   left: 0;
@@ -314,11 +299,8 @@ html[lang="en"] .locale {
   height: 100vh; /* 星空の縦幅 */
   overflow: hidden; /* 星が枠外にはみ出すのを防ぐ */
 }
-/* トップページ */
-.top-text-shadow {
-  text-shadow: 1px 1px 10px rgba(0,0,0,0.15);
-}
-.top-visual {
+/* 背景画像 */
+.background-top-visual {
   position: fixed;
   top: 0;
   left: 0;
@@ -341,7 +323,7 @@ html[lang="en"] .locale {
   }
 }
 .light {
-  .top-visual {
+  .background-top-visual {
     display: none;
   }
   .top-text-shadow {
@@ -350,6 +332,29 @@ html[lang="en"] .locale {
 }
 
 
+/*********** Works一覧 ***********/
+/* ホバーで背景画像切替 */
+#bg {
+  opacity: .3;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  transition: all .2s ease-in-out;
+  z-index: -1;
+}
+.active img {
+  position: fixed;
+  visibility: visible;
+  opacity: 1;
+  transition: opacity .2s ease-in-out;
+}
+.inactive {
+  transition: opacity .2s ease-in-out;
+  opacity: .4 !important;
+}
+
+
+/*********** Works詳細 ***********/
 /* Works詳細テキストアニメーション */
 .animation-marquee-left {
   animation: marquee-left 20s linear infinite;
@@ -362,7 +367,6 @@ html[lang="en"] .locale {
     transform: translateX(-100%);
   }
 }
-
 .animation-marquee-right {
   animation: marquee-right 20s linear infinite;
 }
