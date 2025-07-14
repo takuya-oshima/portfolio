@@ -5,7 +5,7 @@ import { routing, locales } from "./routing";
 import ja from "../../messages/ja.json";
 import en from "../../messages/en.json";
 
-const messagesMap = {
+export const messagesMap = {
   ja,
   en,
 } as const;

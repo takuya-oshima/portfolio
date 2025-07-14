@@ -1,8 +1,9 @@
 //外部libraryのimport
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
+import { messagesMap } from "@/i18n/request";
+
 
 //font-familyのimport
 import { Noto_Sans_JP, Roboto } from "next/font/google";
@@ -37,13 +38,7 @@ const roboto = Roboto({
 //meta情報の設定
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-
-  const messages = (await getMessages()) as {
-    Meta: {
-      title: string;
-      description: string;
-    };
-  };
+  const messages = messagesMap[locale as keyof typeof messagesMap] ?? messagesMap.ja;
 
   const title = messages.Meta.title;
   const description = messages.Meta.description;
@@ -81,21 +76,15 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 };
 
 //共通レイアウトの出力
-export default async function LocaleLayout({
-  children,
-  params,
-}: {
-  children: React.ReactNode;
-  params: Promise<{ locale: string }>;
-}) {
-
+export default async function LocaleLayout({ children, params }: { children: React.ReactNode; params: Promise<{ locale: string }> }) {
   const { locale } = await params;
 
   if (!(routing.locales as readonly string[]).includes(locale)) {
     notFound();
   }
 
-  const messages = await getMessages({ locale });
+  // 静的にインポートした辞書を直接利用（同期的）
+  const messages = messagesMap[locale as keyof typeof messagesMap] ?? messagesMap.ja;
 
   //クラス名を定義
   const layoutClassNames = `${roboto.variable} ${notoSansJP.variable}`;

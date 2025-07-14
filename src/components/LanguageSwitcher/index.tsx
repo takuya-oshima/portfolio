@@ -1,36 +1,22 @@
 "use client";
 
-//import { useRouter } from "next/navigation";
-import { useLocale } from "next-intl";
 import { useState } from "react";
+import { useLocale } from "next-intl";
+import { usePathname, useRouter, locales } from "@/i18n/routing";
 
 export default function LanguageSwitcher() {
-  //const router = useRouter();
-  const currentLocale = useLocale(); // 現在のロケールを取得
-  const defaultLocale = "ja"; // デフォルトロケール
-  //const newLocale = currentLocale === "ja" ? "en" : "ja"; // 切り替え先の言語
+  const currentLocale = useLocale();
+  const pathname = usePathname();
+  const router = useRouter();
+  const [openLanguage, setOpenLanguage] = useState(false);
 
-  // 言語を切り替える関数
-  const languageChange = (locale: string) => {
-    const path = window.location.pathname; // 現在のパスを取得
-    let newPath = "";
-
-    if (locale === defaultLocale) {
-      // デフォルトロケール（ja）に切り替え → /en を削除
-      newPath = path.replace(/^\/en/, "") || "/";
-    } else {
-      // 英語（en）に切り替え → /en を追加
-      newPath = `/en${path}`;
-    }
-
-    window.location.href = newPath; //リロードさせてサーバーサイドリクエストにする
-    //router.push(newPath);
-  };
-
-  //言語アイコンをクリックした時の挙動
-  const [openLanguage, setOpenLanguage] = useState<boolean>(false);
   const languageFunction = () => {
     setOpenLanguage(!openLanguage);
+  };
+
+  const languageChange = (locale: string) => {
+    setOpenLanguage(false);
+    router.push({ pathname }, { locale });
   };
 
   return (
