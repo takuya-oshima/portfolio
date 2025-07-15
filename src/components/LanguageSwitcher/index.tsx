@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useLocale } from "next-intl";
-import { usePathname, useRouter, locales } from "@/i18n/routing";
+import { usePathname, useRouter } from "@/i18n/routing";
 
 export default function LanguageSwitcher() {
   const currentLocale = useLocale();
