@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useEffect, useRef, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
 type FirstVisitContextType = {
@@ -19,22 +19,23 @@ export const FirstVisitProvider = ({ children }: { children: React.ReactNode }) 
   const pathname = usePathname();
   const isTopPage = /^\/(ja|en)?\/?$/.test(pathname);
   const [isFirstVisit, setIsFirstVisit] = useState<boolean | null>(null);
-  const hasInitialized = useRef(false); // 初回実行フラグ
 
   useEffect(() => {
-    if (hasInitialized.current) return; // 2回目以降はスキップ
-    hasInitialized.current = true;
-
     const visited = sessionStorage.getItem("visited");
-    if (visited) {
-      //console.log("2回目以降の訪問", visited);
-      setIsFirstVisit(false);
+    if (isTopPage) {
+      if (visited) {
+        //console.log("2回目以降の訪問", visited);
+        setIsFirstVisit(false);
+      } else {
+        //console.log("初回訪問", visited);
+        sessionStorage.setItem("visited", "true");
+        setIsFirstVisit(true);
+      }
     } else {
-      //console.log("初回訪問", visited);
-      sessionStorage.setItem("visited", "true");
-      setIsFirstVisit(true);
+      // トップページ以外は常に2回目以降とみなす
+      setIsFirstVisit(false);
     }
-  }, []);
+  }, [pathname, isTopPage]);
 
   return (
     <FirstVisitContext.Provider value={{ isTopPage, isFirstVisit }}>
