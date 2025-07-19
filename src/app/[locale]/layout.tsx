@@ -12,9 +12,11 @@ import { Noto_Sans_JP, Roboto } from "next/font/google";
 import "@/styles/globals.css";
 
 //componentのimport
-import ThemeWrapper from "@/components/ThemeWrapper";
-import LenisWrapper from '@/components/LenisWrapper'
 import { FirstVisitProvider } from "@/components/FirstVisitProvider";
+import ThemeWrapper from "@/components/ThemeWrapper";
+import LenisWrapper from "@/components/LenisWrapper";
+
+
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -104,11 +106,11 @@ export default async function LocaleLayout({ children, params }: { children: Rea
           <ThemeWrapper> {/* クライアントコンポーネントでラップ */}
             <LenisWrapper>
               <NextIntlClientProvider messages={messages}>
-                  <div className="flex flex-col min-h-screen relative break-words">
-                    <Header />
-                    <div className="relative container mx-auto mt-34 md:mt-42 px-custom md:px-4 lg:px-0">{children}</div>
-                    <Footer />
-                  </div>
+                <div className="flex flex-col min-h-screen relative break-words">
+                  <Header />
+                  <div className="relative container mx-auto mt-34 md:mt-42 px-custom md:px-4 lg:px-0">{children}</div>
+                  <Footer />
+                </div>
               </NextIntlClientProvider>
             </LenisWrapper>
           </ThemeWrapper>

@@ -10,6 +10,7 @@ import BackgroundParticle from "@/components/BackgroundParticle";
 import BackgroundTopVisual from "@/components/BackgroundTopVisual";
 import OpeningAnimation from "@/components/OpeningAnimation";
 import { useFirstVisit } from "@/components/FirstVisitProvider";
+import MouseType from "@/components/MouseType";
 
 
 export default function TopContent() {
@@ -126,9 +127,9 @@ export default function TopContent() {
   });
 
   return (
-    <div ref={containerRef} className="h-fit">
+    <div ref={containerRef} className="top h-fit">
       <OpeningAnimation ref={OpeningAnimationRef} />
-      <div className="">
+      <div className="top-contents">
         <div ref={backgroundRef} className="background-container animation-initial-hidden">
           <BackgroundStar />
           <BackgroundParticle />
@@ -144,6 +145,7 @@ export default function TopContent() {
           <li className="text-xl md:text-2xl"><Prefetcher href="/contact/" /><Link className="text-link" href="/contact">Contact</Link></li>
         </ul>
       </div>
+      <MouseType />
     </div>
   );
 };

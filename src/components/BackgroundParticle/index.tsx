@@ -23,10 +23,13 @@ export default function BackgroundParticle() {
       //await loadFull(engine);
       await loadSlim(engine);
       //await loadBasic(engine);
-    }).then(() => {
-      setInit(true);
+    })
+    .then(() => setInit(true))
+    .catch(e => {
+      console.error("tsparticles engine init error:", e);
     });
   }, []);
+
 
   const particlesLoaded = async (container?: Container): Promise<void> => {
     console.log(container);
@@ -36,35 +39,13 @@ export default function BackgroundParticle() {
     () => (
       {
         "autoPlay": true,
-        "background": {
-          "color": {
-            "value": ""
-          },
-          "image": "",
-          "position": "50% 50%",
-          "repeat": "no-repeat",
-          "size": "",
-          "opacity": 1
-        },
-        "backgroundMask": {
-          "composite": "destination-out",
-          "cover": {
-            "opacity": 1,
-            "color": {
-              "value": ""
-            }
-          },
-          "enable": false
-        },
         "clear": true,
-        "defaultThemes": {},
         "delay": 0,
         "fullScreen": {
           "enable": true,
           "zIndex": 0
         },
         "detectRetina": true,
-        "duration": 0,
         "fpsLimit": 120,
         "interactivity": {
           "detectsOn": "window",
@@ -72,10 +53,6 @@ export default function BackgroundParticle() {
             "onClick": {
               "enable": true,
               "mode": "repulse"
-            },
-            "onDiv": {
-              "enable": false,
-              "type": "circle"
             },
             "onHover": {
               "enable": true,
@@ -92,22 +69,6 @@ export default function BackgroundParticle() {
             }
           },
           "modes": {
-            "trail": {
-              "delay": 1,
-              "pauseOnStop": false,
-              "quantity": 1
-            },
-            "attract": {
-              "distance": 200,
-              "duration": 0.4,
-              "easing": "ease-out-quad",
-              "factor": 1,
-              "maxSpeed": 80,
-              "speed": 1
-            },
-            "bounce": {
-              "distance": 200
-            },
             "bubble": {
               "distance": 250,
               "duration": 2,
@@ -120,29 +81,6 @@ export default function BackgroundParticle() {
                 "mix": false,
                 "selectors": {}
               }
-            },
-            "connect": {
-              "distance": 80,
-              "links": {
-                "opacity": 0.5
-              },
-              "radius": 60
-            },
-            "grab": {
-              "distance": 400,
-              "links": {
-                "blink": false,
-                "consent": false,
-                "opacity": 1
-              }
-            },
-            "push": {
-              "default": true,
-              "groups": [],
-              "quantity": 4
-            },
-            "remove": {
-              "quantity": 2
             },
             "repulse": {
               "distance": 400,
@@ -161,37 +99,8 @@ export default function BackgroundParticle() {
                 "selectors": {}
               }
             },
-            "slow": {
-              "factor": 3,
-              "radius": 200
-            },
-            "particle": {
-              "replaceCursor": false,
-              "pauseOnStop": false,
-              "stopDelay": 0
-            },
-            "light": {
-              "area": {
-                "gradient": {
-                  "start": {
-                    "value": "#ffffff"
-                  },
-                  "stop": {
-                    "value": "#000000"
-                  }
-                },
-                "radius": 1000
-              },
-              "shadow": {
-                "color": {
-                  "value": "#000000"
-                },
-                "length": 2000
-              }
-            }
-          }
+          },
         },
-        "manualParticles": [],
         "particles": {
           "bounce": {
             "horizontal": {
@@ -199,26 +108,6 @@ export default function BackgroundParticle() {
             },
             "vertical": {
               "value": 1
-            }
-          },
-          "collisions": {
-            "absorb": {
-              "speed": 2
-            },
-            "bounce": {
-              "horizontal": {
-                "value": 1
-              },
-              "vertical": {
-                "value": 1
-              }
-            },
-            "enable": false,
-            "maxSpeed": 50,
-            "mode": "bounce",
-            "overlap": {
-              "enable": true,
-              "retries": 0
             }
           },
           "color": {
@@ -253,12 +142,6 @@ export default function BackgroundParticle() {
               }
             }
           },
-          "effect": {
-            "close": true,
-            "fill": true,
-            "options": {}
-          },
-          "groups": {},
           "move": {
             "angle": {
               "offset": 0,
@@ -279,7 +162,6 @@ export default function BackgroundParticle() {
               "radius": 0
             },
             "decay": 0,
-            "distance": {},
             "direction": "top-right",
             "drift": 0,
             "enable": true,
@@ -288,14 +170,6 @@ export default function BackgroundParticle() {
               "enable": false,
               "inverse": false,
               "maxSpeed": 50
-            },
-            "path": {
-              "clamp": true,
-              "delay": {
-                "value": 0
-              },
-              "enable": false,
-              "options": {}
             },
             "outModes": {
               "default": "out",
@@ -310,16 +184,7 @@ export default function BackgroundParticle() {
               "min": 0.1,
               "max": 2
             },
-            "spin": {
-              "acceleration": 0,
-              "enable": false
-            },
             "straight": false,
-            "trail": {
-              "enable": false,
-              "length": 10,
-              "fill": {}
-            },
             "vibrate": false,
             "warp": false
           },
@@ -352,7 +217,6 @@ export default function BackgroundParticle() {
               "destroy": "none"
             }
           },
-          "reduceDuplicates": false,
           "shadow": {
             "blur": 10,
             "color": {
@@ -396,148 +260,12 @@ export default function BackgroundParticle() {
             "sizeRate": 1,
             "velocityRate": 1
           },
-          "destroy": {
-            "bounds": {},
-            "mode": "none",
-            "split": {
-              "count": 1,
-              "factor": {
-                "value": 3
-              },
-              "rate": {
-                "value": {
-                  "min": 4,
-                  "max": 9
-                }
-              },
-              "sizeOffset": true,
-              "particles": {}
-            }
-          },
-          "roll": {
-            "darken": {
-              "enable": false,
-              "value": 0
-            },
-            "enable": false,
-            "enlighten": {
-              "enable": false,
-              "value": 0
-            },
-            "mode": "vertical",
-            "speed": 25
-          },
-          "tilt": {
-            "value": 0,
-            "animation": {
-              "enable": false,
-              "speed": 0,
-              "decay": 0,
-              "sync": false
-            },
-            "direction": "clockwise",
-            "enable": false
-          },
-          "twinkle": {
-            "lines": {
-              "enable": false,
-              "frequency": 0.05,
-              "opacity": 1
-            },
-            "particles": {
-              "enable": true,
-              "frequency": 0.05,
-              "opacity": 1
-            }
-          },
-          "wobble": {
-            "distance": 5,
-            "enable": false,
-            "speed": {
-              "angle": 50,
-              "move": 10
-            }
-          },
-          "life": {
-            "count": 0,
-            "delay": {
-              "value": 0,
-              "sync": false
-            },
-            "duration": {
-              "value": 0,
-              "sync": false
-            }
-          },
-          "rotate": {
-            "value": 0,
-            "animation": {
-              "enable": true,
-              "speed": 0,
-              "decay": 0,
-              "sync": false
-            },
-            "direction": "clockwise",
-            "path": false
-          },
-          "orbit": {
-            "animation": {
-              "count": 0,
-              "enable": false,
-              "speed": 1,
-              "decay": 0,
-              "delay": 0,
-              "sync": false
-            },
-            "enable": false,
-            "opacity": 1,
-            "rotation": {
-              "value": 45
-            },
-            "width": 1
-          },
-          "links": {
-            "blink": false,
-            "color": {
-              "value": "#fff"
-            },
-            "consent": false,
-            "distance": 100,
-            "enable": false,
-            "frequency": 1,
-            "opacity": 1,
-            "shadow": {
-              "blur": 5,
-              "color": {
-                "value": "#000"
-              },
-              "enable": false
-            },
-            "triangles": {
-              "enable": false,
-              "frequency": 1
-            },
-            "width": 1,
-            "warp": false
-          },
-          "repulse": {
-            "value": 0,
-            "enabled": false,
-            "distance": 1,
-            "duration": 1,
-            "factor": 1,
-            "speed": 1
-          }
         },
         "pauseOnBlur": true,
         "pauseOnOutsideViewport": true,
         "responsive": [],
         "smooth": false,
-        "style": {},
-        "themes": [],
         "zLayers": 100,
-        "key": "nasa",
-        "name": "NASA",
         "motion": {
           "disable": false,
           "reduce": {
@@ -552,15 +280,10 @@ export default function BackgroundParticle() {
 
   if (init) {
     return (
-      <Particles
-        id="background-tsparticles"
-        className="background-tsparticles"
-        particlesLoaded={particlesLoaded}
-        options={options}
-      />
+      <Particles id="background-tsparticles" className="background-tsparticles" particlesLoaded={particlesLoaded} options={options} />
     );
   }
 
-  return <></>;
+  return null;
 
 };
