@@ -14,7 +14,7 @@ export default function WorksList({ works, locale, setBgImage }: Props) {
   const [hoverIndex, setHoverIndex] = useState<number | null>(null);
 
   const handleMouseEnter = (thumbnail?: string, index?: number) => {
-    setBgImage(thumbnail ?? "/images/img_bg_default_thumbnail.png");
+    setBgImage(thumbnail ?? "/images/img_bg_default_thumbnail.webp");
     setHoverIndex(index ?? null);
   };
 

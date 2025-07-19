@@ -1,14 +1,17 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
-export default function BackgroundStar() {
+export default function BackgroundStar({ count = 100 }) {
+  const backgroundStarsRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
+    const stars = backgroundStarsRef.current;
     //背景に星屑のobjectを生成
-    const stars = document.querySelector(".background-stars");
-
     if (!stars) return;
 
-    const createStar = () => {
+    const fragment = document.createDocumentFragment();
+
+    for (let i = 0; i < count; i++) {
       const starEl = document.createElement("span");
       starEl.className = "star";
       const minSize = 1;
@@ -18,19 +21,14 @@ export default function BackgroundStar() {
       starEl.style.height = `${size}px`;
       starEl.style.left = `${Math.random() * 100}%`;
       starEl.style.top = `${Math.random() * 100}%`;
-      starEl.style.position = "absolute";
-      starEl.style.background = "white";
-      starEl.style.borderRadius = "50%";
-      starEl.style.animation = "twinkle 1.5s infinite";
       starEl.style.animationDelay = `${Math.random() * 10}s`;
-      stars.appendChild(starEl);
-    };
-    for (let i = 0; i <= 100; i++) {
-      createStar();
+      fragment.appendChild(starEl);
     }
-  }, []);
+
+    stars.appendChild(fragment); // ← 最後に一括で追加
+  }, [count]);
 
   return(
-    <div id="background-stars" className="background-stars"></div>
+    <div ref={backgroundStarsRef} id="background-stars" className="background-stars"></div>
   );
 };
