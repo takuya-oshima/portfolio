@@ -14,6 +14,8 @@ import "@/styles/globals.css";
 //componentのimport
 import ThemeWrapper from "@/components/ThemeWrapper";
 import LenisWrapper from '@/components/LenisWrapper'
+import { FirstVisitProvider } from "@/components/FirstVisitProvider";
+
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -95,18 +97,19 @@ export default async function LocaleLayout({ children, params }: { children: Rea
         <link rel="icon" href="/images/favicon.ico" type="image/x-icon" sizes="16x16" />
         <link rel="icon" href="/images/favicon-32×32" type="image/png" sizes="32x32" />
         <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
-        <link rel="preload" as="style" href="https://use.typekit.net/vus0aaz.css" />
         <link rel="stylesheet" href="https://use.typekit.net/vus0aaz.css" />
       </head>
       <body>
         <ThemeWrapper> {/* クライアントコンポーネントでラップ */}
           <LenisWrapper>
             <NextIntlClientProvider messages={messages}>
-              <div className="flex flex-col min-h-screen relative break-words">
-                <Header />
-                <div className="relative container mx-auto mt-34 md:mt-42 px-custom md:px-4 lg:px-0">{children}</div>
-                <Footer />
-              </div>
+              <FirstVisitProvider>
+                <div className="flex flex-col min-h-screen relative break-words">
+                  <Header />
+                  <div className="relative container mx-auto mt-34 md:mt-42 px-custom md:px-4 lg:px-0">{children}</div>
+                  <Footer />
+                </div>
+              </FirstVisitProvider>
             </NextIntlClientProvider>
           </LenisWrapper>
         </ThemeWrapper>

@@ -1,21 +1,20 @@
 "use client";
 
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 import Prefetcher from "@/components/Prefetcher";
 import { Link } from "@/i18n/routing";
 import BackgroundStar from "@/components/BackgroundStar";
 import BackgroundParticle from "@/components/BackgroundParticle";
-import BackgroundTopVisual from "../BackgroundTopVisual";
+import BackgroundTopVisual from "@/components/BackgroundTopVisual";
 import OpeningAnimation from "@/components/OpeningAnimation";
-import { useRef, useState, useEffect } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
+import { useFirstVisit } from "@/components/FirstVisitProvider";
+
 
 export default function TopContent() {
-  const [isFirstVisit, setIsFirstVisit] = useState<boolean | null>(null);
-  useEffect(() => {
-    const visited = sessionStorage.getItem("visited");
-    setIsFirstVisit(!visited);
-  }, []);
+
+  const { isFirstVisit, isTopPage  } = useFirstVisit();
 
   const containerRef = useRef<HTMLDivElement>(null);
   const OpeningAnimationRef = useRef<HTMLDivElement>(null);
@@ -23,10 +22,12 @@ export default function TopContent() {
   const titleRef = useRef<HTMLDivElement>(null);
   const menuRef = useRef<HTMLUListElement>(null);
 
-  useGSAP(() => {
-    if (isFirstVisit === null) return;
-    const tl = gsap.timeline();
 
+  useGSAP(() => {
+    console.log(isFirstVisit)
+    if (isFirstVisit === null) return;
+
+    const tl = gsap.timeline();
     const OpeningContainer = OpeningAnimationRef.current;
     const OpeningText = OpeningContainer?.querySelector(".js-opening-text");
     const background = backgroundRef.current;
@@ -35,8 +36,7 @@ export default function TopContent() {
 
     if(!OpeningContainer || !OpeningText || !background || !title || !menu) return;
 
-    if(isFirstVisit) {
-      sessionStorage.setItem("visited", "true");
+    if (isTopPage && isFirstVisit) {
       tl.fromTo(OpeningText, {
         opacity: 0,
       },
@@ -124,8 +124,8 @@ export default function TopContent() {
   }, {
     dependencies: [isFirstVisit],
     scope: containerRef,
+    revertOnUpdate: true,
   });
-
 
   return (
     <div ref={containerRef} className="h-fit">
