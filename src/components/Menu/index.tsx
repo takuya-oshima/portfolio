@@ -72,7 +72,7 @@ export default function Menu({ isOpen, setIsOpen }: Props ){
       } else {
         gsap.to(menu, {
           opacity: 0,
-          duration: 1.2,
+          duration: 1.25,
           delay: 0.6,
           ease: "power3.inOut",
           onComplete: () => {
