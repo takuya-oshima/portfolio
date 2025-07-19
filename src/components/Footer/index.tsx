@@ -13,7 +13,6 @@ export default function Footer() {
 
   const { isTopPage, isFirstVisit } = useFirstVisit();
 
-
   useGSAP(() => {
     const footer = footerRef.current;
 
@@ -21,7 +20,7 @@ export default function Footer() {
 
     if(isTopPage) {
       if (isFirstVisit) {
-        //トップページで初回訪問時のみ実行
+        //トップページでかつ初回訪問時のみ実行
         gsap.fromTo(footer, {
           opacity: 0,
         }, {
@@ -31,7 +30,7 @@ export default function Footer() {
           ease: "power3.out",
         });
       } else {
-        //トップページで初回訪問時ではない場合のアニメーション
+        //トップページで初回訪問時ではない場合に実行
         gsap.fromTo(footer, {
           opacity: 0,
         }, {
@@ -42,16 +41,17 @@ export default function Footer() {
         });
       }
     } else {
-      //トップページ以外で発動
+      //トップページ以外で実行
       gsap.fromTo(footer, {
         opacity: 0,
       }, {
         opacity: 1,
-        delay: 3,
-        duration: 0.85,
+        duration: 0.8,
+        delay: 0.6,
         ease: "power3.out",
       });
     }
+
   }, { dependencies: [isTopPage, isFirstVisit] });
 
   return (

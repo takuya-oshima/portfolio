@@ -22,9 +22,7 @@ export default function TopContent() {
   const titleRef = useRef<HTMLDivElement>(null);
   const menuRef = useRef<HTMLUListElement>(null);
 
-
   useGSAP(() => {
-    console.log(isFirstVisit)
     if (isFirstVisit === null) return;
 
     const tl = gsap.timeline();

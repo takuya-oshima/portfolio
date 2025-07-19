@@ -1,9 +1,9 @@
 "use client";
 
-import { useFirstVisit } from "@/components/FirstVisitProvider";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useRef } from "react";
+import { useFirstVisit } from "@/components/FirstVisitProvider";
 
 //型の定義
 type Props = {
@@ -20,7 +20,6 @@ export default function MenuButton({ isOpen, setIsOpen }: Props){
   const menuButtonRef = useRef<HTMLDivElement>(null);
 
   const { isTopPage, isFirstVisit } = useFirstVisit();
-
 
   useGSAP(() => {
     const menuButton = menuButtonRef.current;
