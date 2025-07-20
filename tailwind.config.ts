@@ -56,9 +56,9 @@ const config: Config = {
       inset: {
         "custom": "0.9375rem"
       },
-      writingMode: {
+/*       writingMode: {
         "vertical-rl": "vertical-rl",
-      },
+      }, */
     },
   },
   plugins: [
