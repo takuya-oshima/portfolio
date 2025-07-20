@@ -1,14 +1,14 @@
 "use client"
 
 import { useTranslations } from "next-intl";
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 import PageTitleSide from "@/components/PageTitleSide";
 import MailAddress from "@/components/MailAddress";
 import IconFacebook from "@/components/IconFacebook";
 import IconInstagram from "@/components/IconInstagram";
 import IconGithub from "@/components/IconGithub";
-import { useRef } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
 
 export default function ContactContent() {
   const t = useTranslations("ContactPage");

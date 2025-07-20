@@ -4,22 +4,18 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { messagesMap } from "@/i18n/request";
 
+//componentのimport
+import { FirstVisitProvider } from "@/components/FirstVisitProvider";
+import ThemeWrapper from "@/components/ThemeWrapper";
+import LenisWrapper from "@/components/LenisWrapper";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 //font-familyのimport
 import { Noto_Sans_JP, Roboto } from "next/font/google";
 
 //GlobalCSSのimport
 import "@/styles/globals.css";
-
-//componentのimport
-import { FirstVisitProvider } from "@/components/FirstVisitProvider";
-import ThemeWrapper from "@/components/ThemeWrapper";
-import LenisWrapper from "@/components/LenisWrapper";
-
-
-
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 
 //VercelのPage Speed Insights
 import { SpeedInsights } from "@vercel/speed-insights/next"

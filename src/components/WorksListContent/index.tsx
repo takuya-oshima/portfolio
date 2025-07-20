@@ -1,11 +1,11 @@
 "use client";
 
-import PageTitleSide from "@/components/PageTitleSide";
-import WorksList from "@/components/WorksList";
-import type { Works } from "@/libs/microcms";
 import { useState, useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import PageTitleSide from "@/components/PageTitleSide";
+import WorksList from "@/components/WorksList";
+import type { Works } from "@/libs/microcms";
 
 type Props = {
   works: Works[];
@@ -16,7 +16,7 @@ export default function WorksListContent({ works, locale }: Props) {
   const titleRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
-  const [bgImage, setBgImage] = useState<string>("/images/img_bg_default_thumbnail.png");
+  const [bgImage, setBgImage] = useState<string>("/images/img_bg_default_thumbnail.webp");
 
   useGSAP(() => {
     const title = titleRef.current?.children;

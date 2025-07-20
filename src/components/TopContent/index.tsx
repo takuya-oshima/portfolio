@@ -1,13 +1,17 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import Prefetcher from "@/components/Prefetcher";
 import { Link } from "@/i18n/routing";
-import BackgroundStar from "@/components/BackgroundStar";
-import BackgroundParticle from "@/components/BackgroundParticle";
-import BackgroundTopVisual from "@/components/BackgroundTopVisual";
+
+// SSRを無効にしてクライアント側でのみ読み込む
+const BackgroundStar = dynamic(() => import("@/components/BackgroundStar"), { ssr: false });
+const BackgroundParticle = dynamic(() => import("@/components/BackgroundParticle"), { ssr: false });
+const BackgroundTopVisual = dynamic(() => import("@/components/BackgroundTopVisual"), { ssr: false });
+
 import OpeningAnimation from "@/components/OpeningAnimation";
 import { useFirstVisit } from "@/components/FirstVisitProvider";
 import MouseType from "@/components/MouseType";
@@ -18,7 +22,8 @@ export default function TopContent() {
   const { isFirstVisit, isTopPage  } = useFirstVisit();
 
   const containerRef = useRef<HTMLDivElement>(null);
-  const OpeningAnimationRef = useRef<HTMLDivElement>(null);
+  const openingAnimationRef = useRef<HTMLDivElement>(null);
+  const openingTextRef = useRef<HTMLDivElement>(null);
   const backgroundRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
   const menuRef = useRef<HTMLUListElement>(null);
@@ -27,16 +32,16 @@ export default function TopContent() {
     if (isFirstVisit === null) return;
 
     const tl = gsap.timeline();
-    const OpeningContainer = OpeningAnimationRef.current;
-    const OpeningText = OpeningContainer?.querySelector(".js-opening-text");
+    const openingContainer = openingAnimationRef.current;
+    const openingText = openingTextRef.current;
     const background = backgroundRef.current;
     const title = titleRef.current;
     const menu = menuRef.current;
 
-    if(!OpeningContainer || !OpeningText || !background || !title || !menu) return;
+    if(!openingContainer || !openingText || !background || !title || !menu) return;
 
     if (isTopPage && isFirstVisit) {
-      tl.fromTo(OpeningText, {
+      tl.fromTo(openingText, {
         opacity: 0,
       },
       {
@@ -45,13 +50,13 @@ export default function TopContent() {
         delay: .5,
         ease: "power3.out",
       })
-      .to(OpeningText, {
+      .to(openingText, {
         opacity: 0,
         duration: 2,
         delay: 2.5,
         ease: "power3.out",
       })
-      .fromTo(OpeningContainer, {
+      .fromTo(openingContainer, {
         y: 0,
       },
       {
@@ -88,7 +93,7 @@ export default function TopContent() {
         ease: "power3.out",
       });
     } else {
-      tl.to(OpeningContainer, {
+      tl.to(openingContainer, {
         display: "none"
       }, "-=0.5")
       .fromTo(background, {
@@ -128,7 +133,7 @@ export default function TopContent() {
 
   return (
     <div ref={containerRef} className="top h-fit">
-      <OpeningAnimation ref={OpeningAnimationRef} />
+      <OpeningAnimation ref={openingAnimationRef} openingTextRef={openingTextRef} />
       <div className="top-contents">
         <div ref={backgroundRef} className="background-container animation-initial-hidden">
           <BackgroundStar />

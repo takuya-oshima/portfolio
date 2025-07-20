@@ -19,7 +19,7 @@ export default function WorksList({ works, locale, setBgImage }: Props) {
   };
 
   const handleMouseLeave = () => {
-    setBgImage("/images/img_bg_default_thumbnail.png");
+    setBgImage("/images/img_bg_default_thumbnail.webp");
     setHoverIndex(null);
   };
 
@@ -30,7 +30,7 @@ export default function WorksList({ works, locale, setBgImage }: Props) {
     <ul className="lg:w-10/12 2xl:w-full mx-auto mb-34 md:mb-[12.5rem] counter-reset-list">
       {works.map((work, index) => (
         <li key={work.id} className={`-mt-[1px] border-t border-b border-[#aaa] dark:border-[#444] ${hoverIndex !== null && hoverIndex !== index ? "inactive" : ""
-          }`} onMouseEnter={() => handleMouseEnter(work.thumbnail?.url, index)} onMouseLeave={handleMouseLeave}>
+          }`} onMouseEnter={() => handleMouseEnter(`${work.thumbnail?.url}?fm=webp`, index)} onMouseLeave={handleMouseLeave}>
           <Link href={`/works/${work.id}`} className="flex justify-start items-center py-4 px-2 counter-increment-item text-base md:text-lg">
             {locale === "ja" ? (
               <h2 className="ml-2 md:ml-8 py-4 font-ja text-base md:text-2xl leading-normal">

@@ -1,5 +1,8 @@
 "use client";
 
+import { useRef,useEffect } from "react";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
 import MailAddress from "@/components/MailAddress";
@@ -8,9 +11,6 @@ import IconInstagram from "@/components/IconInstagram";
 import IconGithub from "@/components/IconGithub";
 import Prefetcher from "@/components/Prefetcher";
 import { Link } from "@/i18n/routing";
-import { useRef,useEffect } from "react";
-import { gsap } from "gsap";
-import { useGSAP } from "@gsap/react";
 
 //型の定義
 type Props = {

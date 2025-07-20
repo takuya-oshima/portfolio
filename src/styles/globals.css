@@ -79,6 +79,7 @@ html[lang="en"] .locale {
 /* フェードインアニメーション初期状態 */
 .animation-initial-hidden {
   opacity: 0;
+  will-change: opacity;
 }
 /* ホバー：テキストリンク */
 .text-link {
@@ -120,7 +121,7 @@ html[lang="en"] .locale {
 
 
 /*********** マウスストーカー ***********/
-@media screen and (min-width:960px)  {
+@media screen and (min-width:960px) {
   .mouse-cursor,
   .mouse-stalker {
     position: fixed;
