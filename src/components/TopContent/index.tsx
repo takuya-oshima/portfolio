@@ -14,7 +14,7 @@ const BackgroundTopVisual = dynamic(() => import("@/components/BackgroundTopVisu
 
 import OpeningAnimation from "@/components/OpeningAnimation";
 import { useFirstVisit } from "@/components/FirstVisitProvider";
-//import MouseType from "@/components/MouseType";
+import MouseType from "@/components/MouseType";
 
 
 export default function TopContent() {
@@ -150,7 +150,7 @@ export default function TopContent() {
           <li className="text-xl md:text-2xl"><Prefetcher href="/contact/" /><Link className="text-link" href="/contact">Contact</Link></li>
         </ul>
       </div>
-      {/* <MouseType /> */}
+      <MouseType />
     </div>
   );
 };
