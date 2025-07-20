@@ -88,7 +88,7 @@ export default function ProfileContent() {
         end: "bottom bottom",
       },
     });
-  }, []);
+  }, { dependencies: [] });
 
   return (
     <section className="ml-left-custom-sm md:ml-24 lg:ml-0">

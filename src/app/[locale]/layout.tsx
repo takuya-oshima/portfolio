@@ -17,8 +17,6 @@ import { Noto_Sans_JP, Roboto } from "next/font/google";
 //GlobalCSSのimport
 import "@/styles/globals.css";
 
-//VercelのPage Speed Insights
-import { SpeedInsights } from "@vercel/speed-insights/next"
 
 //font family noto sans JPの設定
 const notoSansJP = Noto_Sans_JP({
@@ -95,7 +93,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
         <link rel="icon" href="/images/favicon.ico" type="image/x-icon" sizes="16x16" />
         <link rel="icon" href="/images/favicon-32×32" type="image/png" sizes="32x32" />
         <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
-        <link rel="stylesheet" href="https://use.typekit.net/vus0aaz.css" />
+        {/* <link rel="stylesheet" href="https://use.typekit.net/vus0aaz.css" /> */}
       </head>
       <body>
         <FirstVisitProvider>
@@ -111,7 +109,6 @@ export default async function LocaleLayout({ children, params }: { children: Rea
             </LenisWrapper>
           </ThemeWrapper>
         </FirstVisitProvider>
-        <SpeedInsights />
       </body>
     </html>
   );

@@ -46,7 +46,7 @@ export default function WorksListContent({ works, locale }: Props) {
         ease: "power3.out",
       });
     };
-  });
+  }, { dependencies: [] });
 
 
   return (

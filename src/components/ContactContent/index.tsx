@@ -31,7 +31,7 @@ export default function ContactContent() {
         duration: 0.8,
         delay: 0.6,
         ease: "power3.out",
-      });
+      })
       gsap.fromTo(content, {
         opacity: 0,
         y: 80,
@@ -44,14 +44,14 @@ export default function ContactContent() {
         ease: "power3.out",
       });
     };
-  });
+  }, { dependencies: [] });
 
   return(
     <section className="ml-left-custom-sm md:ml-24 lg:ml-0">
       <div ref={titleRef}>
         <PageTitleSide pageTitleSide="CONTACT" />
       </div>
-      <div ref={contentRef} className="animation-initial-hidden reletive mt-[11vh]">
+      <div ref={contentRef} className="animation-initial-hidden relative mt-[11vh]">
         <div className="-ml-left-custom-sm md:-ml-24 lg:ml-0 text-center">
           <p className="mb-10 text-base md:text-xl leading-loose locale">
             {t("contactText").split("\n").map((line, index) => (
