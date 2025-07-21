@@ -91,6 +91,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
   return (
     <html lang={locale} className={layoutClassNames}>
       <head>
+        <meta name="google-site-verification" content="sdEq7CBUnPc2Gs_23NGC68YCq7-Qi-25g3RP_PU1yjc" />
         <link rel="icon" href="/images/favicon.ico" type="image/x-icon" sizes="16x16" />
         <link rel="icon" href="/images/favicon-32×32" type="image/png" sizes="32x32" />
         <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
