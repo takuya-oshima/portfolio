@@ -3,6 +3,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { messagesMap } from "@/i18n/request";
+import { GoogleTagManager } from '@next/third-parties/google'
 
 //componentのimport
 import { FirstVisitProvider } from "@/components/FirstVisitProvider";
@@ -109,6 +110,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
             </LenisWrapper>
           </ThemeWrapper>
         </FirstVisitProvider>
+        <GoogleTagManager gtmId="GTM-WGVV3GJ" />
       </body>
     </html>
   );
