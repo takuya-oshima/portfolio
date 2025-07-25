@@ -48,6 +48,8 @@ body {
 }
 img {
   image-rendering: -webkit-optimize-contrast;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 html[lang="ja"] .locale {
   font-family: 'Roboto', 'Noto Sans JP', 'sans-serif';

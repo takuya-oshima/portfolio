@@ -8,7 +8,7 @@ export default function Header(){
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="fixed z-50 w-full py-4 px-custom md:px-4 lg:px-10 flex justify-end">
+    <header className="relative w-full py-4 px-custom md:px-4 lg:px-10 flex justify-end">
       <MenuButton isOpen={isOpen} setIsOpen={setIsOpen} />
       <Menu isOpen={isOpen} setIsOpen={setIsOpen} />
     </header>

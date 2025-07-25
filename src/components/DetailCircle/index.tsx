@@ -21,21 +21,15 @@ export default function DetailCircle() {
 
   const outsideCircleRef = useRef<HTMLDivElement>(null);
   const insideCircleRef = useRef<HTMLDivElement>(null);
+  const secondHandRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
     const outsideCircle = outsideCircleRef.current;
     const insideCircle = insideCircleRef.current;
+    const secondHand = secondHandRef.current;
 
     if(outsideCircle && insideCircle) {
       gsap.to(outsideCircle, {
-        rotation: 1440,
-        scrollTrigger: {
-          start: 'top top',
-          end: 'bottom bottom',
-          scrub: true,
-        },
-      })
-      gsap.to(insideCircle, {
         rotation: -1440,
         scrollTrigger: {
           start: 'top top',
@@ -43,12 +37,28 @@ export default function DetailCircle() {
           scrub: true,
         },
       })
+      gsap.to(insideCircle, {
+        rotation: 1440,
+        scrollTrigger: {
+          start: 'top top',
+          end: 'bottom bottom',
+          scrub: true,
+        },
+      })
+      gsap.to(secondHand, {
+        rotation: 360,
+        scrollTrigger: {
+          start: 'top top',
+          end: 'bottom bottom',
+          scrub: true,
+        }
+      })
     }
 
   },[]);
 
   return (
-    <div className="animation-initial-hidden fixed bottom-10 right-custom md:right-4 lg:right-10 z-40 w-min h-min cursor-pointer mix-blend-difference invert dark:invert-0">
+    <div className="animation-initial-hidden fixed bottom-10 right-custom md:right-4 lg:right-10 z-10 w-min h-min cursor-pointer mix-blend-difference invert dark:invert-0">
       <div onClick={scrollToTarget}>
         <div ref={outsideCircleRef} className="w-[120px] md:w-[180px] m-auto will-change-transform">
           <svg className="fill-primary-light dark:fill-primary-dark" viewBox="0 0 132.49 133.04" id="outside-circle" data-name="outside-circle" xmlns="http://www.w3.org/2000/svg"><defs></defs><g><g>
@@ -103,6 +113,9 @@ export default function DetailCircle() {
             <path d="M5.64,12.25c-.01-.15.01-.27.07-.36.07-.1.17-.16.33-.19.15-.03.29,0,.42.08.1.07.17.16.22.28.04.12.04.25-.01.38-.05.15.04.8.29,1.95.24,1.11.4,1.69.49,1.75.05.03.14-.05.29-.25.14-.19.47-.67.96-1.43l1.14-1.73-.09-.17c-.09-.19-.08-.39.05-.59.11-.16.24-.23.41-.22.12.01.21.04.29.09.12.08.21.2.25.35.04.15.02.29-.07.42-.07.1-.08.28-.04.55.04.27.18.95.42,2.07.33,1.53.47,2.34.42,2.41l-.03.02s-.02,0-.03,0c-.08-.05-.28-.85-.62-2.4s-.54-2.34-.62-2.4c-.02-.01-.03-.01-.04-.01-.1.01-.52.58-1.26,1.71l-1.12,1.7.06.29c.04.18.02.33-.07.46-.08.11-.18.19-.33.22-.14.03-.27,0-.39-.07-.11-.07-.19-.19-.24-.34-.04-.12-.02-.25.06-.37l.05-.08.18-.24-.36-1.69c-.23-1.06-.38-1.62-.46-1.67,0,0-.02,0-.03,0-.08.01-.19-.03-.34-.12-.15-.1-.23-.23-.25-.39ZM6.1,11.93c-.12.02-.19.05-.21.09-.05.08-.06.16-.04.24.02.08.07.15.14.19s.15.06.23.05c.08-.01.15-.05.2-.13.11-.17.09-.3-.06-.4-.09-.06-.18-.07-.27-.05ZM7.42,16.99c.09-.02.16-.06.2-.12.04-.07.05-.15.02-.23s-.08-.15-.15-.2c-.16-.1-.29-.07-.41.11-.11.17-.09.3.06.4.08.05.17.07.29.04ZM10.33,12.57c.09-.02.16-.06.2-.12.04-.07.05-.15.02-.23s-.08-.15-.15-.2c-.16-.1-.29-.07-.41.11-.11.17-.09.3.06.4.08.05.17.07.29.04Z"/>
             <path d="M10.32,6.53c.03-.19.08-.32.16-.38.08-.06.23-.08.45-.05l.34.05,2.56-2.05.03-.34c.02-.22.08-.37.16-.43.07-.06.21-.08.4-.07.18.02.31.08.39.19.04.05.08.14.12.26.01.06.04.11.06.15.04.05.15.12.31.22.37.22.66.42.88.6.21.18.48.48.8.88.37.46.63.83.78,1.13.15.29.28.68.38,1.16.2.88.15,1.65-.16,2.3-.09.19-.18.34-.25.43s-.24.24-.48.43c-.24.19-.42.32-.53.38-.11.06-.27.11-.49.15-.6.12-1.23.05-1.92-.21-.68-.26-1.31-.67-1.89-1.25-.14-.14-.28-.29-.42-.46-.39-.49-.71-1.06-.96-1.73-.13-.36-.23-.57-.29-.65-.02-.03-.06-.06-.11-.09-.11-.06-.18-.12-.23-.18-.08-.1-.11-.24-.1-.43ZM11,6.4c-.06-.06-.11-.09-.15-.09-.04,0-.1.02-.18.07l-.04.03c-.14.11-.16.23-.07.36.05.07.11.11.18.12.13.04.23.03.31-.03.13-.1.13-.23,0-.39l-.05-.07ZM14.22,4.31l-.24-.06-2.61,2.09v.24c.02.15-.04.29-.16.42-.1.1-.14.18-.14.25,0,.06.05.23.13.49.22.63.54,1.2.97,1.74.1.12.18.21.23.26.76.82,1.6,1.33,2.51,1.53.91.2,1.66.06,2.26-.42.33-.26.58-.63.74-1.11.16-.51.19-1.06.09-1.65-.13-.82-.51-1.62-1.15-2.42-.47-.59-.99-1.04-1.55-1.36-.18-.11-.3-.17-.36-.18-.06-.01-.15.02-.26.08-.17.1-.33.13-.47.09ZM14.54,3.62c-.07-.09-.12-.13-.15-.14s-.09.02-.18.07l-.05.04c-.12.1-.14.2-.04.32.01.01.03.03.05.05.02.02.03.03.04.04.13.12.25.14.36.05.14-.11.13-.25-.02-.44Z"/></g></g>
           </svg>
+        </div>
+        <div ref={secondHandRef} className="absolute inset-0 top-[-80px] md:top-[-120px] w-[8px] md:w-[13px] h-fit m-auto origin-bottom will-change-transform">
+          <svg className="fill-primary-light dark:fill-primary-dark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9.28 88.45"><g><rect x="4.26" y="18.45" width=".76" height="70" /><path d="M4.64,19.42L0,13.16,4.64,0l4.64,13.16-4.64,6.26ZM.9,13.02l3.74,5.05,3.74-5.05L4.64,2.41.9,13.02Z"/></g></svg>
         </div>
       </div>
     </div>
