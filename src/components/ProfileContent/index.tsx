@@ -195,14 +195,15 @@ export default function ProfileContent() {
           <div className="w-screen mx-[calc((100vw-100%)/-2)] bg-black text-white py-20 2xl:py-32 px-custom">
             <h2 className="mb-8 md:mb-14 2xl:mb-[4.5rem] text-center text-[2.5rem] md:text-5xl 2xl:text-7xl leading-relaxed tracking-wide">CONTACT</h2>
             <div className="text-center">
-              <p className="mb-10 text-base md:text-xl leading-loose locale">
+              <p className="mx-10 mb-10 text-base md:text-xl leading-loose locale">
                 {t("contactText").split("\n").map((line, index) => (
                   <span key={index}>
                     {line}
+                    <br />
                   </span>
                 ))}
               </p>
-              <div className="mb-10 text-3xl md:text-6xl 2xl:text-8xl leading-loose">
+              <div className="mb-10 text-2xl md:text-6xl 2xl:text-8xl leading-loose">
                 <MailAddress />
               </div>
               <div className="mb-[4.5rem] text-3xl leading-loose">Get in touch</div>

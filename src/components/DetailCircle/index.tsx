@@ -115,7 +115,7 @@ export default function DetailCircle() {
           </svg>
         </div>
         <div ref={secondHandRef} className="absolute inset-0 top-[-80px] md:top-[-120px] w-[8px] md:w-[13px] h-fit m-auto origin-bottom will-change-transform">
-          <svg className="fill-primary-light dark:fill-primary-dark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9.28 88.45"><g><rect x="4.26" y="18.45" width=".76" height="70" /><path d="M4.64,19.42L0,13.16,4.64,0l4.64,13.16-4.64,6.26ZM.9,13.02l3.74,5.05,3.74-5.05L4.64,2.41.9,13.02Z"/></g></svg>
+          <svg className="fill-primary-light dark:fill-primary-dark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9.28 87.05"><g><rect x="4.39" y="18.26" width=".5" height="68.78"/><path d="M4.64,19.42L0,13.16,4.64,0l4.64,13.16-4.64,6.26ZM.9,13.02l3.74,5.05,3.74-5.05L4.64,2.41.9,13.02Z"/></g></svg>
         </div>
       </div>
     </div>

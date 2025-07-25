@@ -53,15 +53,15 @@ export default function ContactContent() {
       </div>
       <div ref={contentRef} className="animation-initial-hidden relative mt-[11vh]">
         <div className="-ml-left-custom-sm md:-ml-24 lg:ml-0 text-center">
-          <p className="mb-10 text-base md:text-xl leading-loose locale">
+          <p className="mx-10 mb-10 text-base md:text-xl leading-loose locale">
             {t("contactText").split("\n").map((line, index) => (
-              <span key={index} className="inline-block">
+              <span key={index}>
                 {line}
                 <br />
               </span>
             ))}
           </p>
-          <div className="mb-10 text-[1.75rem] md:text-6xl 2xl:text-8xl leading-loose break-normal">
+          <div className="mb-10 text-2xl md:text-6xl 2xl:text-8xl leading-loose break-normal">
             <MailAddress />
           </div>
           <div className="mb-[4.5rem] text-3xl leading-loose">Get in touch</div>
