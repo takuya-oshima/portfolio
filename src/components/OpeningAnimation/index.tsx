@@ -2,7 +2,7 @@
 import { forwardRef } from "react";
 
 type Props = {
-  openingTextRef: React.RefObject<HTMLDivElement>;
+  openingTextRef: React.RefObject<HTMLDivElement | null>;
 };
 
 const OpeningAnimation = forwardRef<HTMLDivElement, Props>(({ openingTextRef }, ref) => {
