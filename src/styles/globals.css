@@ -279,7 +279,7 @@ html[lang="en"] .locale {
   .star {
     position: absolute;
     display: block;
-    background-color: #fff; /* 星の色 */
+    background-color: #fff3b8; /* 星の色 */
     border-radius: 100%;
     box-shadow: 0 0 10px 4px rgba(255, 255, 255, 0.2); /* 星の影 */
     opacity: 1;

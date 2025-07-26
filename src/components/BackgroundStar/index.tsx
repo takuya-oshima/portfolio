@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef } from "react";
 
-export default function BackgroundStar({ count = 100 }) {
+export default function BackgroundStar({ count = 120 }) {
   const backgroundStarsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
