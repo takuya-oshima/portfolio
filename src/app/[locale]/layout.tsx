@@ -106,7 +106,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
               <NextIntlClientProvider messages={messages}>
                 <div className="flex flex-col min-h-screen relative break-words">
                   <Header />
-                  <div className="relative container mx-auto mt-34 md:mt-42 px-custom md:px-4 lg:px-0">{children}</div>
+                  <div className="relative container mx-auto mt-34 px-custom md:px-4 lg:px-0">{children}</div>
                   <Footer />
                 </div>
               </NextIntlClientProvider>

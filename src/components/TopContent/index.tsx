@@ -134,12 +134,7 @@ export default function TopContent() {
   return (
     <div ref={containerRef} className="top h-fit">
       <OpeningAnimation ref={openingAnimationRef} openingTextRef={openingTextRef} />
-      <div className="top-contents">
-        <div ref={backgroundRef} className="background-container animation-initial-hidden">
-          <BackgroundStar />
-          <BackgroundParticle />
-          <BackgroundTopVisual />
-        </div>
+      <div className="top-contents relative z-10">
         <div ref={titleRef} className="animation-initial-hidden mt-[18vh] md:mt-24 lg:mt-8 mb-[15vh] lg:mb-32 text-center tracking-wide top-text-shadow">
           <h1 className="mb-8 md:mb-14 text-5xl md:text-8xl lg:text-index-title font-normal whitespace-nowrap">Takuya Oshima</h1>
           <h2 className="text-lg md:text-xl lg:text-3.5xl font-normal">Web Designer / Frontend Developer</h2>
@@ -149,6 +144,11 @@ export default function TopContent() {
           <li className="mb-10 text-xl md:text-2xl"><Prefetcher href="/profile/" /><Link className="text-link" href="/profile">Profile</Link></li>
           <li className="text-xl md:text-2xl"><Prefetcher href="/contact/" /><Link className="text-link" href="/contact">Contact</Link></li>
         </ul>
+      </div>
+      <div ref={backgroundRef} className="background-container animation-initial-hidden">
+        <BackgroundStar />
+        <BackgroundParticle />
+        <BackgroundTopVisual />
       </div>
       <MouseType />
     </div>

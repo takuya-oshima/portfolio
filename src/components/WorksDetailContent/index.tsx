@@ -31,6 +31,7 @@ export default function WorksDetailContent( { locale, data }: Props) {
   const titleRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const detailCircleRef = useRef<HTMLDivElement>(null);
+  const mainImageRef = useRef<HTMLDivElement>(null);
   const overviewRef = useRef<HTMLDivElement>(null);
   const imagesRef = useRef<HTMLDivElement>(null);
 
@@ -38,6 +39,9 @@ export default function WorksDetailContent( { locale, data }: Props) {
     const title = titleRef.current?.children;
     const content = contentRef.current;
     const detailCircle = detailCircleRef.current?.children;
+    const mainImage = mainImageRef.current?.querySelector("img");
+    const overview = overviewRef.current;
+    const imgContainers = imagesRef.current?.querySelectorAll("figure") || [];
 
     if (title && content && detailCircle) {
       gsap.fromTo(title, {
@@ -75,29 +79,24 @@ export default function WorksDetailContent( { locale, data }: Props) {
       });
     };
 
-    const overview = overviewRef.current;
-    const imgContainers = imagesRef.current?.querySelectorAll("figure") || [];
+    if (mainImage) {
+      gsap.to(mainImage, {
+        y: 80, // 上方向に 100px 動かす
+        ease: "none",
+        scrollTrigger: {
+          trigger: mainImage,
+          start: "center bottom",   // mainImageが画面下に来た時に開始
+          end: "bottom top",     // mainImageが画面上に消えるまで
+          scrub: 1.5,           // スクロールに合わせて滑らかに動く
+          markers: true,
+        }
+      });
+    }
 
-    gsap.fromTo(overview, {
-      opacity: 0,
-      y: 50,
-    },
-    {
-      opacity: 1,
-      y: 0,
-      duration: 0.8,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: overview,
-        start: "top 80%",
-        end: "bottom bottom",
-      },
-    });
-
-    imgContainers.forEach((figure) => {
-      gsap.fromTo(figure, {
+    if (overview && imgContainers) {
+      gsap.fromTo(overview, {
         opacity: 0,
-        y: 50
+        y: 50,
       },
       {
         opacity: 1,
@@ -105,12 +104,32 @@ export default function WorksDetailContent( { locale, data }: Props) {
         duration: 0.8,
         ease: "power3.out",
         scrollTrigger: {
-          trigger: figure,
+          trigger: overview,
           start: "top 80%",
           end: "bottom bottom",
         },
       });
-    });
+
+      imgContainers.forEach((figure) => {
+        gsap.fromTo(figure, {
+          opacity: 0,
+          y: 50
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: figure,
+            start: "top 80%",
+            end: "bottom bottom",
+          },
+        });
+      });
+    }
+
+
   }, { dependencies: [] });
 
 
@@ -120,7 +139,7 @@ export default function WorksDetailContent( { locale, data }: Props) {
         <PageTitleSide pageTitleSide={data.titleAbbreviation} />
       </div>
       <div ref={contentRef} className="animation-initial-hidden relative">
-        <div className="-ml-left-custom-sm md:-ml-24 lg:ml-0 mb-42 text-center">
+        <div className="-ml-left-custom-sm md:-ml-24 lg:ml-0 mb-32 md:mb-42 text-center">
           {locale === "ja" && (
             <div className="mb-2 md:mb-4 lg:mb-8 font-ja text-base lg:text-lg">{data.title_ja}</div>
           )}
@@ -128,8 +147,8 @@ export default function WorksDetailContent( { locale, data }: Props) {
           <PageLead>URL： <a href={data.url} target="_blank" rel="noopener" className="text-link">{data.url}</a></PageLead>
           <PageLead>Type： {data.category.name}</PageLead>
         </div>
-        <div className="-ml-left-custom-sm md:-ml-24 lg:ml-0 mb-34 md:mb-[12.5rem]">
-          <figure className="w-screen mx-[calc((100vw-100%)/-2)]">
+        <div ref={mainImageRef} className="-ml-left-custom-sm md:-ml-24 lg:ml-0 mb-34 md:mb-[12.5rem]">
+          <figure className="w-screen mx-[calc((100vw-100%)/-2)] overflow-hidden">
             <Image className="w-full" src={`${data.mainImage.url}?fm=webp`} width={data.mainImage.width} height={data.mainImage.height} alt={locale === "ja" ? data.title_ja : data.title_en + "TopImage"} priority sizes="(max-width: 768px) 100vw" />
           </figure>
         </div>

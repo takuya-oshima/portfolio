@@ -45,6 +45,7 @@ body {
   -moz-text-size-adjust: 100%;
   text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+  @apply transition-colors duration-700 ease-in-out; /*モード切替時のエフェクト */
 }
 img {
   image-rendering: -webkit-optimize-contrast;
@@ -261,6 +262,9 @@ html[lang="en"] .locale {
 }
 .top-text-shadow {
   text-shadow: 1px 1px 10px rgba(0,0,0,0.15);
+}
+.opening-animation {
+  background: linear-gradient(180deg,rgba(0, 0, 0, 1) 0%, rgba(31, 31, 1, 1) 50%, rgba(0, 0, 0, 1) 100%);
 }
 /* 背景星空 */
 .background-stars {
