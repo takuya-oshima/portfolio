@@ -81,14 +81,13 @@ export default function WorksDetailContent( { locale, data }: Props) {
 
     if (mainImage) {
       gsap.to(mainImage, {
-        y: 80, // 上方向に 100px 動かす
+        y: 80,
         ease: "none",
         scrollTrigger: {
           trigger: mainImage,
-          start: "center bottom",   // mainImageが画面下に来た時に開始
-          end: "bottom top",     // mainImageが画面上に消えるまで
-          scrub: 1.5,           // スクロールに合わせて滑らかに動く
-          markers: true,
+          start: "center bottom",
+          end: "bottom top",
+          scrub: 1.5,
         }
       });
     }
