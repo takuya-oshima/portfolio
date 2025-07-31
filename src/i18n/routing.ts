@@ -7,7 +7,7 @@ export type Locale = (typeof locales)[number];  // "ja" | "en"
 
 export const routing = defineRouting({
   locales,
-  defaultLocale: "ja",
+  defaultLocale: "en",
   localeDetection: false,
   localePrefix: "always", //jaの場合はリダイレクトしない
 });
