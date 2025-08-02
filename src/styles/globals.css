@@ -263,9 +263,6 @@ html[lang="en"] .locale {
 .top-text-shadow {
   text-shadow: 1px 1px 10px rgba(0,0,0,0.15);
 }
-.opening-animation {
-  background: linear-gradient(180deg,rgba(0, 0, 0, 1) 0%, rgba(31, 31, 1, 1) 50%, rgba(0, 0, 0, 1) 100%);
-}
 /* 背景星空 */
 .background-stars {
   position: fixed;
@@ -283,7 +280,7 @@ html[lang="en"] .locale {
     border-radius: 100%;
     box-shadow: 0 0 10px 4px rgba(255, 255, 255, 0.2); /* 星の影 */
     opacity: 1;
-    animation: twinkle 8s infinite;
+    animation: twinkle 5.5s infinite;
   }
 }
 /* 星がキラキラ光るアニメーション */
