@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Link } from "@/i18n/routing";
 import type { Works } from "@/libs/microcms";
 import Prefetcher from "@/components/Prefetcher";
@@ -12,6 +12,23 @@ type Props = {
 };
 
 export default function WorksList({ works, locale, setBgImage }: Props) {
+
+  //画面遷移直後にWorkslistのホバーを止める
+  const worksListRef = useRef<HTMLUListElement>(null); //Workslistのulを参照
+  useEffect(() => {
+
+    const worksList = worksListRef.current;
+
+    // 1秒後に pointer-events を有効化
+    if (worksList) {
+      const timer = setTimeout(() => {
+        worksList.classList.remove("pointer-events-none");
+      }, 1500);
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
+
   const [hoverIndex, setHoverIndex] = useState<number | null>(null);
 
   const handleMouseEnter = (thumbnail?: string, index?: number) => {
@@ -28,7 +45,7 @@ export default function WorksList({ works, locale, setBgImage }: Props) {
     return <div>データがありません。</div>;
   }
   return (
-    <ul className="lg:w-10/12 2xl:w-full mx-auto mb-34 md:mb-[12.5rem] counter-reset-list">
+    <ul ref={worksListRef} className="lg:w-10/12 2xl:w-full mx-auto mb-34 md:mb-[12.5rem] counter-reset-list pointer-events-none">
       {works.map((work, index) => (
         <li key={work.id} className={`-mt-[1px] border-t border-b border-[#aaa] dark:border-[#444] ${hoverIndex !== null && hoverIndex !== index ? "inactive" : ""
           }`} onMouseEnter={() => handleMouseEnter(`${work.thumbnail?.url}?fm=webp`, index)} onMouseLeave={handleMouseLeave}>
