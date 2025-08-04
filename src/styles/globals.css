@@ -135,6 +135,7 @@ html[lang="en"] .locale {
     mix-blend-mode: difference;
     z-index: 9999;
     transition: .3s cubic-bezier(0.23, 1, 0.32, 1);
+    opacity: 0;
   }
   .mouse-cursor {
     width: 8px;
@@ -149,17 +150,22 @@ html[lang="en"] .locale {
     border: 1px solid #fff;
     transition-timing-function: ease-out;
   }
-}
-/* リンクホバー時：カーソル拡大、ストーカー縮小 */
-.cursor--active {
-  width: 10px;
-  height: 10px;
-}
-.stalker--active {
-  top: -11px;
-  left: -11px;
-  width: 32px;
-  height: 32px;
+  /* リンクホバー時：カーソル拡大、ストーカー縮小 */
+  .cursor--active {
+    width: 10px;
+    height: 10px;
+  }
+  .stalker--active {
+    top: -11px;
+    left: -11px;
+    width: 32px;
+    height: 32px;
+  }
+  /* windowからマウスが出たり戻った時の処理 */
+  .mouse-out {
+    opacity: 0 !important;
+  }
+
 }
 
 
