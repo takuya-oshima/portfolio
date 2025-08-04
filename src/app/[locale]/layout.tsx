@@ -7,6 +7,7 @@ import { GoogleTagManager } from '@next/third-parties/google'
 
 //componentのimport
 import { FirstVisitProvider } from "@/components/FirstVisitProvider";
+import AdobeFontLoader from "@/components/AdobeFontLoader";
 import ThemeWrapper from "@/components/ThemeWrapper";
 import LenisWrapper from "@/components/LenisWrapper";
 import Header from "@/components/Header";
@@ -94,7 +95,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
   return (
     <html lang={locale} className={layoutClassNames}>
       <head>
-        <link rel="stylesheet" href="https://use.typekit.net/vus0aaz.css" />
+        <AdobeFontLoader />
         <link rel="icon" href="/images/favicon.ico" type="image/x-icon" sizes="16x16" />
         <link rel="icon" href="/images/favicon-32×32" type="image/png" sizes="32x32" />
         <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
