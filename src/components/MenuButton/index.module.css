@@ -1,0 +1,66 @@
+.menubtn {
+  transition: .5s cubic-bezier(0.23, 1, 0.32, 1);
+  span {
+    transition: inherit;
+    transform-origin: center ;
+  }
+  &:hover {
+    width: 42px;
+    height: 42px;
+  }
+}
+.close {
+  &:hover {
+    span {
+      background-color: #999;
+      &:nth-child(1) {
+        opacity: 0;
+      }
+      &:nth-child(3) {
+        opacity: 0;
+      }
+    }
+  }
+}
+.open {
+  span {
+    &:nth-child(1) {
+      width: 20px;
+      height: 2px;
+      transform: translateX(14px) rotate(45deg) ;
+    }
+    &:nth-child(2) {
+      display: none;
+    }
+    &:nth-child(3) {
+      width: 20px;
+      height: 2px;
+      transform: translateX(-14px) rotate(-45deg);
+    }
+  }
+  &:hover {
+    span {
+      &:nth-child(1) {
+        width: 16px;
+        height: 2px;
+        transform: translateX(12px) rotate(45deg) ;
+      }
+      &:nth-child(3) {
+        width: 16px;
+        height: 2px;
+        transform: translateX(-12px) rotate(-45deg);
+      }
+    }
+  }
+}
+:global(.light) .menubtn {
+  &:hover {
+    span {
+      background-color: #999;
+    }
+  }
+}
+.animationInitialHidden {
+  opacity: 0;
+  will-change: opacity;
+}

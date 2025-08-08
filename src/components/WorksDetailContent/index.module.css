@@ -1,0 +1,48 @@
+.textLink {
+  position: relative;
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 1px;
+    background-color: var(--text-color);
+    transform: scaleX(0);
+    transform-origin: right center;
+    transition: transform .3s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  &:hover {
+    &::before {
+      transform: scaleX(1);
+      transform-origin: left center;
+    }
+  }
+}
+.animationMarqueeLeft {
+  animation: marquee-left 20s linear infinite;
+}
+@keyframes marquee-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+.animationMarqueeRight {
+  animation: marquee-right 20s linear infinite;
+}
+@keyframes marquee-right {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+.animationInitialHidden {
+  opacity: 0;
+  will-change: opacity;
+}

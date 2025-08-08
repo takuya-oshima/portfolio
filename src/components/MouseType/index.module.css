@@ -1,0 +1,43 @@
+@media screen and (min-width:960px) {
+  .mouseCursor,
+  .mouseStalker {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: difference;
+    z-index: 9999;
+    transition: .3s cubic-bezier(0.23, 1, 0.32, 1);
+    opacity: 0;
+  }
+  .mouseCursor {
+    width: 8px;
+    height: 8px;
+    background-color: #fff;
+  }
+  .mouseStalker {
+    top: -24px;
+    left: -24px;
+    width: 56px;
+    height: 56px;
+    border: 1px solid #fff;
+    transition-timing-function: ease-out;
+  }
+  /* リンクホバー時：カーソル拡大、ストーカー縮小 */
+  .cursorActive {
+    width: 10px;
+    height: 10px;
+  }
+  .stalkerActive {
+    top: -11px;
+    left: -11px;
+    width: 32px;
+    height: 32px;
+  }
+  /* windowからマウスが出たり戻った時の処理 */
+  .mouseOut {
+    opacity: 0 !important;
+  }
+}

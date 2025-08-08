@@ -16,6 +16,7 @@ import MailAddress from "@/components/MailAddress";
 import IconFacebook from "@/components/IconFacebook";
 import IconInstagram from "@/components/IconInstagram";
 import IconGithub from "@/components/IconGithub";
+import styles from "./index.module.css"
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -96,7 +97,7 @@ export default function ProfileContent() {
       <div ref={titleRef}>
         <PageTitleSide pageTitleSide="PROFILE" />
       </div>
-      <div ref={contentRef} className="animation-initial-hidden relative">
+      <div ref={contentRef} className={`${styles.animationInitialHidden} relative`}>
         <div className="-ml-left-custom-sm md:-ml-24 lg:ml-0 mb-42 text-center">
           <div className="mb-4">{t("name")}</div>
           <PageTitleHead pageTitleHead="Takuya Oshima" />

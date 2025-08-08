@@ -11,6 +11,7 @@ import IconInstagram from "@/components/IconInstagram";
 import IconGithub from "@/components/IconGithub";
 import Prefetcher from "@/components/Prefetcher";
 import { Link } from "@/i18n/routing";
+import styles from "./index.module.css";
 
 //型の定義
 type Props = {
@@ -98,16 +99,22 @@ export default function Menu({ isOpen, setIsOpen }: Props ){
 
   //メニューリストのホバー時にclassを付与
   useEffect(() => {
-    const menuItems = document.querySelectorAll(".menu-item"); //メニューリストを取得
+    // isOpenがfalseのときは何もしない
+    if (!isOpen) return;
+
+    const menuItems = document.querySelectorAll(`.${styles.menuItem}`); //メニューリストを取得
+
+    // 要素が見つからない場合は処理を中断
+    if (!menuItems || menuItems.length === 0) return;
 
     // ホバーしたメニューアイテム以外にclassを付与
     const handleEnter = (e: Event) => {
       const target = e.currentTarget as HTMLElement;
       menuItems.forEach((menuitem) => {
         if (menuitem !== target) {
-          menuitem.classList.add("inactive"); // 他の要素にinactiveクラスを付与
+          menuitem.classList.add(styles.inactive); // 他の要素にinactiveクラスを付与
         } else {
-          menuitem.classList.remove("inactive"); // ホバー対象にはinactiveにならないように
+          menuitem.classList.remove(styles.inactive); // ホバー対象にはinactiveにならないように
         }
       });
     };
@@ -115,7 +122,7 @@ export default function Menu({ isOpen, setIsOpen }: Props ){
     // 全てのinactiveクラスを外す
     const handleLeave = () => {
       menuItems.forEach((menuitem) => {
-        menuitem.classList.remove("inactive");
+        menuitem.classList.remove(styles.inactive);
       });
     };
 
@@ -126,16 +133,17 @@ export default function Menu({ isOpen, setIsOpen }: Props ){
     });
 
     //クリーンアップ
+    // isOpenがfalseに変わる時、またはコンポーネントがアンマウントされる時に実行される
     return () => {
       menuItems.forEach((menuitem) => {
         menuitem.addEventListener("mouseenter", handleEnter);
         menuitem.addEventListener("mouseleave", handleLeave);
       });
     };
-  }, []);
+  }, [isOpen]);
 
   return (
-    <div ref={menuRef} className="global-navi hidden first-letter:opacity-0 w-screen fixed z-40 inset-0 bg-background-light dark:bg-background-dark">
+    <div ref={menuRef} className={`${styles.globalNavi} hidden first-letter:opacity-0 w-screen fixed z-40 inset-0 bg-background-light dark:bg-background-dark`}>
       <div className="fixed z-40 inset-y-0 -left-2.5 md:-left-5 writing-mode-vertical-rl text-6xl md:text-title text-center tracking-wide">
         <div className="inline-block overflow-hidden"><div ref={titleRef}>MENU</div></div>
       </div>
@@ -149,25 +157,25 @@ export default function Menu({ isOpen, setIsOpen }: Props ){
           <li className="inline-block overflow-hidden text-3.5xl leading-none text-right" onClick={() => setIsOpen(false)}>
             <div>
               <Prefetcher href="/" />
-              <Link className="menu-item block py-5 pr-[.9375rem] md:pr-10" href="/">Home</Link>
+              <Link className={`${styles.menuItem} block py-5 pr-[.9375rem] md:pr-10`} href="/">Home</Link>
             </div>
           </li>
           <li className="inline-block overflow-hidden text-3.5xl leading-none text-right" onClick={() => setIsOpen(false)}>
             <div>
               <Prefetcher href="/works/" />
-              <Link className="menu-item block py-5 pr-[.9375rem] md:pr-10" href="/works/">Works</Link>
+              <Link className={`${styles.menuItem} block py-5 pr-[.9375rem] md:pr-10`} href="/works/">Works</Link>
             </div>
           </li>
           <li className="inline-block overflow-hidden text-3.5xl leading-none text-right" onClick={() => setIsOpen(false)}>
             <div>
               <Prefetcher href="/profile/" />
-              <Link className="menu-item block py-5 pr-[.9375rem] md:pr-10" href="/profile/">Profile</Link>
+              <Link className={`${styles.menuItem} block py-5 pr-[.9375rem] md:pr-10`} href="/profile/">Profile</Link>
             </div>
           </li>
           <li className="inline-block overflow-hidden text-3.5xl leading-none text-right" onClick={() => setIsOpen(false)}>
             <div>
               <Prefetcher href="/contact/" />
-              <Link className="menu-item block py-5 pr-[.9375rem] md:pr-10" href="/contact/">Contact</Link>
+              <Link className={`${styles.menuItem} block py-5 pr-[.9375rem] md:pr-10`} href="/contact/">Contact</Link>
             </div>
           </li>
         </ul>

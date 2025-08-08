@@ -7,6 +7,7 @@ import {
   type ISourceOptions,
 } from "@tsparticles/engine";
 import { loadSlim } from "@tsparticles/slim";
+import styles from "./index.module.css";
 
 
 export default function BackgroundParticle() {
@@ -280,7 +281,7 @@ export default function BackgroundParticle() {
 
   if (init) {
     return (
-      <Particles id="background-tsparticles" className="background-tsparticles" particlesLoaded={particlesLoaded} options={options} />
+      <Particles className={styles.backgroundTsparticles} particlesLoaded={particlesLoaded} options={options} />
     );
   }
 

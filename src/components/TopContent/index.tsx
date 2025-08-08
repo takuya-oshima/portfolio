@@ -6,6 +6,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import Prefetcher from "@/components/Prefetcher";
 import { Link } from "@/i18n/routing";
+import styles from "./index.module.css";
 
 // SSRを無効にしてクライアント側でのみ読み込む
 const BackgroundStar = dynamic(() => import("@/components/BackgroundStar"), { ssr: false });
@@ -132,20 +133,20 @@ export default function TopContent() {
   });
 
   return (
-    <div ref={containerRef} className="top h-fit">
+    <div ref={containerRef} className="h-fit cursor-none">
       <div className="top-contents relative z-10">
-        <div ref={titleRef} className="animation-initial-hidden mt-[18vh] md:mt-24 lg:mt-8 mb-[15vh] lg:mb-32 text-center tracking-wide top-text-shadow">
+        <div ref={titleRef} className={`${styles.textShadow} ${styles.animationInitialHidden} mt-[18vh] md:mt-24 lg:mt-8 mb-[15vh] lg:mb-32 text-center tracking-wide`}>
           <h1 className="mb-8 md:mb-14 text-5xl md:text-8xl lg:text-index-title font-normal whitespace-nowrap">Takuya Oshima</h1>
           <h2 className="text-lg md:text-xl lg:text-3.5xl font-normal">Web Designer / Frontend Developer</h2>
         </div>
-        <ul ref={menuRef} className="animation-initial-hidden mb-24 text-center tracking-wide top-text-shadow">
-          <li className="mb-10 text-xl md:text-2xl"><Prefetcher href="/works/" /><Link className="text-link" href="/works">Works</Link></li>
-          <li className="mb-10 text-xl md:text-2xl"><Prefetcher href="/profile/" /><Link className="text-link" href="/profile">Profile</Link></li>
-          <li className="text-xl md:text-2xl"><Prefetcher href="/contact/" /><Link className="text-link" href="/contact">Contact</Link></li>
+        <ul ref={menuRef} className={`${styles.textShadow} ${styles.animationInitialHidden} mb-24 text-center tracking-wide`}>
+          <li className="mb-10 text-xl md:text-2xl"><Prefetcher href="/works/" /><Link className={styles.textLink} href="/works">Works</Link></li>
+          <li className="mb-10 text-xl md:text-2xl"><Prefetcher href="/profile/" /><Link className={styles.textLink} href="/profile">Profile</Link></li>
+          <li className="text-xl md:text-2xl"><Prefetcher href="/contact/" /><Link className={styles.textLink} href="/contact">Contact</Link></li>
         </ul>
       </div>
       <OpeningAnimation ref={openingAnimationRef} openingTextRef={openingTextRef} />
-      <div ref={backgroundRef} className="background-container animation-initial-hidden">
+      <div ref={backgroundRef} className={`${styles.animationInitialHidden} background-container`}>
         <BackgroundStar />
         <BackgroundParticle />
         <BackgroundTopVisual />

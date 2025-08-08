@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef } from "react";
+import styles from "./index.module.css";
 
 export default function BackgroundStar({ count = 120 }) {
   const backgroundStarsRef = useRef<HTMLDivElement>(null);
@@ -13,7 +14,7 @@ export default function BackgroundStar({ count = 120 }) {
 
     for (let i = 0; i < count; i++) {
       const starEl = document.createElement("span");
-      starEl.className = "star";
+      starEl.className = styles.star;
       const minSize = 1;
       const maxSize = 3;
       const size = Math.random() * (maxSize - minSize) + minSize;
@@ -29,6 +30,6 @@ export default function BackgroundStar({ count = 120 }) {
   }, [count]);
 
   return(
-    <div ref={backgroundStarsRef} id="background-stars" className="background-stars"></div>
+    <div ref={backgroundStarsRef} className={styles.backgroundStars}></div>
   );
 };

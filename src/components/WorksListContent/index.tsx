@@ -6,6 +6,7 @@ import gsap from "gsap";
 import PageTitleSide from "@/components/PageTitleSide";
 import WorksList from "@/components/WorksList";
 import type { Works } from "@/libs/microcms";
+import styles from "./index.module.css";
 
 type Props = {
   works: Works[];
@@ -51,11 +52,11 @@ export default function WorksListContent({ works, locale }: Props) {
 
   return (
     <section className="ml-left-custom-sm md:ml-24 lg:ml-0">
-      <div id="bg" className="fixed top-0 left-0 w-full h-full bg-center bg-cover transition-all duration-500 -z-10" style={{ backgroundImage: `url(${bgImage})` }} />
+      <div className={`${styles.bg} fixed top-0 left-0 w-full h-full bg-center bg-cover transition-all duration-500 -z-10`} style={{ backgroundImage: `url(${bgImage})` }} />
       <div ref={titleRef}>
         <PageTitleSide pageTitleSide="WORKS" />
       </div>
-      <div ref={contentRef} className="animation-initial-hidden relative">
+      <div ref={contentRef} className={`${styles.animationInitialHidden} relative`}>
         <WorksList works={works} locale={locale} setBgImage={setBgImage} />
       </div>
     </section>

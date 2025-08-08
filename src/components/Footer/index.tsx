@@ -4,7 +4,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useRef } from "react";
 import { useFirstVisit } from "@/components/FirstVisitProvider";
-
+import styles from "./index.module.css";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -55,7 +55,7 @@ export default function Footer() {
   }, { dependencies: [isTopPage, isFirstVisit] });
 
   return (
-    <footer ref={footerRef} className="animation-initial-hidden w-full mt-auto py-4 px-custom md:px-4 lg:px-10">
+    <footer ref={footerRef} className={`${styles.animationInitialHidden} w-full mt-auto py-4 px-custom md:px-4 lg:px-10`}>
       <div className="text-center tracking-wide text-sm">&copy;{year} Takuya Oshima All rights reserved</div>
     </footer>
   );

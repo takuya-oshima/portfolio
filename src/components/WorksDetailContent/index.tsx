@@ -18,6 +18,7 @@ import DetailCircle from "@/components/DetailCircle";
 import Prefetcher from "@/components/Prefetcher";
 import { getWorksDetail } from "@/libs/microcms";
 import { formatDate } from "@/libs/utils";
+import styles from "./index.module.css"
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -137,13 +138,13 @@ export default function WorksDetailContent( { locale, data }: Props) {
       <div ref={titleRef} className="page-title">
         <PageTitleSide pageTitleSide={data.titleAbbreviation} />
       </div>
-      <div ref={contentRef} className="animation-initial-hidden relative">
+      <div ref={contentRef} className={`${styles.animationInitialHidden} relative`}>
         <div className="-ml-left-custom-sm md:-ml-24 lg:ml-0 mb-32 md:mb-42 text-center">
           {locale === "ja" && (
             <div className="mb-2 md:mb-4 lg:mb-8 font-ja text-base lg:text-lg">{data.title_ja}</div>
           )}
           <PageTitleHead pageTitleHead={data.title_en} />
-          <PageLead>URL： <a href={data.url} target="_blank" rel="noopener" className="text-link">{data.url}</a></PageLead>
+          <PageLead>URL： <a href={data.url} target="_blank" rel="noopener" className={styles.textLink}>{data.url}</a></PageLead>
           <PageLead>Type： {data.category.name}</PageLead>
         </div>
         <div ref={mainImageRef} className="-ml-left-custom-sm md:-ml-24 lg:ml-0 mb-34 md:mb-[12.5rem]">
@@ -195,7 +196,7 @@ export default function WorksDetailContent( { locale, data }: Props) {
             <h2 className="mb-8 md:mb-14 2xl:mb-[4.5rem] text-center text-[2.5rem] md:text-5xl 2xl:text-7xl leading-relaxed tracking-wide">DETAILS</h2>
             <div className="grid gap-y-4 md:gap-y-6 mb-[5.5rem]">
               <h3 className="text-2xl md:text-3.5xl text-center">INFO</h3>
-              <CreditItem creditTitle="URL" creditData={<a href={data.url} target="_blank" rel="noopener" className="text-link">{data.url}</a>} />
+              <CreditItem creditTitle="URL" creditData={<a href={data.url} target="_blank" rel="noopener" className={styles.textLink}>{data.url}</a>} />
               <CreditItem creditTitle="Release Date" creditData={formatDate(data.releaseDate)} />
               <CreditItem creditTitle="Type" creditData={data.category.name} />
               <CreditItem creditTitle="Technologies & Tools" creditData={data.technologiesTools} />
@@ -212,7 +213,7 @@ export default function WorksDetailContent( { locale, data }: Props) {
           <ul className="flex justify-center items-center gap-x-8 md:gap-x-16 lg:gap-x-32 text-base md:text-xl">
             <li>
               <Prefetcher href="/works/" />
-              <Link href="/works/" className="text-[2.5rem] md:text-5xl 2xl:text-7xl text-link">Works list</Link>
+              <Link href="/works/" className={`text-[2.5rem] md:text-5xl 2xl:text-7xl ${styles.textLink}`}>Works list</Link>
               </li>
           </ul>
         </div>

@@ -3,8 +3,9 @@
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import styles from "./index.module.css";
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(ScrollToPlugin);
@@ -14,8 +15,8 @@ export default function DetailCircle() {
   const scrollToTarget = () => {
     gsap.to(window, {
       duration: .3,
-      scrollTo: '#details',
-      ease: 'none',
+      scrollTo: "#details",
+      ease: "none",
     });
   };
 
@@ -32,24 +33,24 @@ export default function DetailCircle() {
       gsap.to(outsideCircle, {
         rotation: -1440,
         scrollTrigger: {
-          start: 'top top',
-          end: 'bottom bottom',
+          start: "top top",
+          end: "bottom bottom",
           scrub: true,
         },
       })
       gsap.to(insideCircle, {
         rotation: 1440,
         scrollTrigger: {
-          start: 'top top',
-          end: 'bottom bottom',
+          start: "top top",
+          end: "bottom bottom",
           scrub: true,
         },
       })
       gsap.to(secondHand, {
         rotation: 360,
         scrollTrigger: {
-          start: 'top top',
-          end: 'bottom bottom',
+          start: "top top",
+          end: "bottom bottom",
           scrub: true,
         }
       })
@@ -58,7 +59,7 @@ export default function DetailCircle() {
   },[]);
 
   return (
-    <div className="animation-initial-hidden fixed bottom-10 right-custom md:right-4 lg:right-10 z-10 w-min h-min cursor-pointer mix-blend-difference invert dark:invert-0">
+    <div className={`${styles.animationInitialHidden} fixed bottom-10 right-custom md:right-4 lg:right-10 z-10 w-min h-min cursor-pointer mix-blend-difference invert dark:invert-0`}>
       <div onClick={scrollToTarget}>
         <div ref={outsideCircleRef} className="w-[120px] md:w-[180px] m-auto will-change-transform">
           <svg className="fill-primary-light dark:fill-primary-dark" viewBox="0 0 132.49 133.04" id="outside-circle" data-name="outside-circle" xmlns="http://www.w3.org/2000/svg"><defs></defs><g><g>

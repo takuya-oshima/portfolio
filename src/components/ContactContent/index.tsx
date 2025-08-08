@@ -9,6 +9,7 @@ import MailAddress from "@/components/MailAddress";
 import IconFacebook from "@/components/IconFacebook";
 import IconInstagram from "@/components/IconInstagram";
 import IconGithub from "@/components/IconGithub";
+import styles from "./index.module.css";
 
 export default function ContactContent() {
   const t = useTranslations("ContactPage");
@@ -51,7 +52,7 @@ export default function ContactContent() {
       <div ref={titleRef}>
         <PageTitleSide pageTitleSide="CONTACT" />
       </div>
-      <div ref={contentRef} className="animation-initial-hidden relative mt-[11vh]">
+      <div ref={contentRef} className={`${styles.animationInitialHidden}relative mt-[11vh]`}>
         <div className="-ml-left-custom-sm md:-ml-24 lg:ml-0 text-center">
           <p className="mx-10 mb-10 text-base md:text-xl leading-loose locale">
             {t("contactText").split("\n").map((line, index) => (

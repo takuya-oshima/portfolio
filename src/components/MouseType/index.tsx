@@ -1,5 +1,6 @@
 "use client";
 import { useRef,useEffect } from "react";
+import styles from "./index.module.css";
 
 export default function MouseType() {
   const mouseCursorRef = useRef<HTMLDivElement>(null);
@@ -56,11 +57,11 @@ export default function MouseType() {
       const handleMouseOver = (e: MouseEvent) => {
         // マウスが乗った要素、またはその親要素が 'a' または 'button' かをチェック
         if (e.target instanceof Element && e.target.closest('a, button')) {
-          mouseCursor.classList.add("cursor--active");
-          mouseStalker.classList.add("stalker--active");
+          mouseCursor.classList.add(styles.cursorActive);
+          mouseStalker.classList.add(styles.stalkerActive);
         } else {
-          mouseCursor.classList.remove("cursor--active");
-          mouseStalker.classList.remove("stalker--active");
+          mouseCursor.classList.remove(styles.cursorActive);
+          mouseStalker.classList.remove(styles.stalkerActive);
         }
       };
 
@@ -68,15 +69,15 @@ export default function MouseType() {
       // マウスカーソルがウィンドウ領域から完全に出た時の処理
       const handleMouseOutWindow = () => {
         if (mouseStalker) {
-          mouseCursor.classList.add("mouse-out");
-          mouseStalker.classList.add("mouse-out");
+          mouseCursor.classList.add(styles.mouseOut);
+          mouseStalker.classList.add(styles.mouseOut);
         }
       };
       // マウスカーソルがウィンドウ領域内に戻ってきた時の処理
       const handleMouseOverWindow = () => {
         if (mouseStalker) {
-          mouseCursor.classList.remove("mouse-out");
-          mouseStalker.classList.remove("mouse-out");
+          mouseCursor.classList.remove(styles.mouseOut);
+          mouseStalker.classList.remove(styles.mouseOut);
         }
       };
 
@@ -111,8 +112,8 @@ export default function MouseType() {
 
   return (
     <>
-      <div ref={mouseCursorRef} className="mouse-cursor"></div>
-      <div ref={mouseStalkerRef} className="mouse-stalker"></div>
+      <div ref={mouseCursorRef} className={styles.mouseCursor}></div>
+      <div ref={mouseStalkerRef} className={styles.mouseStalker}></div>
     </>
   );
 };
