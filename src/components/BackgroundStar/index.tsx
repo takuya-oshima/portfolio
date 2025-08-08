@@ -30,6 +30,6 @@ export default function BackgroundStar({ count = 120 }) {
   }, [count]);
 
   return(
-    <div ref={backgroundStarsRef} className={styles.backgroundStars}></div>
+    <div ref={backgroundStarsRef} id="background-stars" className={styles.backgroundStars}></div>
   );
 };

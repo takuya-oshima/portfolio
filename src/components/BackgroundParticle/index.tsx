@@ -281,7 +281,7 @@ export default function BackgroundParticle() {
 
   if (init) {
     return (
-      <Particles className={styles.backgroundTsparticles} particlesLoaded={particlesLoaded} options={options} />
+      <Particles id="backgroun-tsparticles" className={styles.backgroundTsparticles} particlesLoaded={particlesLoaded} options={options} />
     );
   }
 
