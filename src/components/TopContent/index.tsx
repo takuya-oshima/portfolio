@@ -9,13 +9,13 @@ import { Link } from "@/i18n/routing";
 import styles from "./index.module.css";
 
 // SSRを無効にしてクライアント側でのみ読み込む
+const MouseType = dynamic(() => import('@/components/MouseType'), { ssr: false });
 const BackgroundStar = dynamic(() => import("@/components/BackgroundStar"), { ssr: false });
 const BackgroundParticle = dynamic(() => import("@/components/BackgroundParticle"), { ssr: false });
 const BackgroundTopVisual = dynamic(() => import("@/components/BackgroundTopVisual"), { ssr: false });
 
 import OpeningAnimation from "@/components/OpeningAnimation";
 import { useFirstVisit } from "@/components/FirstVisitProvider";
-import MouseType from "@/components/MouseType";
 
 
 export default function TopContent() {
