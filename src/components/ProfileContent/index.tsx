@@ -33,6 +33,19 @@ export default function ProfileContent() {
   const skillRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
+    Promise.all([
+      import("gsap"),
+      import("gsap/ScrollTrigger")
+    ]).then(([gsapModule, scrollTriggerModule]) => {
+      const gsap = gsapModule.default;
+      const ScrollTrigger = scrollTriggerModule.ScrollTrigger;
+      gsap.registerPlugin(ScrollTrigger);
+
+      // ここにアニメーション処理を入れる
+    });
+  }, []);
+
+  useGSAP(() => {
     const title = titleRef.current?.children;
     const content = contentRef.current;
 
@@ -60,6 +73,7 @@ export default function ProfileContent() {
         ease: "power3.out",
       });
     };
+
 
     const field = fieldRef.current;
     const skill = skillRef.current;

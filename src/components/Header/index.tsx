@@ -1,8 +1,9 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useState } from 'react';
 import MenuButton from "@/components/MenuButton";
-import Menu from "@/components/Menu";
+const Menu = dynamic(() => import('@/components/Menu'), { ssr: false });
 
 export default function Header(){
   const [isOpen, setIsOpen] = useState(false);

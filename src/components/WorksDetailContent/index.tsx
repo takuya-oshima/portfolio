@@ -1,5 +1,6 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { Link } from "@/i18n/routing";
 import React from "react";
 import Image from "next/image";
@@ -9,16 +10,18 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import PageTitleSide from "@/components/PageTitleSide";
 import PageTitleHead from "@/components/PageTitleHead";
-import PageLead from "@/components/PageLead";
-import BlockTitle from "@/components/BlockTitle";
-import LinkButton from "@/components/LinkButton";
-import MarqueeText from "@/components/MarqueeText";
-import CreditItem from "@/components/CreditItem";
 import DetailCircle from "@/components/DetailCircle";
 import Prefetcher from "@/components/Prefetcher";
 import { getWorksDetail } from "@/libs/microcms";
 import { formatDate } from "@/libs/utils";
 import styles from "./index.module.css"
+
+const BlockTitle = dynamic(() => import('@/components/BlockTitle'), { ssr: false });
+const PageLead = dynamic(() => import('@/components/PageLead'), { ssr: false });
+const LinkButton = dynamic(() => import('@/components/LinkButton'), { ssr: false });
+const MarqueeText = dynamic(() => import('@/components/MarqueeText'), { ssr: false });
+const CreditItem = dynamic(() => import('@/components/CreditItem'), { ssr: false });
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -149,7 +152,7 @@ export default function WorksDetailContent( { locale, data }: Props) {
         </div>
         <div ref={mainImageRef} className="-ml-left-custom-sm md:-ml-24 lg:ml-0 mb-34 md:mb-[12.5rem]">
           <figure className="w-screen mx-[calc((100vw-100%)/-2)] overflow-hidden">
-            <Image className="w-full" src={`${data.mainImage.url}?fm=webp`} width={data.mainImage.width} height={data.mainImage.height} alt={locale === "ja" ? data.title_ja : data.title_en + "TopImage"} priority sizes="(max-width: 768px) 100vw" />
+            <Image className="w-full" src={`${data.mainImage.url}?fm=webp`} width={data.mainImage.width} height={data.mainImage.height} alt={locale === "ja" ? data.title_ja : data.title_en + "TopImage"} priority sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1920px" />
           </figure>
         </div>
         <div ref={overviewRef} className="lg:w-10/12 2xl:w-full xl:grid xl:grid-cols-2 mx-auto mb-34 md:mb-[12.5rem]">
@@ -174,7 +177,7 @@ export default function WorksDetailContent( { locale, data }: Props) {
           <div className="-ml-left-custom-sm md:-ml-24 lg:ml-0 mb-34 md:mb-[12.5rem]">
           {data.pageImagesPC?.map((pageImagePC, index) => (
             <figure key={index} className="w-screen mx-[calc((100vw-100%)/-2)] mb-34 md:mb-42">
-              <Image className="xl:w-[1120px] mx-auto" src={`${pageImagePC.url}?fm=webp`} width={pageImagePC.width} height={pageImagePC.height} alt={locale === "ja" ? data.title_ja : data.title_en + `UnderImage ${index + 1}`} loading="lazy" sizes="(max-width: 768px) 100vw, 1120px" />
+              <Image className="xl:w-[1120px] mx-auto" src={`${pageImagePC.url}?fm=webp`} width={pageImagePC.width} height={pageImagePC.height} alt={locale === "ja" ? data.title_ja : data.title_en + `UnderImage ${index + 1}`} loading="lazy" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1120px" />
             </figure>
           ))}
           </div>
