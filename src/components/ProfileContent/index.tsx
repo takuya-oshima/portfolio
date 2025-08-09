@@ -1,5 +1,6 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
@@ -8,15 +9,18 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import PageTitleSide from "@/components/PageTitleSide";
 import PageTitleHead from "@/components/PageTitleHead";
 import PageLead from "@/components/PageLead";
-import BlockTitle from "@/components/BlockTitle";
 import TextBase from "@/components/TextBase";
-import TextLarge from "@/components/TextLarge";
-import MarqueeText from "@/components/MarqueeText";
-import MailAddress from "@/components/MailAddress";
-import IconFacebook from "@/components/IconFacebook";
-import IconInstagram from "@/components/IconInstagram";
-import IconGithub from "@/components/IconGithub";
 import styles from "./index.module.css"
+
+// SSRを無効にしてクライアント側でのみ読み込む
+const MarqueeText = dynamic(() => import('@/components/MarqueeText'), { ssr: false });
+const BlockTitle = dynamic(() => import('@/components/BlockTitle'), { ssr: false });
+const TextLarge = dynamic(() => import('@/components/TextLarge'), { ssr: false });
+const MailAddress = dynamic(() => import('@/components/MailAddress'), { ssr: false });
+const IconFacebook = dynamic(() => import('@/components/IconFacebook'), { ssr: false });
+const IconInstagram = dynamic(() => import('@/components/IconInstagram'), { ssr: false });
+const IconGithub = dynamic(() => import('@/components/IconGithub'), { ssr: false });
+
 
 gsap.registerPlugin(ScrollTrigger);
 
