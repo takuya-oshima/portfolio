@@ -11,11 +11,11 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        didot:  "var(--font-family-didot)",
-        notoJP: "var(--font-family-noto-jp)",
-        roboto: "var(--font-family-roboto)",
-        ja: ["Roboto", "Noto Sans JP", "sans-serif"],
-        angel: ["angel", "sans-serif"]
+        didot:  ["var(--font-didot)"],
+        notoJP: ["var(--font-noto-sans-jp)"],
+        roboto: ["var(--font-roboto)"],
+        ja: ['var(--font-roboto)', 'var(--font-noto-sans-jp)', 'sans-serif'],
+        angel: ['var(--font-angel)'],
       },
       colors: {
         primary: {

@@ -15,6 +15,7 @@ import Footer from "@/components/Footer";
 
 //font-familyのimport
 import { Noto_Sans_JP, Roboto } from "next/font/google";
+import localFont from 'next/font/local'; // localFontをインポート
 
 //GlobalCSSのimport
 import "@/styles/globals.css";
@@ -34,6 +35,12 @@ const roboto = Roboto({
   variable: "--font-roboto",
   display: "swap",
 })
+//font family angelFontの設定
+const angel = localFont({
+  src: "../../fonts/angel.woff",
+  variable: "--font-angel",
+  display: "swap",
+});
 
 //meta情報の設定
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
@@ -90,7 +97,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
   const messages = messagesMap[locale as keyof typeof messagesMap] ?? messagesMap.ja;
 
   //クラス名を定義
-  const layoutClassNames = `${roboto.variable} ${notoSansJP.variable}`;
+  const layoutClassNames = `${roboto.variable} ${notoSansJP.variable} ${angel.variable}`;
 
   return (
     <html lang={locale} className={layoutClassNames}>

@@ -172,7 +172,7 @@ export default function WorksDetailContent( { locale, data }: Props) {
         </div>
         <MarqueeText text={data.titleAbbreviation} className="text-4xl md:text-6xl" />
         <MarqueeText text={data.titleAbbreviation} className="text-4xl md:text-6xl" direction="right" fontClassName="font-angel" />
-        <MarqueeText text={data.titleKana} className="text-[2rem] md:text-[3.25rem] mb-40" />
+        <MarqueeText text={data.titleKana} className="text-[2rem] md:text-[3.25rem] mb-40" fontClassName="font-notoJP" />
         <div ref={imagesRef} className="images">
           <div className="-ml-left-custom-sm md:-ml-24 lg:ml-0 mb-34 md:mb-[12.5rem]">
           {data.pageImagesPC?.map((pageImagePC, index) => (
@@ -193,7 +193,7 @@ export default function WorksDetailContent( { locale, data }: Props) {
         </div>
         <MarqueeText text={data.titleAbbreviation} className="text-4xl md:text-6xl" />
         <MarqueeText text={data.titleAbbreviation} className="text-4xl md:text-6xl" direction="right" fontClassName="font-angel" />
-        <MarqueeText text={data.titleKana} className="text-[2rem] md:text-[3.25rem] mb-20" />
+        <MarqueeText text={data.titleKana} className="text-[2rem] md:text-[3.25rem] mb-20" fontClassName="font-notoJP" />
         <div id="details" className="-ml-left-custom-sm md:-ml-24 lg:ml-0 mb-34 md:mb-[12.5rem] black">
           <div className="w-screen mx-[calc((100vw-100%)/-2)] bg-black text-white py-20 2xl:py-32 px-custom">
             <h2 className="mb-8 md:mb-14 2xl:mb-[4.5rem] text-center text-[2.5rem] md:text-5xl 2xl:text-7xl leading-relaxed tracking-wide">DETAILS</h2>
