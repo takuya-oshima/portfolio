@@ -61,40 +61,41 @@ export default function ProfileContent() {
       });
     };
 
-
     const field = fieldRef.current;
     const skill = skillRef.current;
 
-    gsap.fromTo(field, {
-      opacity: 0,
-      y: 50
-    },
-    {
-      opacity: 1,
-      x: 0,
-      duration: 0.8,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: field,
-        start: "top 80%",
-        end: "bottom bottom",
+    if (field && skill) {
+      gsap.fromTo(field, {
+        opacity: 0,
+        y: 50
       },
-    });
-    gsap.fromTo(skill, {
-      opacity: 0,
-      y: 50
-    },
-    {
-      opacity: 1,
-      x: 0,
-      duration: 0.8,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: skill,
-        start: "top 80%",
-        end: "bottom bottom",
+      {
+        opacity: 1,
+        x: 0,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: field,
+          start: "top 20%",
+          end: "bottom bottom",
+        },
+      });
+      gsap.fromTo(skill, {
+        opacity: 0,
+        y: 50
       },
-    });
+      {
+        opacity: 1,
+        x: 0,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: skill,
+          start: "top 20%",
+          end: "bottom bottom",
+        },
+      });
+    }
   }, { dependencies: [] });
 
   return (
