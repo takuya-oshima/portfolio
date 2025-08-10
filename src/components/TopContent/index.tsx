@@ -40,11 +40,30 @@ export default function TopContent() {
 
     if(!openingContainer || !openingText || !background || !title || !menu) return;
 
+    // メインコンテンツのフェードインアニメーションを関数化
+    const showMainContent = (timeline: gsap.core.Timeline) => {
+      timeline
+      .fromTo(background, { opacity: 0 }, {
+        opacity: 1,
+        duration: 1.5,
+        ease: "power3.inOut",
+      })
+      .fromTo(title, { opacity: 0, y: 15 }, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power3.Out",
+      })
+      .fromTo(menu, { opacity: 0, y: 10 }, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power3.out",
+      });
+    };
+
     if (isTopPage && isFirstVisit) {
-      tl.fromTo(openingText, {
-        opacity: 0,
-      },
-      {
+      tl.fromTo(openingText, { opacity: 0 }, {
         opacity: 1,
         duration: 2,
         delay: .5,
@@ -56,74 +75,20 @@ export default function TopContent() {
         delay: 2.5,
         ease: "power3.out",
       })
-      .fromTo(openingContainer, {
-        y: 0,
-      },
-      {
+      .fromTo(openingContainer, { y: 0 }, {
         y: "-100%",
         duration: 1,
         ease: "power4.inOut",
-      }, "-=0.5")
-      .fromTo(background, {
-        opacity: 0,
-      },
-      {
-        opacity: 1,
-        duration: 1.5,
-        ease: "power3.inOut",
-      })
-      .fromTo(title, {
-        opacity: 0,
-        y: 15,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: "power3.Out",
-      })
-      .fromTo(menu, {
-        opacity: 0,
-        y: 10,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: "power3.out",
-      });
+      }, "-=0.5");
+
+      // 関数を呼び出してタイムラインに追加
+      showMainContent(tl);
     } else {
-      tl.to(openingContainer, {
-        display: "none"
-      }, "-=0.5")
-      .fromTo(background, {
-        opacity: 0,
-      },
-      {
-        opacity: 1,
-        duration: 1.5,
-        ease: "power3.inOut",
-      })
-      .fromTo(title, {
-        opacity: 0,
-        y: 15,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: "power3.Out",
-      })
-      .fromTo(menu, {
-        opacity: 0,
-        y: 10,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: "power3.out",
-      });
+      // オープニングアニメーションを即座に非表示にする
+      gsap.set(openingContainer, { display: "none" });
+
+      // 関数を呼び出してタイムラインに追加
+      showMainContent(tl);
     }
   }, {
     dependencies: [isFirstVisit],

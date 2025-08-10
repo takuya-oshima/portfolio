@@ -12,15 +12,15 @@ import PageTitleSide from "@/components/PageTitleSide";
 import PageTitleHead from "@/components/PageTitleHead";
 import DetailCircle from "@/components/DetailCircle";
 import Prefetcher from "@/components/Prefetcher";
+import BlockTitle from "@/components/BlockTitle";
+import PageLead from "@/components/PageLead";
+import LinkButton from "@/components/LinkButton";
+import CreditItem from "@/components/CreditItem";
 import { getWorksDetail } from "@/libs/microcms";
 import { formatDate } from "@/libs/utils";
 import styles from "./index.module.css"
 
-const BlockTitle = dynamic(() => import('@/components/BlockTitle'), { ssr: false });
-const PageLead = dynamic(() => import('@/components/PageLead'), { ssr: false });
-const LinkButton = dynamic(() => import('@/components/LinkButton'), { ssr: false });
 const MarqueeText = dynamic(() => import('@/components/MarqueeText'), { ssr: false });
-const CreditItem = dynamic(() => import('@/components/CreditItem'), { ssr: false });
 
 
 gsap.registerPlugin(ScrollTrigger);

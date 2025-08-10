@@ -10,16 +10,16 @@ import PageTitleSide from "@/components/PageTitleSide";
 import PageTitleHead from "@/components/PageTitleHead";
 import PageLead from "@/components/PageLead";
 import TextBase from "@/components/TextBase";
+import BlockTitle from "@/components/BlockTitle";
+import TextLarge from "@/components/TextLarge";
+import MailAddress from "@/components/MailAddress";
+import IconFacebook from "@/components/IconFacebook";
+import IconInstagram from "@/components/IconInstagram";
+import IconGithub from "@/components/IconGithub";
 import styles from "./index.module.css"
 
 // SSRを無効にしてクライアント側でのみ読み込む
 const MarqueeText = dynamic(() => import('@/components/MarqueeText'), { ssr: false });
-const BlockTitle = dynamic(() => import('@/components/BlockTitle'), { ssr: false });
-const TextLarge = dynamic(() => import('@/components/TextLarge'), { ssr: false });
-const MailAddress = dynamic(() => import('@/components/MailAddress'), { ssr: false });
-const IconFacebook = dynamic(() => import('@/components/IconFacebook'), { ssr: false });
-const IconInstagram = dynamic(() => import('@/components/IconInstagram'), { ssr: false });
-const IconGithub = dynamic(() => import('@/components/IconGithub'), { ssr: false });
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -31,19 +31,6 @@ export default function ProfileContent() {
   const contentRef = useRef<HTMLDivElement>(null);
   const fieldRef = useRef<HTMLDivElement>(null);
   const skillRef = useRef<HTMLDivElement>(null);
-
-  useGSAP(() => {
-    Promise.all([
-      import("gsap"),
-      import("gsap/ScrollTrigger")
-    ]).then(([gsapModule, scrollTriggerModule]) => {
-      const gsap = gsapModule.default;
-      const ScrollTrigger = scrollTriggerModule.ScrollTrigger;
-      gsap.registerPlugin(ScrollTrigger);
-
-      // ここにアニメーション処理を入れる
-    });
-  }, []);
 
   useGSAP(() => {
     const title = titleRef.current?.children;

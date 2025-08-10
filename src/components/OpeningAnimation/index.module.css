@@ -1,4 +1,4 @@
 .animationInitialHidden {
   opacity: 0;
-  will-change: opacity;
+  will-change: transform, opacity;
 }
