@@ -22,14 +22,14 @@ import "@/styles/globals.css";
 
 //font family noto sans JPの設定
 const notoSansJP = Noto_Sans_JP({
-  weight: ["400", "700"],
+  weight: ["400"],
   subsets: ["latin"],
   variable: "--font-noto-sans-jp",
   display: "swap",
 });
 //font family robotoの設定
 const roboto = Roboto({
-  weight: ["400", "700"],
+  weight: ["400"],
   subsets: ["latin"],
   variable: "--font-roboto",
   display: "swap",

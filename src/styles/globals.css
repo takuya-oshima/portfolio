@@ -32,7 +32,7 @@ body {
   scroll-behavior: smooth;
 }
 body {
-  font-family: linotype-didot, roboto, "Noto Sans JP", serif;
+  font-family: linotype-didot, roboto, serif;
   font-display: swap;
   color: var(--text-color);
   background-color: var(--background-color);
