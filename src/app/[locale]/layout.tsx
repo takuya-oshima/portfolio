@@ -20,6 +20,9 @@ import localFont from 'next/font/local'; // localFontをインポート
 //GlobalCSSのimport
 import "@/styles/globals.css";
 
+//SpeedInsights
+import { SpeedInsights } from '@vercel/speed-insights/next';
+
 
 //font family noto sans JPの設定
 const notoSansJP = Noto_Sans_JP({
@@ -122,6 +125,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
           </ThemeWrapper>
         </FirstVisitProvider>
         <GoogleTagManager gtmId="GTM-WGVV3GJ" />
+        <SpeedInsights />
       </body>
     </html>
   );
