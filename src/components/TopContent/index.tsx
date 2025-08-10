@@ -6,6 +6,8 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import Prefetcher from "@/components/Prefetcher";
 import { Link } from "@/i18n/routing";
+import OpeningAnimation from "@/components/OpeningAnimation";
+import { useFirstVisit } from "@/components/FirstVisitProvider";
 import styles from "./index.module.css";
 
 // SSRを無効にしてクライアント側でのみ読み込む
@@ -13,9 +15,6 @@ const MouseType = dynamic(() => import('@/components/MouseType'), { ssr: false }
 const BackgroundStar = dynamic(() => import("@/components/BackgroundStar"), { ssr: false });
 const BackgroundParticle = dynamic(() => import("@/components/BackgroundParticle"), { ssr: false });
 const BackgroundTopVisual = dynamic(() => import("@/components/BackgroundTopVisual"), { ssr: false });
-
-import OpeningAnimation from "@/components/OpeningAnimation";
-import { useFirstVisit } from "@/components/FirstVisitProvider";
 
 
 export default function TopContent() {
@@ -135,13 +134,13 @@ export default function TopContent() {
   return (
     <div ref={containerRef} className="h-fit cursor-none">
       <div className="top-contents relative z-10">
-        <div ref={titleRef} className={`${styles.textShadow} ${styles.animationInitialHidden} mt-[18vh] md:mt-24 lg:mt-8 mb-[15vh] lg:mb-32 text-center tracking-wide`}>
+        <div ref={titleRef} className={`${styles.title} ${styles.textShadow} ${styles.animationInitialHidden} mt-[18vh] md:mt-24 lg:mt-8 mb-[15vh] lg:mb-32 text-center tracking-wide`}>
           <h1 className="mb-8 md:mb-14 text-5xl md:text-8xl lg:text-index-title font-normal whitespace-nowrap">Takuya Oshima</h1>
           <h2 className="text-lg md:text-xl lg:text-3.5xl font-normal">Web Designer / Frontend Developer</h2>
         </div>
-        <ul ref={menuRef} className={`${styles.textShadow} ${styles.animationInitialHidden} mb-24 text-center tracking-wide`}>
-          <li className="mb-10 text-xl md:text-2xl"><Prefetcher href="/works/" /><Link className={styles.textLink} href="/works">Works</Link></li>
-          <li className="mb-10 text-xl md:text-2xl"><Prefetcher href="/profile/" /><Link className={styles.textLink} href="/profile">Profile</Link></li>
+        <ul ref={menuRef} className={`${styles.textShadow} ${styles.animationInitialHidden} text-center tracking-wide`}>
+          <li className="mb-8 md:mb-10 text-xl md:text-2xl"><Prefetcher href="/works/" /><Link className={styles.textLink} href="/works">Works</Link></li>
+          <li className="mb-8 md:mb-10 text-xl md:text-2xl"><Prefetcher href="/profile/" /><Link className={styles.textLink} href="/profile">Profile</Link></li>
           <li className="text-xl md:text-2xl"><Prefetcher href="/contact/" /><Link className={styles.textLink} href="/contact">Contact</Link></li>
         </ul>
       </div>

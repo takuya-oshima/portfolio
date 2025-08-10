@@ -1,6 +1,11 @@
 .top {
   cursor: none;
 }
+@media (max-height: 667px) {
+  .title {
+    margin: 10vh 0 10vh;
+  }
+}
 .textShadow {
   text-shadow: 1px 1px 10px rgba(0,0,0,0.15);
 }

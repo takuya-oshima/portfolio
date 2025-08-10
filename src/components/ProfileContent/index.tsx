@@ -166,17 +166,19 @@ export default function ProfileContent() {
                   HTML<br/>
                   CSS<br/>
                   SCSS<br/>
-                  javaScript<br/>
+                  CSS Module<br/>
+                  JavaScript<br/>
                   TypeScript<br/>
                   Next.js<br/>
                   jQuery<br/>
                   WordPress<br/>
+                  Movable Type<br/>
                   MicroCMS<br/>
                   Bootstrap<br/>
                   TailWind CSS<br/>
                   Git/GitHub<br/>
                   webpack<br/>
-                  gulp<br/>
+                  Gulp<br/>
                   Vite
                 </p>
               </dd>

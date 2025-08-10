@@ -5,8 +5,9 @@
     transform-origin: center ;
   }
   &:hover {
-    width: 42px;
-    height: 42px;
+    transform: scale(0.85);
+    /* width: 42px;
+    height: 42px; */
   }
 }
 .close {

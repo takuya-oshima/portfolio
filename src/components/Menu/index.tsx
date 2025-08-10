@@ -152,7 +152,7 @@ export default function Menu({ isOpen, setIsOpen }: Props ){
         <ThemeSwitcher />
       </div>
       {/* <div className="fixed z-40 top-0 right-custom md:right-10 bottom-0 grid place-content-center"></div> */}
-      <div className="fixed z-40 top-0 right-0 bottom-0 grid place-content-center">
+      <div className={`${styles.menulist} fixed z-40 top-0 right-0 bottom-0 grid place-content-center`}>
         <ul ref={menuItemsRef} className="grid tracking-wide">
           <li className="inline-block overflow-hidden text-3.5xl leading-none text-right" onClick={() => setIsOpen(false)}>
             <div>
