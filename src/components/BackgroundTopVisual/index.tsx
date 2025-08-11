@@ -3,7 +3,7 @@ import styles from "./index.module.css";
 
 export default function BackgroundTopVisual() {
   return (
-    <div id="background-top-visual" className={styles.backgroundTopVisual}>
+    <div id="background-top-visual" className={`${styles.backgroundTopVisual} hidden dark:block`}>
       <Image src="/images/img_bg_topvisual.webp" width={1920} height={1080} alt="白い花" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1920px" priority />
     </div>
   );

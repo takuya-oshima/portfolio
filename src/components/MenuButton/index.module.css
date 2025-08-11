@@ -6,8 +6,6 @@
   }
   &:hover {
     transform: scale(0.85);
-    /* width: 42px;
-    height: 42px; */
   }
 }
 .close {
