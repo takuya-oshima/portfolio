@@ -1,6 +1,8 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* 既存のTypeScript設定ファイルを読み込む */
+@config "../../tailwind.config.ts";
+/* tailwindcssをインポートする */
+@import "tailwindcss";
+
 
 :root {
   --text-color: #fff;

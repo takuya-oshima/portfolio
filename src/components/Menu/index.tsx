@@ -144,7 +144,7 @@ export default function Menu({ isOpen, setIsOpen }: Props ){
 
   return (
     <div ref={menuRef} className={`${styles.globalNavi} hidden first-letter:opacity-0 w-screen fixed z-40 inset-0 bg-background-light dark:bg-background-dark`}>
-      <div className="fixed z-40 inset-y-0 -left-2.5 md:-left-5 writing-mode-vertical-rl text-6xl md:text-title text-center tracking-wide">
+      <div className="fixed z-40 top-0 bottom-0 -left-2.5 md:-left-5 writing-mode-vertical-rl text-6xl md:text-title text-center tracking-wide">
         <div className="inline-block overflow-hidden"><div ref={titleRef}>MENU</div></div>
       </div>
       <div ref={settingsRef} className="fixed z-50 top-7 right-24 md:right-36 flex justify-center items-center gap-x-6">
