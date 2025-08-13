@@ -107,7 +107,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
       <head>
         <AdobeFontLoader />
         <link rel="icon" href="/images/favicon.ico" type="image/x-icon" sizes="16x16" />
-        <link rel="icon" href="/images/favicon-32_32" type="image/png" sizes="32x32" />
+        <link rel="icon" href="/images/favicon-32_32.png" type="image/png" sizes="32x32" />
         <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
       </head>
       <body>
