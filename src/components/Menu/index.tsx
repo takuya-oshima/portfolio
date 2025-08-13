@@ -17,9 +17,10 @@ import styles from "./index.module.css";
 type Props = {
   isOpen: boolean; //真偽値の型
   setIsOpen: (open: boolean) => void; //boolean型（true/false）の引数を1つ受け取って、何も返さない関数の型
+  setIsAnimating: (animating: boolean) => void; // 親(Header)から受け取る
 }
 
-export default function Menu({ isOpen, setIsOpen }: Props ){
+export default function Menu({ isOpen, setIsOpen, setIsAnimating }: Props ){
   const menuRef = useRef<HTMLDivElement>(null); //メニュー全体を覆うdivを参照
   const titleRef = useRef<HTMLDivElement>(null); //タイトル「menu」を参照
   const menuItemsRef = useRef<HTMLUListElement>(null); //メニュー（ulタグ）を参照
@@ -35,7 +36,6 @@ export default function Menu({ isOpen, setIsOpen }: Props ){
     const settings = settingsRef.current;
     const message = messageRef.current;
     const contact = contactRef.current;
-    const tl = gsap.timeline(); //Timelineを定義
 
     if (!menu || !menuItems) return;
 
@@ -44,11 +44,15 @@ export default function Menu({ isOpen, setIsOpen }: Props ){
 
     if (menu) {
       if (isOpen) {
+        const tl = gsap.timeline({
+          onStart: () => setIsAnimating(true),
+          onComplete: () => setIsAnimating(false),
+        });
         tl.to(menu, {
           display: 'block',
           opacity: 1,
           duration: 0.3,
-          ease: "power3.inOut"
+          ease: "power3.inOut",
         })
         .to(title, {
           x: 0,
@@ -78,15 +82,18 @@ export default function Menu({ isOpen, setIsOpen }: Props ){
           ease: "power3.inOut",
           onComplete: () => {
             if (menu) menu.style.display = 'none';
+            setIsAnimating(false); // アニメーション完了時にロックを解除
           }
         })
         gsap.to(title, {
           x: "-20",
           opacity: 0,
+          onStart: () => setIsAnimating(true),
         })
         gsap.to(itemArray, {
           y: "20",
           opacity: 0,
+
         })
         gsap.to(targets, {
           y: "20",

@@ -10,17 +10,20 @@ import styles from "./index.module.css";
 type Props = {
   isOpen: boolean; //真偽値の型
   setIsOpen: (open: boolean) => void; //boolean型（true/false）の引数を1つ受け取って、何も返さない関数の型
+  isAnimating: boolean; // 親(Header)から受け取る
+  setIsAnimating: (animating: boolean) => void; // 親(Header)から受け取る
 }
 
-export default function MenuButton({ isOpen, setIsOpen }: Props){
+export default function MenuButton({ isOpen, setIsOpen, isAnimating }: Props){
+  const menuButtonRef = useRef<HTMLDivElement>(null);
+  const { isTopPage, isFirstVisit } = useFirstVisit();
+
   //メニューの状態を関数で定義
   const menuButtonFunction = () => {
+    if (isAnimating) return; // isAnimatingがtrueなら何もしない
     setIsOpen(!isOpen);
   };
 
-  const menuButtonRef = useRef<HTMLDivElement>(null);
-
-  const { isTopPage, isFirstVisit } = useFirstVisit();
 
   useGSAP(() => {
     const menuButton = menuButtonRef.current;
@@ -35,7 +38,7 @@ export default function MenuButton({ isOpen, setIsOpen }: Props){
         }, {
           opacity: 1,
           duration: 0.85,
-          delay: 10.7,
+          delay: 10,
           ease: "power3.out",
         });
       } else {
@@ -64,7 +67,7 @@ export default function MenuButton({ isOpen, setIsOpen }: Props){
 
   return (
     <div ref={menuButtonRef} className={`${styles.animationInitialHidden} fixed z-50 w-12 h-12 flex items-center mix-blend-difference invert dark:invert-0 opacity-0`}>
-      <button onClick={menuButtonFunction} className={`${ isOpen ? styles.open : styles.close } ${styles.menubtn} relative w-12 h-12 m-auto flex justify-center items-center gap-x-2 cursor-pointer border border-[#111] dark:border-white hover:border-[#999] dark:hover:border-[#999] rounded-full origin-center`} aria-label="MENU">
+      <button onClick={menuButtonFunction} disabled={isAnimating} className={`${ isOpen ? styles.open : styles.close } ${styles.menubtn} relative w-12 h-12 m-auto flex justify-center items-center gap-x-2 cursor-pointer border border-[#111] dark:border-white hover:border-[#999] dark:hover:border-[#999] rounded-full origin-center`} aria-label="MENU">
         <span className="inline-block shrink-0 w-1 h-1 rounded-full bg-black dark:bg-white"></span>
         <span className="inline-block w-1 h-1 rounded-full bg-black dark:bg-white"></span>
         <span className="inline-block shrink-0 w-1 h-1 rounded-full bg-black dark:bg-white"></span>

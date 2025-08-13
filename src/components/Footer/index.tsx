@@ -26,7 +26,7 @@ export default function Footer() {
         }, {
           opacity: 1,
           duration: 0.85,
-          delay: 10.7,
+          delay: 10,
           ease: "power3.out",
         });
       } else {
