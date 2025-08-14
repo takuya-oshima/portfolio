@@ -38,6 +38,9 @@ body {
   -webkit-text-size-adjust: 100%;
   @apply transition-colors duration-700 ease-in-out; /*モード切替時のエフェクト */
 }
+[data-os="windows"] body {
+  font-weight: lighter; /* 見た目だけ微妙に細く */
+}
 html[lang="ja"] .locale {
   font-family: 'Roboto', 'Noto Sans JP', 'sans-serif';
 }
