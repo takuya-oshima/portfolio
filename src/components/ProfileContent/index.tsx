@@ -128,7 +128,7 @@ export default function ProfileContent() {
         </div>
         <MarqueeText text="Takuya Oshima" className="text-4xl md:text-6xl" />
         <MarqueeText text="Takuya Oshima" className="text-4xl md:text-6xl" direction="right" fontClassName="font-angel" />
-        <MarqueeText text="オオシマ タクヤ" className="text-[2rem] md:text-[3.25rem] mb-40" fontClassName="font-notoJP" />
+        <MarqueeText text="オオシマ タクヤ" className="text-[2rem] md:text-[3.25rem] mb-40" fontClassName="font-ja" />
         <div ref={fieldRef} className="lg:w-10/12 2xl:w-full xl:grid xl:grid-cols-2 mx-auto mb-34 md:mb-[12.5rem]">
           <BlockTitle blockTitle="FIELD" />
           <div className="xl:-ml-32 2xl:-ml-24 locale">
