@@ -21,7 +21,7 @@ export default function MarqueeText({
   const items = Array(repeat).fill(text);
 
   return (
-    <div className={`${styles.fullWidth} my-4 whitespace-nowrap overflow-hidden flex justify-start tracking-wide opacity-50 ${className}`}>
+    <div className={`${styles.fullWidth} relative z-10 my-4 whitespace-nowrap flex justify-start tracking-wide opacity-50 ${className}`}>
       {[0, 1].map((_, i) => (
         <ul key={i} className={direction === "right" ? styles.animationMarqueeRight : styles.animationMarqueeLeft}>
           {items.map((item, index) => (

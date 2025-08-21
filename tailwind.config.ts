@@ -45,6 +45,8 @@ const config: Config = {
       },
       padding: {
         'custom': "0.9375rem",
+        "left-custom-sm": "2.8125rem",
+        "left-custom-md": "5.625rem"
       },
       margin: {
         "34": "8.5rem",

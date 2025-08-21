@@ -99,7 +99,7 @@ export default function ProfileContent() {
   }, { dependencies: [] });
 
   return (
-    <section className="ml-left-custom-sm md:ml-24 lg:ml-0">
+    <section className="pl-left-custom-sm md:pl-24 lg:pl-0">
       <div ref={titleRef}>
         <PageTitleSide pageTitleSide="PROFILE" />
       </div>
