@@ -12,6 +12,7 @@ import ThemeWrapper from "@/components/ThemeWrapper";
 import LenisWrapper from "@/components/LenisWrapper";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import MouseType from "@/components/MouseType";
 
 //font-familyのimport
 import { Noto_Sans_JP, Roboto } from "next/font/google";
@@ -124,6 +125,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
             </LenisWrapper>
           </ThemeWrapper>
         </FirstVisitProvider>
+        <MouseType />
         <GoogleTagManager gtmId="GTM-WGVV3GJ" />
         <SpeedInsights />
       </body>
