@@ -52,7 +52,7 @@ export default function WorksList({ works, locale, setBgImage }: Props) {
           }`} onMouseEnter={() => handleMouseEnter(`${work.thumbnail?.url}?fm=webp`, index)} onMouseLeave={handleMouseLeave}>
 
           <Prefetcher href={`/works/${work.id}`} />
-          <Link href={`/works/${work.id}`} className="flex justify-start items-center py-4 px-2 counter-increment-item text-base md:text-lg">
+          <Link href={`/works/${work.id}`} className="flex justify-start items-center py-6 px-2 counter-increment-item text-base md:text-lg">
             {locale === "ja" ? (
               <h2 className="ml-2 md:ml-8 py-4 font-ja text-base md:text-2xl leading-normal">
                 {work.title_ja}
