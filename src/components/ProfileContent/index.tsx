@@ -67,11 +67,11 @@ export default function ProfileContent() {
     if (field && skill) {
       gsap.fromTo(field, {
         opacity: 0,
-        y: 50
+        y: 100
       },
       {
         opacity: 1,
-        x: 0,
+        y: 0,
         duration: 0.8,
         ease: "power3.out",
         scrollTrigger: {
@@ -82,11 +82,11 @@ export default function ProfileContent() {
       });
       gsap.fromTo(skill, {
         opacity: 0,
-        y: 50
+        y: 100
       },
       {
         opacity: 1,
-        x: 0,
+        y: 0,
         duration: 0.8,
         ease: "power3.out",
         scrollTrigger: {
@@ -99,7 +99,7 @@ export default function ProfileContent() {
   }, { dependencies: [] });
 
   return (
-    <section className="pl-left-custom-sm md:pl-24 lg:pl-0">
+    <section className="ml-left-custom-sm md:ml-24 lg:ml-0">
       <div ref={titleRef}>
         <PageTitleSide pageTitleSide="PROFILE" />
       </div>
@@ -116,7 +116,7 @@ export default function ProfileContent() {
           </figure>
         </div>
         */}
-        <div className="md:w-[45rem] mx-auto mb-34 md:mb-[12.5rem] locale">
+        <div className="lg:w-[45rem] mx-auto mb-34 md:mb-[12.5rem] locale">
           <TextBase>
             {t("profileText").split("\n").map((line, index) => (
               <span key={index}>
@@ -126,9 +126,11 @@ export default function ProfileContent() {
             ))}
           </TextBase>
         </div>
-        <MarqueeText text="Takuya Oshima" className="text-4xl md:text-6xl" />
-        <MarqueeText text="Takuya Oshima" className="text-4xl md:text-6xl" direction="right" fontClassName="font-angel" />
-        <MarqueeText text="オオシマ タクヤ" className="text-[2rem] md:text-[3.25rem] mb-40" fontClassName="font-ja" />
+        <div className="-ml-left-custom-sm md:-ml-24 lg:ml-0">
+          <MarqueeText text="Takuya Oshima" className="text-4xl md:text-6xl" />
+          <MarqueeText text="Takuya Oshima" className="text-4xl md:text-6xl" direction="right" fontClassName="font-angel" />
+          <MarqueeText text="オオシマ タクヤ" className="text-[2rem] md:text-[3.25rem] mb-40" fontClassName="font-ja" />
+        </div>
         <div ref={fieldRef} className="lg:w-10/12 2xl:w-full xl:grid xl:grid-cols-2 mx-auto mb-34 md:mb-[12.5rem]">
           <BlockTitle blockTitle="FIELD" />
           <div className="xl:-ml-32 2xl:-ml-24 locale">
