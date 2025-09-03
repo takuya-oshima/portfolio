@@ -10,9 +10,10 @@ type Props = {
   works: Works[];
   locale: string;
   setBgImage: (url: string) => void;
+  setIsHovering: (isHovering: boolean) => void;
 };
 
-export default function WorksList({ works, locale, setBgImage }: Props) {
+export default function WorksList({ works, locale, setBgImage, setIsHovering }: Props) {
 
   //画面遷移直後にWorkslistのホバーを止める
   const worksListRef = useRef<HTMLUListElement>(null); //Workslistのulを参照
@@ -35,11 +36,13 @@ export default function WorksList({ works, locale, setBgImage }: Props) {
   const handleMouseEnter = (thumbnail?: string, index?: number) => {
     setBgImage(thumbnail ?? "/images/img_bg_default_thumbnail.webp");
     setHoverIndex(index ?? null);
+    setIsHovering(true);
   };
 
   const handleMouseLeave = () => {
     setBgImage("/images/img_bg_default_thumbnail.webp");
     setHoverIndex(null);
+    setIsHovering(false);
   };
 
   if (works.length === 0) {

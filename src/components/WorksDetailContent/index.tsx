@@ -250,11 +250,11 @@ export default function WorksDetailContent( { locale, data }: Props) {
             </div>
           </div>
         </div>
-        <div ref={workslistRef} className={"sticky z-10 w-screen mx-[calc((100vw-100%)/-2)] pt-34 md:pt-[12.5rem] pb-34 md:pb-[12.5rem] bg-background-light dark:bg-background-dark " + (scrolled ? "bottom-0" : "")}>
+        <div ref={workslistRef} className={"sticky z-10 w-screen mx-[calc((100vw-100%)/-2)] pt-34 md:pt-[14rem] pb-34 md:pb-[14rem] bg-background-light dark:bg-background-dark " + (scrolled ? "bottom-0" : "")}>
           <ul className="flex justify-center items-center gap-x-8 md:gap-x-16 lg:gap-x-32 text-base md:text-xl">
             <li>
               <Prefetcher href="/works/" />
-              <Link href="/works/" className={`text-[2.5rem] md:text-5xl 2xl:text-7xl ${styles.textLink}`}>Works list</Link>
+              <Link href="/works/" className={`text-[2.5rem] md:text-6xl 2xl:text-8xl ${styles.textLink}`}>Works list</Link>
               </li>
           </ul>
         </div>

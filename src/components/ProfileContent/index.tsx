@@ -78,7 +78,7 @@ export default function ProfileContent() {
         ease: "power3.out",
         scrollTrigger: {
           trigger: field,
-          start: "center center",
+          start: "top 30%",
           end: "bottom bottom",
           toggleActions: "play none none reverse",
           /* markers: true, */
@@ -95,7 +95,7 @@ export default function ProfileContent() {
         ease: "power3.out",
         scrollTrigger: {
           trigger: skill,
-          start: "center center",
+          start: "top 30%",
           end: "bottom bottom",
           toggleActions: "play none none reverse",
           /* markers: true, */
@@ -116,6 +116,7 @@ export default function ProfileContent() {
           start: "center center",
           end: "bottom bottom",
           toggleActions: "play none none reverse",
+          /* markers: true, */
         },
       });
     }
