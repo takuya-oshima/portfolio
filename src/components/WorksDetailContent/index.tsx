@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import { Link } from "@/i18n/routing";
 import React from "react";
 import Image from "next/image";
-import { useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -38,6 +38,7 @@ export default function WorksDetailContent( { locale, data }: Props) {
   const mainImageRef = useRef<HTMLDivElement>(null);
   const overviewRef = useRef<HTMLDivElement>(null);
   const imagesRef = useRef<HTMLDivElement>(null);
+  const detailsRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
     const title = titleRef.current?.children;
@@ -46,6 +47,7 @@ export default function WorksDetailContent( { locale, data }: Props) {
     const mainImage = mainImageRef.current?.querySelector("img");
     const overview = overviewRef.current;
     const imgContainers = imagesRef.current?.querySelectorAll("figure") || [];
+    const details = detailsRef.current?.children;
 
     if (title && content && detailCircle) {
       gsap.fromTo(title, {
@@ -85,22 +87,23 @@ export default function WorksDetailContent( { locale, data }: Props) {
 
     if (mainImage) {
       gsap.to(mainImage, {
-        //y: 80,
-        scale: 0.5,
+        scale: 0.8,
         ease: "none",
+        //opacity: 0,
         scrollTrigger: {
           trigger: mainImage,
-          start: "center bottom",
+          start: "80% center",
           end: "bottom top",
-          scrub: 1.5,
+          scrub: 1,
+          toggleActions: "play none none reverse",
         }
       });
     }
 
-    if (overview && imgContainers) {
+    if (overview && imgContainers && details) {
       gsap.fromTo(overview, {
         opacity: 0,
-        y: 100,
+        y: 80,
       },
       {
         opacity: 1,
@@ -109,15 +112,16 @@ export default function WorksDetailContent( { locale, data }: Props) {
         ease: "power3.out",
         scrollTrigger: {
           trigger: overview,
-          start: "top 80%",
+          start: "-50% center",
           end: "bottom bottom",
+          toggleActions: "play none none reverse",
         },
       });
 
       imgContainers.forEach((figure) => {
         gsap.fromTo(figure, {
           opacity: 0,
-          y: 100
+          y: 80,
         },
         {
           opacity: 1,
@@ -126,15 +130,44 @@ export default function WorksDetailContent( { locale, data }: Props) {
           ease: "power3.out",
           scrollTrigger: {
             trigger: figure,
-            start: "top 80%",
+            start: "top center",
             end: "bottom bottom",
+            toggleActions: "play none none reverse",
           },
         });
       });
+
+      gsap.fromTo(details, {
+        opacity: 0,
+        y: 80,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: details,
+          start: "center center",
+          end: "bottom bottom",
+          toggleActions: "play none none reverse",
+        },
+      });
+
     }
-
-
   }, { dependencies: [] });
+
+  const [scrolled, setScrolled] = useState(false);
+  const workslistRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!workslistRef.current) return;
+      setScrolled(window.scrollY > 2000); // 2000px以上スクロールでtrue
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
 
   return (
@@ -160,7 +193,7 @@ export default function WorksDetailContent( { locale, data }: Props) {
           <div className="ml-left-custom-sm md:ml-24 lg:ml-0">
             <div ref={overviewRef} className="lg:w-10/12 xl:grid xl:grid-cols-2 mx-auto mb-34 md:mb-[12.5rem]">
               <BlockTitle blockTitle="OVERVIEW" />
-              <div className="xl:-ml-32 2xl:-ml-24">
+              <div className="xl:-ml-32 2xl:-ml-24 overflow-hidden">
                 {locale === "ja" ? (
                     <p className="font-ja text-base leading-loose mb-8 md:mb-14">
                       {data.overview_ja}
@@ -181,7 +214,7 @@ export default function WorksDetailContent( { locale, data }: Props) {
             <div className="mb-34 md:mb-[12.5rem]">
             {data.pageImagesPC?.map((pageImagePC, index) => (
               <figure key={index} className="w-screen mx-[calc((100vw-100%)/-2)] mb-34 md:mb-42">
-                <Image className="xl:w-[1120px] mx-auto" src={`${pageImagePC.url}?fm=webp`} width={pageImagePC.width} height={pageImagePC.height} alt={locale === "ja" ? data.title_ja : data.title_en + `UnderImage ${index + 1}`} loading="lazy" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1120px" />
+                <Image className="xl:w-[1120px] mx-auto drop-shadow-[1px_1px_15px_rgba(0,0,0,0.15)]" src={`${pageImagePC.url}?fm=webp`} width={pageImagePC.width} height={pageImagePC.height} alt={locale === "ja" ? data.title_ja : data.title_en + `UnderImage ${index + 1}`} loading="lazy" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1120px" />
               </figure>
             ))}
             </div>
@@ -198,8 +231,8 @@ export default function WorksDetailContent( { locale, data }: Props) {
           <MarqueeText text={data.titleAbbreviation} className="text-4xl md:text-6xl" />
           <MarqueeText text={data.titleAbbreviation} className="text-4xl md:text-6xl" direction="right" fontClassName="font-angel" />
           <MarqueeText text={data.titleKana} className="text-[2rem] md:text-[3.25rem] mb-20" fontClassName="font-ja" />
-          <div id="details" className="font-notoJP mb-34 md:mb-[12.5rem] black">
-            <div className="w-screen mx-[calc((100vw-100%)/-2)] bg-black text-white py-20 2xl:py-32 px-custom md:px-10 lg:px-16">
+          <div ref={detailsRef} id="details" className="font-notoJP w-screen mx-[calc((100vw-100%)/-2)] bg-black text-white py-20 2xl:py-32 px-custom md:px-10 lg:px-16">
+            <div className={styles.animationInitialHidden}>
               <h2 className="mb-8 md:mb-14 2xl:mb-[4.5rem] text-center text-[2.5rem] md:text-5xl 2xl:text-7xl leading-relaxed tracking-wide">DETAILS</h2>
               <div className="grid gap-y-4 md:gap-y-6 mb-[5.5rem]">
                 <h3 className="text-2xl md:text-3.5xl text-center">INFO</h3>
@@ -216,14 +249,14 @@ export default function WorksDetailContent( { locale, data }: Props) {
               </div>
             </div>
           </div>
-          <div className="mb-34 md:mb-[12.5rem]">
-            <ul className="flex justify-center items-center gap-x-8 md:gap-x-16 lg:gap-x-32 text-base md:text-xl">
-              <li>
-                <Prefetcher href="/works/" />
-                <Link href="/works/" className={`text-xl md:text-8xl ${styles.textLink}`}>Works list</Link>
-                </li>
-            </ul>
-          </div>
+        </div>
+        <div ref={workslistRef} className={"sticky z-10 w-screen mx-[calc((100vw-100%)/-2)] pt-34 md:pt-[12.5rem] pb-34 md:pb-[12.5rem] bg-background-light dark:bg-background-dark " + (scrolled ? "bottom-0" : "")}>
+          <ul className="flex justify-center items-center gap-x-8 md:gap-x-16 lg:gap-x-32 text-base md:text-xl">
+            <li>
+              <Prefetcher href="/works/" />
+              <Link href="/works/" className={`text-[2.5rem] md:text-5xl 2xl:text-7xl ${styles.textLink}`}>Works list</Link>
+              </li>
+          </ul>
         </div>
       </div>
       <div ref={detailCircleRef} className="detail-circle">

@@ -31,6 +31,7 @@ export default function ProfileContent() {
   const contentRef = useRef<HTMLDivElement>(null);
   const fieldRef = useRef<HTMLDivElement>(null);
   const skillRef = useRef<HTMLDivElement>(null);
+  const contactRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
     const title = titleRef.current?.children;
@@ -63,11 +64,12 @@ export default function ProfileContent() {
 
     const field = fieldRef.current;
     const skill = skillRef.current;
+    const contact = contactRef.current?.children;
 
-    if (field && skill) {
+    if (field && skill && contact) {
       gsap.fromTo(field, {
         opacity: 0,
-        y: 100
+        y: 80
       },
       {
         opacity: 1,
@@ -76,13 +78,15 @@ export default function ProfileContent() {
         ease: "power3.out",
         scrollTrigger: {
           trigger: field,
-          start: "top 20%",
+          start: "center center",
           end: "bottom bottom",
+          toggleActions: "play none none reverse",
+          /* markers: true, */
         },
       });
       gsap.fromTo(skill, {
         opacity: 0,
-        y: 100
+        y: 80
       },
       {
         opacity: 1,
@@ -91,8 +95,27 @@ export default function ProfileContent() {
         ease: "power3.out",
         scrollTrigger: {
           trigger: skill,
-          start: "top 20%",
+          start: "center center",
           end: "bottom bottom",
+          toggleActions: "play none none reverse",
+          /* markers: true, */
+        },
+      });
+
+      gsap.fromTo(contact, {
+        opacity: 0,
+        y: 80,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: contact,
+          start: "center center",
+          end: "bottom bottom",
+          toggleActions: "play none none reverse",
         },
       });
     }
@@ -206,33 +229,35 @@ export default function ProfileContent() {
             </dl>
           </div>
         </div>
-        <div className="-ml-left-custom-sm md:-ml-24 lg:ml-0 mb-34 md:mb-[12.5rem] black">
-          <div className="w-screen mx-[calc((100vw-100%)/-2)] bg-black text-white py-20 2xl:py-32 px-custom">
-            <h2 className="mb-8 md:mb-14 2xl:mb-[4.5rem] text-center text-[2.5rem] md:text-5xl 2xl:text-7xl leading-relaxed tracking-wide">CONTACT</h2>
-            <div className="text-center">
-              <p className="mx-10 mb-10 text-base md:text-xl leading-loose locale">
-                {t("contactText").split("\n").map((line, index) => (
-                  <span key={index}>
-                    {line}
-                    <br />
-                  </span>
-                ))}
-              </p>
-              <div className="mb-10 text-2xl md:text-6xl 2xl:text-8xl leading-loose">
-                <MailAddress />
+        <div className="-ml-left-custom-sm md:-ml-24 lg:ml-0 mb-34 md:mb-[12.5rem]">
+          <div ref={contactRef} className="w-screen mx-[calc((100vw-100%)/-2)] bg-black text-white py-20 2xl:py-32 px-custom mb-34 md:mb-[12.5rem]">
+            <div className={styles.animationInitialHidden}>
+              <h2 className="mb-8 md:mb-14 2xl:mb-[4.5rem] text-center text-[2.5rem] md:text-5xl 2xl:text-7xl leading-relaxed tracking-wide">CONTACT</h2>
+              <div className="text-center">
+                <p className="mx-10 mb-10 text-base md:text-xl leading-loose locale">
+                  {t("contactText").split("\n").map((line, index) => (
+                    <span key={index}>
+                      {line}
+                      <br />
+                    </span>
+                  ))}
+                </p>
+                <div className="mb-10 text-2xl md:text-6xl 2xl:text-8xl leading-loose">
+                  <MailAddress />
+                </div>
+                <div className="mb-[4.5rem] text-3xl leading-loose">Get in touch</div>
+                <ul className="flex justify-center items-center gap-x-4 md:gap-x-6">
+                  <li className="fill-white">
+                    <IconFacebook className="fill-white " />
+                  </li>
+                  <li>
+                    <IconInstagram className="fill-white" />
+                  </li>
+                  <li>
+                    <IconGithub className="fill-white" />
+                  </li>
+                </ul>
               </div>
-              <div className="mb-[4.5rem] text-3xl leading-loose">Get in touch</div>
-              <ul className="flex justify-center items-center gap-x-4 md:gap-x-6">
-                <li className="fill-white">
-                  <IconFacebook className="fill-white " />
-                </li>
-                <li>
-                  <IconInstagram className="fill-white" />
-                </li>
-                <li>
-                  <IconGithub className="fill-white" />
-                </li>
-              </ul>
             </div>
           </div>
         </div>
