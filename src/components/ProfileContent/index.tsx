@@ -80,7 +80,6 @@ export default function ProfileContent() {
           trigger: field,
           start: "top 30%",
           end: "bottom bottom",
-          toggleActions: "play none none reverse",
           /* markers: true, */
         },
       });
@@ -97,7 +96,6 @@ export default function ProfileContent() {
           trigger: skill,
           start: "top 30%",
           end: "bottom bottom",
-          toggleActions: "play none none reverse",
           /* markers: true, */
         },
       });
@@ -115,7 +113,6 @@ export default function ProfileContent() {
           trigger: contact,
           start: "center center",
           end: "bottom bottom",
-          toggleActions: "play none none reverse",
           /* markers: true, */
         },
       });

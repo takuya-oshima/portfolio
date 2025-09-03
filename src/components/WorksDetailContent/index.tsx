@@ -132,7 +132,6 @@ export default function WorksDetailContent( { locale, data }: Props) {
             trigger: figure,
             start: "top center",
             end: "bottom bottom",
-            toggleActions: "play none none reverse",
           },
         });
       });
@@ -150,7 +149,6 @@ export default function WorksDetailContent( { locale, data }: Props) {
           trigger: details,
           start: "center center",
           end: "bottom bottom",
-          toggleActions: "play none none reverse",
         },
       });
 
