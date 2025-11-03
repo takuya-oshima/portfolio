@@ -227,6 +227,40 @@ export default function ProfileContent() {
             </dl>
           </div>
         </div>
+        <div ref={skillRef} className="lg:w-10/12 2xl:w-full xl:grid xl:grid-cols-2 mx-auto mb-34 md:mb-[12.5rem]">
+          <BlockTitle blockTitle="AWARDS" />
+          <div className="md:flex justify-start items-start gap-x-32 xl:gap-x-40 2xl:gap-x-48 xl:-ml-32 2xl:-ml-24">
+            <dl className="mb-8">
+              <dt>
+                <TextLarge>Awwwards</TextLarge>
+              </dt>
+              <dd>
+                <p className="text-base leading-loose mb-8 md:mb-14 ml-1 locale">
+                  <a href="https://www.awwwards.com/sites/takuya-oshima-portfolio" target="_blank" rel="noreferrer noopener" className={styles.textLink}>Nominee SEPTEMBER 2025</a><br/>
+                </p>
+              </dd>
+              <dt>
+                <TextLarge>CSS Design Awards</TextLarge>
+              </dt>
+              <dd>
+                <p className="text-base leading-loose mb-8 md:mb-14 ml-1 locale">
+                  <a href="https://www.cssdesignawards.com/sites/takuya-oshima-portfolio/48030" target="_blank" rel="noreferrer noopener" className={styles.textLink}>Kudos SEPTEMBER 2025</a ><br/>
+                  Best UI<br/>
+                  Best UX<br/>
+                  Best Innovation
+                </p>
+              </dd>
+              <dt>
+                <TextLarge>CSS Winner</TextLarge>
+              </dt>
+              <dd>
+                <p className="text-base leading-loose mb-8 md:mb-14 ml-1 locale">
+                  <a href="https://www.csswinner.com/details/takuya-oshima-portfolio/18804" target="_blank" rel="noreferrer noopener" className={styles.textLink}>STAR August 2025</a><br/>
+                </p>
+              </dd>
+            </dl>
+          </div>
+        </div>
         <div className="-ml-left-custom-sm md:-ml-24 lg:ml-0 mb-34 md:mb-[12.5rem]">
           <div ref={contactRef} className="w-screen mx-[calc((100vw-100%)/-2)] bg-black text-white py-20 2xl:py-32 px-custom mb-34 md:mb-[12.5rem]">
             <div className={styles.animationInitialHidden}>
