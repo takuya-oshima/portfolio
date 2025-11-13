@@ -232,7 +232,7 @@ export default function ProfileContent() {
           <div className="md:flex justify-start items-start gap-x-32 xl:gap-x-40 2xl:gap-x-48 xl:-ml-32 2xl:-ml-24">
             <dl className="mb-8">
               <dt>
-                <TextLarge>Awwwards</TextLarge>
+                <TextLarge>Awwwardsaa</TextLarge>
               </dt>
               <dd>
                 <p className="text-base leading-loose mb-8 md:mb-14 ml-1 locale">
