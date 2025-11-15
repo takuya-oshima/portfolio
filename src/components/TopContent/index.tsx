@@ -65,13 +65,13 @@ export default function TopContent() {
       tl.fromTo(openingText, { opacity: 0 }, {
         opacity: 1,
         duration: 2,
-        delay: 1,
+        delay: .5,
         ease: "power3.out",
       })
       .to(openingText, {
         opacity: 0,
         duration: 2,
-        delay: 2.5,
+        delay: 1.5,
         ease: "power3.out",
       })
       .fromTo(openingContainer, { y: 0 }, {
@@ -98,7 +98,7 @@ export default function TopContent() {
   return (
     <div ref={containerRef} className="h-fit cursor-none">
       <div className="top-contents relative z-10">
-        <div ref={titleRef} className={`${styles.title} ${styles.textShadow} ${styles.animationInitialHidden} mt-[2vh] md:mt-24 lg:mt-8 mb-[2vh] lg:mb-32 text-center tracking-wide`}>
+        <div ref={titleRef} className={`${styles.title} ${styles.textShadow} ${styles.animationInitialHidden} mt-[15vh] md:mt-24 lg:mt-8 mb-[15vh] lg:mb-32 text-center tracking-wide`}>
           <h1 className="mb-8 md:mb-14 text-5xl md:text-8xl lg:text-index-title font-normal whitespace-nowrap">Takuya Oshima</h1>
           <h2 className="text-lg md:text-xl lg:text-3.5xl font-normal">Web Designer / Frontend Developer</h2>
         </div>
