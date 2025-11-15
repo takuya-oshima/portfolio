@@ -65,7 +65,7 @@ export default function TopContent() {
       tl.fromTo(openingText, { opacity: 0 }, {
         opacity: 1,
         duration: 2,
-        delay: .5,
+        delay: 1,
         ease: "power3.out",
       })
       .to(openingText, {
