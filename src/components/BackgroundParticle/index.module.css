@@ -4,6 +4,6 @@
   left: 0;
   z-index: -1;
   width: 100%; /* 星空の横幅 */
-  height: 100vh; /* 星空の縦幅 */
+  height: 100lvh; /* 星空の縦幅 */
   overflow: hidden; /* 星が枠外にはみ出すのを防ぐ */
 }
