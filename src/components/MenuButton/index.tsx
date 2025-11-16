@@ -38,7 +38,7 @@ export default function MenuButton({ isOpen, setIsOpen, isAnimating }: Props){
         }, {
           opacity: 1,
           duration: 0.85,
-          delay: 10,
+          delay: 11,
           ease: "power3.out",
         });
       } else {
