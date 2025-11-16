@@ -34,15 +34,16 @@ export default function DetailCircle() {
         rotation: -1440,
         scrollTrigger: {
           start: "top top",
-          end: "bottom bottom",
+          end: "bottom+=30vh bottom",
           scrub: true,
+          markers: true,
         },
       })
       gsap.to(insideCircle, {
         rotation: 1440,
         scrollTrigger: {
           start: "top top",
-          end: "bottom bottom",
+          end: "bottom+=30vh bottom",
           scrub: true,
         },
       })
@@ -50,7 +51,7 @@ export default function DetailCircle() {
         rotation: 360,
         scrollTrigger: {
           start: "top top",
-          end: "bottom bottom",
+          end: "bottom+=30vh bottom",
           scrub: true,
         }
       })
