@@ -1,0 +1,15 @@
+.animationInitialHidden {
+  opacity: 0;
+  will-change: transform, opacity;
+}
+.animationItem {
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+  svg {
+    path {
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+  }
+}
