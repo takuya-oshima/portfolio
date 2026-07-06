@@ -8,6 +8,7 @@ export default function ThemeWrapper({ children }: { children: React.ReactNode }
 
   useEffect(() => {
     // クライアントサイドでのみレンダリングする
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- マウント判定のための意図的なsetState
     setMounted(true);
   }, []);
 

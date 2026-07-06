@@ -9,6 +9,7 @@ export default function ThemeSwitcher() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- マウント判定のための意図的なsetState
     setMounted(true);
   }, []);
 
