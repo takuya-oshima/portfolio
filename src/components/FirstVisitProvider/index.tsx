@@ -25,6 +25,7 @@ export const FirstVisitProvider = ({ children }: { children: React.ReactNode }) 
     if (isTopPage) {
       if (visited) {
         //console.log("2回目以降の訪問", visited);
+        // eslint-disable-next-line react-hooks/set-state-in-effect -- 初回訪問判定のための意図的なsetState
         setIsFirstVisit(false);
       } else {
         //console.log("初回訪問", visited);

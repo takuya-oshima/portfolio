@@ -6,7 +6,6 @@ const withNextIntl = createNextIntlPlugin();
 const nextConfig = {
   trailingSlash: true, //URLの末尾にスラッシュを付与
   reactStrictMode: true, //Reactの厳密モードを有効化
-  // swcMinify: true, // SWC圧縮（デフォルト有効だが明示）
   compress: true,  // Gzip/Brotli圧縮有効化
   //MicroCMSの画像の制限設定
   images: {
