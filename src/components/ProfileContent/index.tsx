@@ -31,6 +31,7 @@ export default function ProfileContent() {
   const contentRef = useRef<HTMLDivElement>(null);
   const fieldRef = useRef<HTMLDivElement>(null);
   const skillRef = useRef<HTMLDivElement>(null);
+  const awardsRef = useRef<HTMLDivElement>(null);
   const contactRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
@@ -64,9 +65,10 @@ export default function ProfileContent() {
 
     const field = fieldRef.current;
     const skill = skillRef.current;
+    const awards = awardsRef.current;
     const contact = contactRef.current?.children;
 
-    if (field && skill && contact) {
+    if (field && skill && awards && contact) {
       gsap.fromTo(field, {
         opacity: 0,
         y: 80
@@ -99,7 +101,22 @@ export default function ProfileContent() {
           /* markers: true, */
         },
       });
-
+      gsap.fromTo(awards, {
+        opacity: 0,
+        y: 80
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: awards,
+          start: "top 30%",
+          end: "bottom bottom",
+          /* markers: true, */
+        },
+      });
       gsap.fromTo(contact, {
         opacity: 0,
         y: 80,
@@ -227,7 +244,7 @@ export default function ProfileContent() {
             </dl>
           </div>
         </div>
-        <div ref={skillRef} className="lg:w-10/12 2xl:w-full xl:grid xl:grid-cols-2 mx-auto mb-34 md:mb-[12.5rem]">
+        <div ref={awardsRef} className="lg:w-10/12 2xl:w-full xl:grid xl:grid-cols-2 mx-auto mb-34 md:mb-[12.5rem]">
           <BlockTitle blockTitle="AWARDS" />
           <div className="md:flex justify-start items-start gap-x-32 xl:gap-x-40 2xl:gap-x-48 xl:-ml-32 2xl:-ml-24">
             <dl className="mb-8">
