@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useState, useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -14,6 +15,7 @@ type Props = {
 };
 
 export default function WorksListContent({ works, locale }: Props) {
+  const t = useTranslations("WorksPage");
   const titleRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -58,6 +60,7 @@ export default function WorksListContent({ works, locale }: Props) {
         <PageTitleSide pageTitleSide="WORKS" />
       </div>
       <div ref={contentRef} className={`${styles.animationInitialHidden} relative`}>
+        <p className="lg:w-10/12 2xl:w-full mx-auto mb-10 text-sm leading-relaxed tracking-wide text-[#999999] locale">{t("notice")}</p>
         <WorksList works={works} locale={locale} setBgImage={setBgImage} setIsHovering={setIsHovering} />
       </div>
     </section>

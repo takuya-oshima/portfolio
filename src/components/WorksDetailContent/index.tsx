@@ -229,7 +229,7 @@ export default function WorksDetailContent( { locale, data }: Props) {
           <MarqueeText text={data.titleAbbreviation} className="text-4xl md:text-6xl" />
           <MarqueeText text={data.titleAbbreviation} className="text-4xl md:text-6xl" direction="right" fontClassName="font-angel" />
           <MarqueeText text={data.titleKana} className="text-[2rem] md:text-[3.25rem] mb-20" fontClassName="font-ja" />
-          <div ref={detailsRef} id="details" className="font-notoJP w-screen mx-[calc((100vw-100%)/-2)] bg-black text-white py-20 2xl:py-32 px-custom md:px-10 lg:px-16">
+          <div ref={detailsRef} id="details" className="w-screen mx-[calc((100vw-100%)/-2)] bg-black text-white py-20 2xl:py-32 px-custom md:px-10 lg:px-16">
             <div className={styles.animationInitialHidden}>
               <h2 className="mb-8 md:mb-14 2xl:mb-[4.5rem] text-center text-[2.5rem] md:text-5xl 2xl:text-7xl leading-relaxed tracking-wide">DETAILS</h2>
               <div className="grid gap-y-4 md:gap-y-6 mb-[5.5rem]">

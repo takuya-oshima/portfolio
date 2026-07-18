@@ -5,13 +5,14 @@
   },
   "WorksPage": {
     "title": "Works｜Takuya Oshima",
-    "description": "Here is a list of our past achievements."
+    "description": "Here is a list of our past achievements.",
+    "notice": "All works shown here were commissioned and produced independently as a sole proprietor. Work done as part of my employment is not included."
   },
   "ProfilePage": {
     "title": "Profile｜Takuya Oshima",
     "description": "Here is my profile.",
     "name": "",
-     "profileText":"Web Designer, Front-end Engineer, Web Director.\nBorn in 1989.\nWorked as a web designer at a web production and development company in Tokyo, Japan, handling design and front-end implementation for numerous website projects.\nOften responsible for planning, design creation, front-end implementation, and direction alone, with a strong ability to cover a wide range of tasks.",
+     "profileText":"Web Designer, Front-end Engineer\nBorn in 1989.\n\nI have spent 13 years at a web design and development company in Tokyo, creating a wide range of websites — from corporate sites and e-commerce to business systems and multilingual websites.\n\nMy strength lies in handling the entire process single-handedly: planning, design, development, and post-launch maintenance. Since you work with the same person from the first consultation to delivery, what you envision is exactly what gets built.\n\nI go beyond simply making things look good. I take the time to understand your goals and target audience, then propose structures and designs that deliver results. I also offer SEO, page speed optimization, and ongoing updates and improvements after launch.\n\nThis website was independently planned, designed, and developed as a personal project, and has received international web design awards: four honors from CSS Design Awards, an Awwwards Nominee, and a CSS Winner STAR.\n\nFeel free to get in touch about your website project — I'd be happy to discuss it.",
      "serviceText": "Web Planning\nWeb Direction\nWeb Design\nFrontend Development\nSEO\nWeb Marketing",
      "contactText": "Please contact us at this e-mail address to discuss your site creation needs."
   },
