@@ -11,8 +11,7 @@ UIデザイナー / フロントエンドエンジニア 大島卓也のポー�
 - [Awwwards](https://www.awwwards.com/sites/takuya-oshima-portfolio)：Nominee（2025年9月）
 - [CSS Winner](https://www.csswinner.com/details/takuya-oshima-portfolio/18804)：STAR賞（2025年8月）
 
-<!-- ここにサイトのスクリーンショットを1枚入れると、内容が一目で伝わります -->
-<!-- 例：![トップページ](./docs/screenshot.png) -->
+![トップページ](./docs/screenshot.png)
 
 ## 技術スタック
 
